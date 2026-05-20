@@ -1,0 +1,35 @@
+# Research & source documents (not part of the published site)
+*.pdf
+*.csv
+*.zip
+*.md
+!README.md
+
+# macOS
+.DS_Store
+
+# Root-level screenshots (not referenced by the site)
+Screenshot *.png
+TC Agent Metrics Sketch.png
+
+# Claude Code config
+.claude/
+
+# Node
+node_modules/
+
+# Imagery files not referenced by the site
+Imagery/Background*.png
+Imagery/Agent to agent.png
+Imagery/Original Cycle Map.png
+Imagery/Original Metrics.png
+Imagery/Project Kickoff*.png
+Imagery/Competitor Research*.png
+Imagery/Worst Trust Center Workshop.png
+Imagery/Questionnaire.gif
+Imagery/Screenshot*.png
+Imagery/Sales Teams*.pdf
+Imagery/brief-card-sort-two.png
+Imagery/original (1).mp4
+Imagery/kickoff-pains-journey.png
+Imagery/original-metrics.png

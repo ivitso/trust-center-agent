@@ -724,8 +724,21 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 }
 .tc-diagram { width: 100%; height: auto; display: block; }
 
-.constraints {
+.constraints-diagram-row {
   margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.constraints-diagram-row .tc-diagram-wrap {
+  margin-top: 0;
+}
+@media (max-width: 980px) {
+  .constraints-diagram-row { grid-template-columns: 1fr; }
+}
+.constraints {
+  margin-top: 0;
   max-width: 920px;
 }
 .constraints h5 {
@@ -1445,90 +1458,92 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
     </div>
 
-    <div class="constraints">
-      <h5>Constraints we designed around</h5>
-      <ul>
-        <li>Two months to MVP for Bundle and Ask tool calls. One additional month for the Questionnaire tool call.</li>
-        <li>Access group complexity: every customer configured document permissions differently, with different levels of gating per visitor.</li>
-        <li>Product lines: larger companies had sub-brands that each needed their own scope. Intuit, for example, had TurboTax, Credit Karma, Mailchimp, ProConnect, and QuickBooks as five separate product lines, each requiring both permission access and correct product line routing.</li>
-        <li>One week to build all three flows in Lovable, get design partner feedback, then move into final UI in Figma.</li>
-      </ul>
-    </div>
+    <div class="constraints-diagram-row">
+      <div class="constraints">
+        <h5>Constraints we designed around</h5>
+        <ul>
+          <li>Two months to MVP for Bundle and Ask tool calls. One additional month for the Questionnaire tool call.</li>
+          <li>Access group complexity: every customer configured document permissions differently, with different levels of gating per visitor.</li>
+          <li>Product lines: larger companies had sub-brands that each needed their own scope. Intuit, for example, had TurboTax, Credit Karma, Mailchimp, ProConnect, and QuickBooks as five separate product lines, each requiring both permission access and correct product line routing.</li>
+          <li>One week to build all three flows in Lovable, get design partner feedback, then move into final UI in Figma.</li>
+        </ul>
+      </div>
 
-    <div class="tc-diagram-wrap" style="margin-top:1.6rem; max-width:600px; margin-left:auto; margin-right:auto;">
-      <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" class="tc-diagram" role="img" aria-label="Trust Center Agent tool call routing diagram">
-        <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
-            <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
-          </marker>
-        </defs>
+      <div class="tc-diagram-wrap">
+        <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" class="tc-diagram" role="img" aria-label="Trust Center Agent tool call routing diagram">
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
+            </marker>
+          </defs>
 
-        <!-- Visitor query -->
-        <rect x="400" y="14" width="200" height="42" rx="8" fill="#fff" stroke="#51008D" stroke-width="1"/>
-        <text x="500" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Visitor query</text>
-        <line x1="500" y1="56" x2="500" y2="80" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <!-- Visitor query -->
+          <rect x="400" y="14" width="200" height="42" rx="8" fill="#fff" stroke="#51008D" stroke-width="1"/>
+          <text x="500" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Visitor query</text>
+          <line x1="500" y1="56" x2="500" y2="80" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-        <!-- Entry gates -->
-        <rect x="320" y="86" width="360" height="64" rx="8" fill="#F4EDFA" stroke="#51008D" stroke-width="1"/>
-        <text x="500" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">ENTRY GATES</text>
-        <text x="500" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">NDA signing · Magic-link auth · Product scope</text>
+          <!-- Entry gates -->
+          <rect x="320" y="86" width="360" height="64" rx="8" fill="#F4EDFA" stroke="#51008D" stroke-width="1"/>
+          <text x="500" y="110" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">ENTRY GATES</text>
+          <text x="500" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">NDA signing · Magic-link auth · Product scope</text>
 
-        <!-- Down line and horizontal distributor -->
-        <line x1="500" y1="150" x2="500" y2="176" stroke="#51008D" stroke-width="1.5"/>
-        <line x1="160" y1="176" x2="840" y2="176" stroke="#51008D" stroke-width="1.5"/>
-        <line x1="160" y1="176" x2="160" y2="200" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <line x1="500" y1="176" x2="500" y2="200" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <line x1="840" y1="176" x2="840" y2="200" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <!-- Down line and horizontal distributor -->
+          <line x1="500" y1="150" x2="500" y2="176" stroke="#51008D" stroke-width="1.5"/>
+          <line x1="160" y1="176" x2="840" y2="176" stroke="#51008D" stroke-width="1.5"/>
+          <line x1="160" y1="176" x2="160" y2="200" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="500" y1="176" x2="500" y2="200" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="840" y1="176" x2="840" y2="200" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-        <!-- Tool call 01: Bundle Documents -->
-        <rect class="tool-box" x="40" y="206" width="240" height="100" rx="8" fill="#fff" stroke="#51008D" stroke-width="1"/>
-        <text x="160" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TOOL 01</text>
-        <text x="160" y="256" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="18" fill="#001510">Bundle Documents</text>
-        <text x="160" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Popular docs lookup +</text>
-        <text x="160" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">document search</text>
+          <!-- Tool call 01: Bundle Documents -->
+          <rect class="tool-box" x="40" y="206" width="240" height="100" rx="8" fill="#fff" stroke="#51008D" stroke-width="1"/>
+          <text x="160" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TOOL 01</text>
+          <text x="160" y="256" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="18" fill="#001510">Bundle Documents</text>
+          <text x="160" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Popular docs lookup +</text>
+          <text x="160" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">document search</text>
 
-        <!-- Tool call 02: Ask a Question -->
-        <rect class="tool-box" x="380" y="206" width="240" height="100" rx="8" fill="#fff" stroke="#51008D" stroke-width="1"/>
-        <text x="500" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TOOL 02</text>
-        <text x="500" y="256" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="18" fill="#001510">Ask a Question</text>
-        <text x="500" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Retrieval-augmented</text>
-        <text x="500" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">generation + cited chip</text>
+          <!-- Tool call 02: Ask a Question -->
+          <rect class="tool-box" x="380" y="206" width="240" height="100" rx="8" fill="#fff" stroke="#51008D" stroke-width="1"/>
+          <text x="500" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TOOL 02</text>
+          <text x="500" y="256" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="18" fill="#001510">Ask a Question</text>
+          <text x="500" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Retrieval-augmented</text>
+          <text x="500" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">generation + cited chip</text>
 
-        <!-- Tool call 03: Answer a Questionnaire -->
-        <rect class="tool-box" x="720" y="206" width="240" height="100" rx="8" fill="#fff" stroke="#51008D" stroke-width="1.5"/>
-        <text x="840" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TOOL 03</text>
-        <text x="840" y="256" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="18" fill="#001510">Answer a Questionnaire</text>
-        <text x="840" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Loops over Tool 01 + 02</text>
-        <text x="840" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">+ policy escalation</text>
+          <!-- Tool call 03: Answer a Questionnaire -->
+          <rect class="tool-box" x="720" y="206" width="240" height="100" rx="8" fill="#fff" stroke="#51008D" stroke-width="1.5"/>
+          <text x="840" y="230" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TOOL 03</text>
+          <text x="840" y="256" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="18" fill="#001510">Answer a Questionnaire</text>
+          <text x="840" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Loops over Tool 01 + 02</text>
+          <text x="840" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">+ policy escalation</text>
 
-        <!-- Arrows down to permission layer -->
-        <line x1="160" y1="306" x2="160" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <line x1="500" y1="306" x2="500" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <line x1="840" y1="306" x2="840" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <!-- Arrows down to permission layer -->
+          <line x1="160" y1="306" x2="160" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="500" y1="306" x2="500" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="840" y1="306" x2="840" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-        <!-- Permission layer -->
-        <rect x="40" y="350" width="920" height="74" rx="8" fill="#270044"/>
-        <text x="500" y="378" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#E1C0F9" letter-spacing="1.4">PERMISSION LAYER · GATES EVERY RESPONSE</text>
-        <text x="500" y="404" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF">Access groups · Doc-level permissions · NDA enforcement · Session tokens</text>
+          <!-- Permission layer -->
+          <rect x="40" y="350" width="920" height="74" rx="8" fill="#270044"/>
+          <text x="500" y="378" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#E1C0F9" letter-spacing="1.4">PERMISSION LAYER · GATES EVERY RESPONSE</text>
+          <text x="500" y="404" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF">Access groups · Doc-level permissions · NDA enforcement · Session tokens</text>
 
-        <!-- Arrows down to outputs -->
-        <line x1="160" y1="424" x2="160" y2="456" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <line x1="500" y1="424" x2="500" y2="456" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
-        <line x1="840" y1="424" x2="840" y2="456" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <!-- Arrows down to outputs -->
+          <line x1="160" y1="424" x2="160" y2="456" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="500" y1="424" x2="500" y2="456" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line x1="840" y1="424" x2="840" y2="456" stroke="#51008D" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-        <!-- Outputs -->
-        <rect x="60" y="462" width="200" height="62" rx="8" fill="#F4EDFA"/>
-        <text x="160" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
-        <text x="160" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">ZIP bundle (gated)</text>
+          <!-- Outputs -->
+          <rect x="60" y="462" width="200" height="62" rx="8" fill="#F4EDFA"/>
+          <text x="160" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
+          <text x="160" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">ZIP bundle (gated)</text>
 
-        <rect x="400" y="462" width="200" height="62" rx="8" fill="#F4EDFA"/>
-        <text x="500" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
-        <text x="500" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">Cited answer + snippet</text>
+          <rect x="400" y="462" width="200" height="62" rx="8" fill="#F4EDFA"/>
+          <text x="500" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
+          <text x="500" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">Cited answer + snippet</text>
 
-        <rect x="740" y="462" width="200" height="62" rx="8" fill="#F4EDFA"/>
-        <text x="840" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
-        <text x="840" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">CSV with flagged rows</text>
-      </svg>
+          <rect x="740" y="462" width="200" height="62" rx="8" fill="#F4EDFA"/>
+          <text x="840" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
+          <text x="840" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">CSV with flagged rows</text>
+        </svg>
+      </div>
     </div>
   </div>
   <button class="continue" data-next="s5">Continue ↓</button>

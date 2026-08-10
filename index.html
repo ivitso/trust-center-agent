@@ -650,6 +650,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
   color: var(--purple-700);
   font-weight: 600;
   margin-bottom: 2px;
+  white-space: nowrap;
 }
 .tl-date {
   font-family: 'Inter', sans-serif;
@@ -695,7 +696,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
     box-shadow: 0 0 0 6px rgba(81, 0, 141, 0.1);
   }
   .tl-node:hover .tl-detail {
-    max-height: 200px;
+    max-height: 500px;
     opacity: 1;
     margin-top: 8px;
   }
@@ -757,7 +758,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
   font-size: 0.9rem;
   color: var(--ink-2);
 }
-.constraints li::before { content: '— '; color: var(--purple-700); }
+.constraints li::before { content: '- '; color: var(--purple-700); }
 
 /* LOVABLE PROTOTYPING (Slide 5) */
 .lovable-hero {
@@ -1186,7 +1187,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 }
 
 /* IMPACT (midnight slide) */
-.impact-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; margin-top: 28px; }
+.impact-stats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; margin-top: 28px; }
 .impact-stats .stat .big-num { font-family: 'Newsreader', serif; color: var(--purple-200); font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1; font-weight: 500; }
 .impact-stats .stat .label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: rgba(255,255,255,0.75); margin-top: 6px; letter-spacing: 0.5px; line-height: 1.4; }
 
@@ -1456,7 +1457,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <div class="cover-grid">
       <div class="cover-left">
         <h2 class="hero">Creating the first <em>agentic</em> Trust Center.</h2>
-        <p class="lede">What we shipped, what we held back, and how the customers most afraid of AI taught us to beat the market to agentic Trust Center.</p>
+        <p class="lede">I was the design lead on the seven-person squad that defined this category. This is how we turned the customers most afraid of AI into its first adopters.</p>
       </div>
       <div class="cover-gif">
         <img src="Imagery/trust%20center%20agent%20automates%20security%20questionnaires.gif" alt="Trust Center Agent automating a security questionnaire">
@@ -1466,9 +1467,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <div class="meta">
       <div><div class="label">Designer</div><div class="val">Ivana Tso</div><div class="sub">Sr. Product Designer</div></div>
       <div><div class="label">Squad</div><div class="val">Seven people</div><div class="sub">5 Eng · 1 PM · 1 Design</div></div>
-      <div><div class="label">Engagement</div><div class="val">Eight weeks</div><div class="sub">Sept - Nov 2025</div></div>
+      <div><div class="label">Time to beta</div><div class="val">Two months</div><div class="sub">Sept - Nov 2025</div></div>
       <div><div class="label">Releases</div><div class="val">Three</div><div class="sub">Labs · MVP · Q-flow</div></div>
-      <div><div class="label">Evidence</div><div class="val">14 sessions</div><div class="sub">25 participants</div></div>
+      <div><div class="label">Evidence</div><div class="val">9 sessions</div><div class="sub">across 6 companies</div></div>
     </div>
   </div>
   <button class="continue" data-next="s2">Continue ↓</button>
@@ -1522,7 +1523,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="tension">
         <div class="t-num">03 · Risk</div>
         <div class="h3">The riskiest tool call was the most <em>valuable</em>.</div>
-        <p>The questionnaire answering tool call would allow users to drop a 1000 question xlsx and get back a cited CSV with answers, sources, and next steps. This had the highest value, but also most feared.</p>
+        <p>Drop a 1,000-question xlsx, get back a cited CSV with answers, sources, and next steps. The highest-value tool call - and the most feared.</p>
         <span class="t-icon" aria-hidden="true">▾</span>
       </div>
     </div>
@@ -1545,8 +1546,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
   <div class="slide-num">02 / 11</div>
   <div class="inner">
     <div class="eyebrow">02 · The Arc</div>
-    <h2 class="hero">From Beta to GA to V2, with research between every <em>release</em>.</h2>
-    <p class="lede">We shipped the agent's tool calls one at a time, and re-interviewed customers between each release so the next one could absorb what the last one taught us.</p>
+    <h2 class="hero">From the safest tool call to the <em>riskiest</em>, each release earned the next.</h2>
+    <p class="lede">With research sessions between each release, I sequenced the tool calls to ship the safest first, and the riskiest capability as its own project.</p>
 
     <div class="arc-timeline">
       <div class="arc-timeline-track">
@@ -1567,11 +1568,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="tl-tools">Lovable prototypes</div>
           <div class="tl-detail">
             I prototyped all three agent flows in Lovable in three days. Tested with 9 user sessions across design partners.
-            <span class="tl-research">9 sessions across 5 companies</span>
+            <span class="tl-research">9 sessions across 6 companies</span>
           </div>
         </div>
         <div class="tl-node release">
-          <div class="tl-dot"><div class="tl-dot-inner">&#9679;</div></div>
+          <div class="tl-dot"><div class="tl-dot-inner">03</div></div>
           <div class="tl-label">Beta (Labs)</div>
           <div class="tl-date">Nov 2025</div>
           <div class="tl-tools">Bundle + Ask</div>
@@ -1581,9 +1582,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           </div>
         </div>
         <div class="tl-node release">
-          <div class="tl-dot"><div class="tl-dot-inner">&#9679;</div></div>
+          <div class="tl-dot"><div class="tl-dot-inner">04</div></div>
           <div class="tl-label">GA (MVP)</div>
-          <div class="tl-date">Dec 8, 2025</div>
+          <div class="tl-date">Dec 2025</div>
           <div class="tl-tools">Bundle + Ask (hardened)</div>
           <div class="tl-detail">
             White-glove rollout to production. Sales enablement and Looker reporting went live alongside the agent.
@@ -1591,13 +1592,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           </div>
         </div>
         <div class="tl-node release">
-          <div class="tl-dot"><div class="tl-dot-inner">&#9679;</div></div>
-          <div class="tl-label">V2 (Questionnaire)</div>
-          <div class="tl-date">Jan 12, 2026</div>
-          <div class="tl-tools">+ Answer a Questionnaire</div>
+          <div class="tl-dot"><div class="tl-dot-inner">05</div></div>
+          <div class="tl-label">Questionnaire &amp; Analytics</div>
+          <div class="tl-date">Jan 2026</div>
+          <div class="tl-tools">+ Questionnaire · emailed Looker reports</div>
           <div class="tl-detail">
-            The highest-risk tool call shipped after the first two earned trust. Klaviyo deep-dive and post-launch retro followed.
-            <span class="tl-research">Klaviyo deep-dive + post-launch retro</span>
+            Shipped the highest-risk tool call, Answer a Questionnaire, in January once the first two flows had earned trust. In parallel we kicked off analytics discovery, starting lightweight - emailing customers their Looker reports instead of building dashboards in-app - a first step that got users their data faster while we scoped the in-app version.
+            <span class="tl-research">Emailed Looker reports before in-app analytics</span>
           </div>
         </div>
       </div>
@@ -1623,7 +1624,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
   <div class="inner">
     <div class="eyebrow">03 · Orient</div>
     <h2 class="hero">How three tool calls all run through one <em>permission layer</em>.</h2>
-    <p class="lede">Before we touched the chat surface, the design work started with understanding what happened underneath. Every visitor query had to route to the right tool call, and every response had to pass through the same permission layer. The chat UI was the wrapper. The real complexity was in the routing.</p>
+    <p class="lede">Before touching the chat surface, I mapped what happened underneath: every query had to route to the right tool call, and every response through the same permission layer. The chat UI was just the wrapper - the real complexity was the routing.</p>
 
     <div class="slide-artifact image-top">
       <div class="sa-img" style="background:#F5F5F5;">
@@ -1632,7 +1633,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="sa-info">
         <div class="sa-tag">User flow · Sept 2025</div>
         <div class="sa-title">The routing logic we mapped before touching the chat surface</div>
-        <div class="sa-caption">We mapped every path a visitor could take: NDA empty states, product line confirmation, feedback loops per tool call, fallback states for vague prompts, and the escalation path that routes unanswerable questions to a Slack notification. This flow became the source of truth for engineering.</div>
+        <div class="sa-caption">Every path a visitor could take: NDA empty states, product-line confirmation, per-tool feedback loops, fallbacks for vague prompts, and the escalation that routes unanswerable questions to Slack. This became engineering's source of truth.</div>
       </div>
     </div>
 
@@ -1640,9 +1641,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="constraints">
         <h5>Constraints we designed around</h5>
         <ul>
-          <li>Two months to MVP for Bundle and Ask tool calls. One additional month for the Questionnaire tool call.</li>
+          <li>Two months to a working Bundle and Ask beta. One additional month for the Questionnaire tool call.</li>
           <li>Access group complexity: every customer configured document permissions differently, with different levels of gating per visitor.</li>
-          <li>Product lines: larger companies had sub-brands that each needed their own scope. Intuit, for example, had TurboTax, Credit Karma, Mailchimp, ProConnect, and QuickBooks as five separate product lines, each requiring both permission access and correct product line routing.</li>
+          <li>Product lines: larger companies had sub-brands that each needed their own scope - Intuit alone had five (TurboTax, Credit Karma, Mailchimp, ProConnect, QuickBooks), each needing its own permissions and routing.</li>
           <li>One week to build all three flows in Lovable, get design partner feedback, then move into final UI in Figma.</li>
         </ul>
       </div>
@@ -1733,8 +1734,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
   <div class="inner">
     <div class="eyebrow">04 · Prototyping in Lovable</div>
     <h2 class="hero">How I prototyped 3 major agent flows in <em>a week</em>.</h2>
-    <p class="lovable-hero">"Prototyping agentic flows in Lovable was new for me and new for Conveyor. Interactions were still very linear, but it was important to map out the main success and failure flows for the team to decide on before finessing the base and system prompts."</p>
-    <p class="lede">I partnered with my PM on designs and visuals, then brought the full squad in to align on UX interactions. A second round of customer feedback through these prototypes surfaced edge cases we hadn't considered: switching product lines mid-interaction, giving admins visibility into agent analytics, toggling individual tool calls on or off, handling download-only documents, and gating locked content behind special passwords. These questions sharpened our scope and gave us a stronger foundation heading into final design.</p>
+    <p class="lovable-hero">"Prototyping agentic flows was new for me and for Conveyor. The interactions were still linear, but mapping the main success and failure paths gave the team something concrete to align on before finessing the prompts."</p>
+    <p class="lede">I partnered with my PM on the visuals, then brought the full squad in to align on the interactions. A second round of customer feedback surfaced edge cases we'd missed - switching product lines mid-chat, admin analytics, per-tool-call toggles, download-only docs, password-gated content - and sharpened our scope for final design.</p>
 
     <div class="lovable-grid">
       <div class="lovable-card">
@@ -1787,11 +1788,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <h2 class="hero">Live <em>prototype</em>.</h2>
     <p class="lede">Click around to view how the agent prototype works when uploading a questionnaire. I was able to recreate current production in Lovable as closely as possible and build the agent on top for the most believable environment. Interestingly, many people still did not see the Agent on-entry to the page, and often scrolled around the page before landing in the chat.</p>
   </div>
-  <div style="margin: 24px 0 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); aspect-ratio: 16/9;">
-    <iframe src="https://tcagentflow.lovable.app/" style="width: 100%; height: 100%; border: none;" loading="lazy" allow="clipboard-write"></iframe>
-  </div>
+  <a href="https://tcagentflow.lovable.app/" target="_blank" rel="noopener" style="display: block; max-width: var(--maxw); margin: 40px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); cursor: pointer;">
+    <img class="proto-shot" src="Imagery/Prototype Screenshot.png" alt="The Conveyor AI agent completing a security questionnaire (83/100 answered) inside the MediaCore trust portal" style="width: 100%; height: auto; display: block;">
+  </a>
   <div style="text-align: center; margin-top: 16px;">
-    <a href="https://tcagentflow.lovable.app/" target="_blank" rel="noopener" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 1.4px; text-transform: uppercase; text-decoration: none; color: var(--purple-700); font-weight: 500; transition: opacity 0.2s;">Open in new tab</a>
+    <a href="https://tcagentflow.lovable.app/" target="_blank" rel="noopener" style="display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 1.4px; text-transform: uppercase; text-decoration: none; color: var(--purple-700); font-weight: 500; transition: opacity 0.2s;">Open live prototype ↗</a>
   </div>
   <button class="continue" data-next="s7">Continue ↓</button>
 </section>
@@ -1830,7 +1831,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <details>
       <summary>How we ran the sessions</summary>
       <div class="acc-body">
-        <p>Each external participant was recruited but were current Conveyor customers and opted into being a design partner. Sessions ran for usually sixty minutes, with screen-shared prototype walkthroughs plus open discussion. We were able to synthesize their feedback and understand what their top three preferences were from each prototype and what concerns they might have had otherwise.</p>
+        <p>Each external participant was a current Conveyor customer who opted into being a design partner. Sessions usually ran for sixty minutes, with screen-shared prototype walkthroughs plus open discussion. We were able to synthesize their feedback and understand what their top three preferences were from each prototype and what concerns they might have had otherwise.</p>
       </div>
     </details>
   </div>
@@ -1860,7 +1861,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="point risk-med" style="top: 14%; left: 54%;"><div class="dot"></div><div class="name">NDA Flow</div><div class="stat">Required · Complex gating</div></div>
         <div class="point risk-med" style="top: 30%; left: 68%;"><div class="dot"></div><div class="name">Product Lines</div><div class="stat">5+ sub-brands per customer</div></div>
         <!-- High Value, High Risk -->
-        <div class="point risk-high" style="top: 8%; left: 88%;"><div class="dot"></div><div class="name">Questionnaire</div><div class="stat">All excited · 5 scared votes</div></div>
+        <div class="point risk-high" style="top: 8%; left: 88%;"><div class="dot"></div><div class="name">Questionnaire</div><div class="stat">Highest value · 1 scared vote</div></div>
         <div class="point risk-high" style="top: 40%; left: 84%;"><div class="dot"></div><div class="name">Admin Testing &amp; User Segments</div><div class="stat">Stretch · Jan release</div></div>
         <!-- Mid Value -->
         <div class="point" style="top: 60%; left: 38%;"><div class="dot"></div><div class="name">Admin Recommended Docs</div><div class="stat">56% excited · Configure</div></div>
@@ -1870,7 +1871,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
     </div>
 
-    <p class="matrix-frame-line">Five features made the first iteration: <strong>Bundle Documents, Ask a Question, NDA Flow, Product Lines, and AI Feedback Loops.</strong> Both NDA Flow and Product Lines were blockers to adoption for our largest clients&mdash;although not the main focus, they were necessary to safely have users trying out the tool. Questionnaire had the most excitement but also the most fear&mdash;we scoped it as a <strong>stretch goal for post-MVP.</strong></p>
+    <p class="matrix-frame-line">Five features made the first iteration: <strong>Bundle Documents, Ask a Question, NDA Flow, Product Lines, and AI Feedback Loops.</strong> Both NDA Flow and Product Lines were blockers to adoption for our largest clients - although not the main focus, they were necessary to safely have users trying out the tool. Questionnaire had the most excitement but also the most fear - we scoped it as a <strong>stretch goal for post-MVP.</strong></p>
 
     <details>
       <summary>The 9-session × 5-flow sentiment heatmap (supporting evidence)</summary>
@@ -1953,8 +1954,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="icon-panel active" id="panel-skeptic">
           <div class="panel-cols">
             <div>
-              <p>We gave admins a kill switch. Enable the agent per Trust Center, enable questionnaires as a separate flag, or hard-disable the whole thing with no migration penalty.</p>
-              <p>Conservative customers who said "not ready" in September enabled the agent in December. The deliberate opt-out removed the pressure and let trust build naturally across releases.</p>
+              <p>I bet that giving admins a kill switch would drive adoption rather than opt-out - they could enable the agent per Trust Center, toggle questionnaires separately, or hard-disable it with no migration penalty.</p>
+              <p>The wager paid off: customers who said "not ready" had the agent toggled on by December.</p>
             </div>
             <div>
               <img src="Imagery/Opt%20in.png" alt="Agent opt-in toggle controls" style="max-width:280px; border:none; box-shadow:none; outline:none;">
@@ -1977,6 +1978,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
                 <li><b>Relevance</b> - directly addresses the user's actual question</li>
                 <li><b>Safety</b> - no policy violations or restricted information</li>
               </ul>
+              <p>Scores from flagged responses fed straight back into the system prompt and retrieval tuning between releases - the loop that surfaced hallucinations and permission edge cases early. It also drove latency down every release: ~30s at beta, 20.3s at GA, 18.3s by March, then 5.7s after we swapped LLM-based document selection for deterministic topic- and type-aware search plus a model upgrade.</p>
             </div>
             <div>
               <img src="Imagery/Langsmith%20full.png" alt="LangSmith quality spot check interface" style="max-width:340px;">
@@ -1986,12 +1988,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="icon-panel" id="panel-launch">
           <div class="panel-cols">
             <div>
-              <p><b>Marketing (what I shipped):</b> Graphic assets for product page and social, video supporting marketing blog post, Conveyor newsletter, LinkedIn ad assets.</p>
-              <p><b>Sales enablement:</b> Internal enablement deck (slides + Loom), objection handling guide, FAQ document and customer launch email, updated docs.conveyor.com agent page.</p>
-              <p><b>Customer onboarding:</b> High-touch setup for every MVP customer, weekly review of usage and response quality, manual Looker reporting until in-app analytics shipped. 3+ early adopters live in December.</p>
+              <p><b>I owned launch readiness end-to-end</b> - marketing (product-page and social assets, launch video, blog), sales enablement (deck, objection-handling guide, FAQ), and updated agent docs, all shipped alongside the product.</p>
+              <p><b>Then I stayed close to adoption:</b> white-glove setup for every early customer, weekly reviews of usage and response quality, and manual Looker reporting until in-app analytics shipped. 3+ early adopters live in December.</p>
             </div>
             <div>
-              <img src="Imagery/Background-2.png" alt="Trust Center Agent questionnaire interface" style="max-width:280px;">
+              <img src="Imagery/Marketing.png" alt="Trust Center Agent marketing graphic: 'No more Trust Center scavenger hunts'" style="max-width:280px;">
             </div>
           </div>
         </div>
@@ -2028,7 +2029,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="stat"><div class="big-num">17,045</div><div class="label">total agent interactions</div></div>
       <div class="stat"><div class="big-num">68.77%</div><div class="label">trust center visitor usage (vs. internal)</div></div>
       <div class="stat"><div class="big-num">2.7</div><div class="label">avg interactions per session</div></div>
-      <div class="stat"><div class="big-num">14.9s</div><div class="label">avg time to agent response</div></div>
+      <div class="stat"><div class="big-num">5.7s</div><div class="label">avg agent response, down from ~30s at beta</div></div>
+      <div class="stat"><div class="big-num">10%</div><div class="label">of conversations quality-reviewed in LangSmith</div></div>
     </div>
 
     <div class="growth-chart-wrap">
@@ -2135,7 +2137,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: 24px;">
       <div style="background: rgba(39, 0, 68, 0.025); border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
         <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--purple-700); margin-bottom: 8px;">Why this mattered</h4>
-        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">Several new designers and engineers joined mid-project. Each person would take a chunk of the build and work cross-functionally with their own engineering counterpart. Without every flow mapped end-to-end, handoff gaps would compound across the team.</p>
+        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">Several designers and engineers joined mid-project. I onboarded the new designers and set the component standards they built against: five parallel workstreams shipped without gaps.</p>
       </div>
       <div style="background: rgba(39, 0, 68, 0.025); border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
         <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--purple-700); margin-bottom: 8px;">Accounting for every edge case</h4>
@@ -2143,7 +2145,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
       <div style="background: rgba(39, 0, 68, 0.025); border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
         <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--purple-700); margin-bottom: 8px;">No established design system</h4>
-        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">There was no existing design system at Conveyor. A lot of cross-functional work across design was needed to make sure each component I created for this project could be reused elsewhere in the product.</p>
+        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">There was no design system at Conveyor. I built the first reusable chat component patterns and interactions: the foundation the rest of the product now builds on.</p>
       </div>
     </div>
 
@@ -2151,15 +2153,15 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <button class="carousel-btn prev" aria-label="Previous slide">&#8249;</button>
       <button class="carousel-btn next" aria-label="Next slide">&#8250;</button>
       <div class="carousel-track">
-        <img src="Imagery/TC Agent Figma 3.png" alt="Figma flow – components and header" loading="lazy">
-        <img src="Imagery/TC Agent Figma 1.png" alt="Figma flow – NDA screen and chat components" loading="lazy">
-        <img src="Imagery/TC Agent Figma 2.png" alt="Figma flow – feedback submission" loading="lazy">
-        <img src="Imagery/TC Agent Figma 4.png" alt="Figma flow – agent states" loading="lazy">
-        <img src="Imagery/TC Agent Figma 5.png" alt="Figma flow – full agent flow" loading="lazy">
-        <img src="Imagery/TC Agnet Figma 6.png" alt="Figma flow – edge cases" loading="lazy">
-        <img src="Imagery/TC Agent Figma 7.png" alt="Figma flow – configurations" loading="lazy">
-        <img src="Imagery/TC Agent Figma 8.png" alt="Figma flow – responsive views" loading="lazy">
-        <img src="Imagery/TC Agent Figma 9.png" alt="Figma flow – final specs" loading="lazy">
+        <img src="Imagery/TC Agent Figma 3.png" alt="Figma flow - components and header" loading="lazy">
+        <img src="Imagery/TC Agent Figma 1.png" alt="Figma flow - NDA screen and chat components" loading="lazy">
+        <img src="Imagery/TC Agent Figma 2.png" alt="Figma flow - feedback submission" loading="lazy">
+        <img src="Imagery/TC Agent Figma 4.png" alt="Figma flow - agent states" loading="lazy">
+        <img src="Imagery/TC Agent Figma 5.png" alt="Figma flow - full agent flow" loading="lazy">
+        <img src="Imagery/TC Agnet Figma 6.png" alt="Figma flow - edge cases" loading="lazy">
+        <img src="Imagery/TC Agent Figma 7.png" alt="Figma flow - configurations" loading="lazy">
+        <img src="Imagery/TC Agent Figma 8.png" alt="Figma flow - responsive views" loading="lazy">
+        <img src="Imagery/TC Agent Figma 9.png" alt="Figma flow - final specs" loading="lazy">
       </div>
       <div class="carousel-dots"></div>
       <p style="text-align: center; padding-bottom: 18px;"><a href="https://www.figma.com/design/YoSr9xKXKAK5MqD1AoaJ0z/Trust-Center-Agent?node-id=0-1&t=ELbQJECm2jU0MM2W-1" target="_blank" rel="noopener" class="carousel-cta">View Figma File</a></p>
@@ -2260,13 +2262,30 @@ document.addEventListener('keydown', (e) => {
 });
 
 const slides = document.querySelectorAll('.slide');
+
+// An open <details> makes a slide taller than the viewport. Under mandatory
+// snapping that slide has only one snap point (its top), so the expanded
+// content has nowhere to rest and a single scroll nudge skips past it.
+// Relax to proximity while anything is open, restore mandatory when closed.
+const root = document.documentElement;
+function syncSnap() {
+  root.style.scrollSnapType =
+    document.querySelector('.slide details[open]') ? 'y proximity' : 'y mandatory';
+}
+document.querySelectorAll('.slide details').forEach(d => {
+  d.addEventListener('toggle', syncSnap);
+});
+
+// Auto-close an open <details> only once its slide is FULLY out of view
+// (threshold 0). At 0.15 it fired mid-scroll, collapsing the slide and
+// yanking height out from under the snap animation, which overshot a slide.
 const io = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) {
       entry.target.querySelectorAll('details[open]').forEach(d => d.removeAttribute('open'));
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0 });
 slides.forEach(s => io.observe(s));
 
 // Build scroll indicator
@@ -2334,18 +2353,10 @@ slides.forEach(s => activeObserver.observe(s));
   prevBtn.addEventListener('click', () => { goTo(current - 1); resetAuto(); });
   nextBtn.addEventListener('click', () => { goTo(current + 1); resetAuto(); });
 
-  // Auto-scroll every 4 seconds
-  let autoInterval = setInterval(() => goTo(current + 1), 4000);
-  function resetAuto() {
-    clearInterval(autoInterval);
-    autoInterval = setInterval(() => goTo(current + 1), 4000);
-  }
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', () => clearInterval(autoInterval));
-  carousel.addEventListener('mouseleave', () => {
-    autoInterval = setInterval(() => goTo(current + 1), 4000);
-  });
+  // No auto-advance: the carousel moves only on click or keyboard, so it never
+  // scrolls on its own during a live walkthrough. resetAuto is kept as a no-op
+  // so the existing prev/next/dot handlers don't need to change.
+  function resetAuto() {}
 
   // Keyboard navigation when carousel is in view
   carousel.setAttribute('tabindex', '0');

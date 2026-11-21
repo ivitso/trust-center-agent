@@ -1631,13 +1631,23 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 .cc-pop { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; max-width: 80vw; white-space: normal; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 14px 16px; box-shadow: 0 10px 30px rgba(39,0,68,0.16); font-size: 0.84rem; line-height: 1.5; color: var(--ink-2); text-align: left; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 30; pointer-events: none; }
 .cc-pop strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
 .constraint-chips .cc:hover .cc-pop, .constraint-chips .cc:focus .cc-pop { opacity: 1; visibility: visible; transform: translateY(0); }
-.flow-route-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; align-items: stretch; }
+.fr-carousel { margin-top: 24px; }
+.fr-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; scrollbar-width: none; }
+.fr-track::-webkit-scrollbar { display: none; }
+.fr-slide { flex: 0 0 84%; height: 470px; scroll-snap-align: start; transition: opacity 0.3s ease; }
+.fr-slide:last-child { scroll-snap-align: end; }
+.fr-slide.is-peek { opacity: 0.45; cursor: pointer; }
+.fr-slide.is-peek:hover { opacity: 0.7; }
+.fr-slide .fr-img { min-height: 0; }
+.fr-slide .fr-img img { width: auto; max-width: 100%; max-height: 100%; }
+.fr-slide .tc-diagram { flex: 1; min-height: 0; height: 100%; margin: 0; }
+.fr-carousel .rc-controls { margin-top: 16px; }
 .fr-card { background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
 .fr-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); }
 .fr-img { flex: 1; display: flex; align-items: center; justify-content: center; background: #F5F5F5; border-radius: 8px; padding: 10px; }
 .fr-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
 .fr-card .tc-diagram { margin: auto 0; }
-@media (max-width: 980px) { .flow-route-grid { grid-template-columns: 1fr; } }
+@media (max-width: 980px) { .fr-slide { flex-basis: 90%; height: auto; } }
 
 /* RESPONSIVE */
 @media (max-width: 980px) {
@@ -1931,12 +1941,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </span>
     </div>
 
-    <div class="flow-route-grid">
-      <div class="fr-card">
+    <div class="fr-carousel">
+      <div class="fr-track">
+      <div class="fr-card fr-slide">
         <div class="fr-tag">User flow · Sept 2025</div>
         <div class="fr-img"><img src="Imagery/TC%20Agent%20User%20Flow%201.png" alt="User flow diagram showing the Trust Center Agent prompt and tools schematic"></div>
       </div>
-      <div class="fr-card">
+      <div class="fr-card fr-slide">
         <div class="fr-tag">Tool-call routing</div>
         <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" class="tc-diagram" role="img" aria-label="Trust Center Agent tool call routing diagram">
           <defs>
@@ -2011,6 +2022,15 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <text x="840" y="484" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#51008D" letter-spacing="1.2">OUTPUT</text>
           <text x="840" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">CSV with flagged rows</text>
         </svg>
+      </div>
+      </div>
+      <div class="rc-controls">
+        <button class="rc-btn rc-prev" aria-label="Previous diagram">&#8249;</button>
+        <div class="rc-dots">
+          <button class="rc-dot" aria-label="User flow"></button>
+          <button class="rc-dot" aria-label="Tool-call routing"></button>
+        </div>
+        <button class="rc-btn rc-next" aria-label="Next diagram">&#8250;</button>
       </div>
     </div>
   </div>
@@ -2825,6 +2845,41 @@ document.querySelectorAll('.conf-slider').forEach(function(sl){
 });
 
 // Reflection carousel: two cards per page
+// Orient flow/routing carousel: next diagram peeks in from the side
+document.querySelectorAll('.fr-carousel').forEach(function(car){
+  var track = car.querySelector('.fr-track');
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.fr-slide'));
+  var dots = car.querySelectorAll('.rc-dot');
+  var prev = car.querySelector('.rc-prev'), next = car.querySelector('.rc-next');
+  function current() {
+    var max = track.scrollWidth - track.clientWidth;
+    if (track.scrollLeft >= max - 4) return slides.length - 1;
+    var step = slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : 1;
+    return Math.round(track.scrollLeft / step);
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    var left = i === slides.length - 1 ? track.scrollWidth : slides[i].offsetLeft - slides[0].offsetLeft;
+    track.scrollTo({ left: left, behavior: 'smooth' });
+  }
+  function update() {
+    var c = current();
+    slides.forEach(function(s, i){ s.classList.toggle('is-peek', i !== c); });
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === c); });
+    prev.disabled = c === 0; next.disabled = c === slides.length - 1;
+  }
+  prev.addEventListener('click', function(){ go(current() - 1); });
+  next.addEventListener('click', function(){ go(current() + 1); });
+  dots.forEach(function(d, i){ d.addEventListener('click', function(){ go(i); }); });
+  // Clicking the peeking diagram brings it into view (instead of opening the lightbox)
+  track.addEventListener('click', function(e){
+    var s = e.target.closest('.fr-slide');
+    if (s && s.classList.contains('is-peek')) { e.preventDefault(); e.stopPropagation(); go(slides.indexOf(s)); }
+  }, true);
+  track.addEventListener('scroll', function(){ requestAnimationFrame(update); });
+  update();
+});
+
 document.querySelectorAll('.reflection-carousel').forEach(function(car){
   var track = car.querySelector('.rc-track');
   var pages = car.querySelectorAll('.rc-page');

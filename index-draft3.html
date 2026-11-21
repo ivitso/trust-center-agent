@@ -1608,6 +1608,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 .ph-card p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.5; }
 @media (max-width: 980px) { .ph-grid { grid-template-columns: 1fr; } }
 
+/* VISION SLIDE (draft3) */
+.vision-shot { display: block; max-width: 960px; margin: 28px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.12); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.vision-shot img { width: 100%; height: auto; display: block; }
+@media (hover: hover) { .vision-shot:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(39,0,68,0.18); } }
+.vision-cta { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 1.4px; text-transform: uppercase; text-decoration: none; color: var(--purple-700); font-weight: 500; }
+.vision-cta:hover { opacity: 0.7; }
+
 /* ORIENT: FLOW + ROUTING (draft3) */
 .constraint-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
 .constraint-chips .cc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); margin-right: 6px; }
@@ -2490,7 +2497,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <div class="eyebrow">12 · Vision</div>
     <h2 class="hero">The Trust Center <em>vision</em>.</h2>
     <p class="lede">[One line: where the Trust Center goes next.]</p>
-    <div class="ph-frame">Vision prototype · drop screenshot or video here</div>
+    <a class="vision-shot" href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener">
+      <img src="Imagery/trust-center-vision.png" alt="Trust Center vision prototype: Arcline Trust Center overview with the Coco agent's review to-do list alongside">
+    </a>
+    <div style="text-align: center; margin-top: 14px;">
+      <a href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener" class="vision-cta">Open vision prototype ↗</a>
+    </div>
   </div>
   <button class="continue" data-next="s-improve">Continue ↓</button>
 </section>

@@ -894,9 +894,9 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .constraints-diagram-row {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 32px;
-  align-items: start;
+  align-items: center;
 }
 .constraints-diagram-row .tc-diagram-wrap {
   margin-top: 0;
@@ -1665,7 +1665,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 2 · THE BRIEF ===================== -->
 <section class="slide white" id="s2">
-  <div class="slide-num">01 / 13</div>
+  <div class="slide-num">01 / 15</div>
   <div class="inner">
     <div class="eyebrow">01 · The Brief</div>
     <h2 class="hero">What is a Trust Center - and why ship <em>first</em>.</h2>
@@ -1721,7 +1721,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 3 · THE ARC ===================== -->
 <section class="slide sand" id="s3">
-  <div class="slide-num">02 / 13</div>
+  <div class="slide-num">02 / 15</div>
   <div class="inner">
     <div class="eyebrow">02 · The Arc</div>
     <h2 class="hero">Each release <em>earned</em> the next.</h2>
@@ -1788,11 +1788,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4 · ORIENT (DIAGRAM) ===================== -->
 <section class="slide mint" id="s4">
-  <div class="slide-num">03 / 13</div>
+  <div class="slide-num">03 / 15</div>
   <div class="inner">
-    <div class="eyebrow">03 · Orient</div>
-    <h2 class="hero">How three tool calls all run through one <em>permission layer</em>.</h2>
-    <p class="lede">Who asks, who answers, who sets the rules. Every response passes one permission layer.</p>
+    <div class="eyebrow">03 · Orient: People</div>
+    <h2 class="hero">Who asks, who answers, who sets the <em>rules</em>.</h2>
+    <p class="lede">One agent serves visitors and our own sellers. Admins set the bounds.</p>
 
     <div class="interaction-map">
       <svg viewBox="0 0 1080 414" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using example companies: at Conveyor, the admin sets permissions and rules and the internal sales team self-serves answers; a visitor from Acme Corp evaluating the vendor asks the AI agent, which routes every query within permission bounds and answers or admits a knowledge gap; the Conveyor sales team uses the same agent to help the Acme prospect mid-deal, and unanswered questions are logged as gaps in analytics instead of routing a person.">
@@ -1874,6 +1874,17 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <span class="map-note-pop" role="tooltip"><strong>Two paths, one agent.</strong> Sellers use the same agent to help prospects mid-deal; 69% of usage was visitors.</span>
       </span>
     </div>
+  </div>
+  <button class="continue" data-next="s4b">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE 4b · ORIENT: USER FLOW ===================== -->
+<section class="slide white" id="s4b">
+  <div class="slide-num">04 / 15</div>
+  <div class="inner">
+    <div class="eyebrow">04 · Orient: Flow</div>
+    <h2 class="hero">Every path, mapped before the <em>chat UI</em>.</h2>
+    <p class="lede">Engineering's source of truth.</p>
 
     <div class="slide-artifact image-top">
       <div class="sa-img" style="background:#F5F5F5;">
@@ -1881,10 +1892,21 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
       <div class="sa-info">
         <div class="sa-tag">User flow · Sept 2025</div>
-        <div class="sa-title">Routing mapped before the chat UI</div>
-        <div class="sa-caption">Every path: NDA states, product lines, feedback loops, fallbacks. Engineering's source of truth.</div>
+        <div class="sa-title">Prompt + tools schematic</div>
+        <div class="sa-caption">NDA states, product lines, feedback loops, fallbacks.</div>
       </div>
     </div>
+  </div>
+  <button class="continue" data-next="s4c">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE 4c · ORIENT: ROUTING ===================== -->
+<section class="slide mint" id="s4c">
+  <div class="slide-num">05 / 15</div>
+  <div class="inner">
+    <div class="eyebrow">05 · Orient: Routing</div>
+    <h2 class="hero">Three tool calls, one <em>permission layer</em>.</h2>
+    <p class="lede">Every response passes the same gates.</p>
 
     <div class="constraints-diagram-row">
       <div class="constraints">
@@ -1979,9 +2001,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 5 · LOVABLE PROTOTYPING ===================== -->
 <section class="slide white" id="s5">
-  <div class="slide-num">04 / 13</div>
+  <div class="slide-num">06 / 15</div>
   <div class="inner">
-    <div class="eyebrow">04 · Prototyping in Lovable</div>
+    <div class="eyebrow">06 · Prototyping in Lovable</div>
     <h2 class="hero">How I prototyped 3 major agent flows in <em>a week</em>.</h2>
     <p class="lovable-hero">"Mapping the main success and failure paths gave the team something concrete to align on before finessing the prompts."</p>
 
@@ -2022,9 +2044,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 6 · LIVE PROTOTYPE ===================== -->
 <section class="slide sand" id="s6" style="padding-bottom: 48px;">
-  <div class="slide-num">05 / 13</div>
+  <div class="slide-num">07 / 15</div>
   <div class="inner">
-    <div class="eyebrow">05 · Agent Prototyping</div>
+    <div class="eyebrow">07 · Agent Prototyping</div>
     <h2 class="hero">Live <em>prototype</em>.</h2>
     <p class="lede">Production rebuilt in Lovable, with the agent on top. Click to try it.</p>
   </div>
@@ -2082,9 +2104,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 7 · CAST ===================== -->
 <section class="slide mint" id="s7">
-  <div class="slide-num">06 / 13</div>
+  <div class="slide-num">08 / 15</div>
   <div class="inner">
-    <div class="eyebrow">06 · The Cast</div>
+    <div class="eyebrow">08 · The Cast</div>
     <h2 class="hero">Tracking customer <em>feelings</em> across releases.</h2>
     <p class="lede">Every participant tagged Bullish, Moderate, or Conservative, and tracked across rounds.</p>
 
@@ -2116,9 +2138,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 8 · DECIDE ===================== -->
 <section class="slide cream" id="s8">
-  <div class="slide-num">07 / 13</div>
+  <div class="slide-num">09 / 15</div>
   <div class="inner">
-    <div class="eyebrow">07 · Decide</div>
+    <div class="eyebrow">09 · Decide</div>
     <h2 class="hero">How Value vs Risk gave us our <em>MVP</em>.</h2>
     <p class="lede">High value, low risk first.</p>
 
@@ -2170,9 +2192,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 9 · SHIP (MERGED: FINDINGS + SPEC + LAUNCH) ===================== -->
 <section class="slide white" id="s9">
-  <div class="slide-num">08 / 13</div>
+  <div class="slide-num">10 / 15</div>
   <div class="inner">
-    <div class="eyebrow">08 · Ship</div>
+    <div class="eyebrow">10 · Ship</div>
     <h2 class="hero">The design <em>considerations</em> underneath our Agent.</h2>
     <p class="lede">Effortless on day one, safe for AI skeptics.</p>
 
@@ -2320,9 +2342,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 10 · IMPACT (MIDNIGHT) ===================== -->
 <section class="slide midnight" id="s10">
-  <div class="slide-num">09 / 13</div>
+  <div class="slide-num">11 / 15</div>
   <div class="inner">
-    <div class="eyebrow">09 · Live / Impact</div>
+    <div class="eyebrow">11 · Live / Impact</div>
     <h2 class="hero">What <em>five months</em> of production usage looked like.</h2>
     <p class="lede">Dec 2025 - May 2026. The customers most afraid in September were among the first to enable it.</p>
 
@@ -2428,9 +2450,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 11 · FIGMA FLOWS & PASSOFF ===================== -->
 <section class="slide sand" id="s11">
-  <div class="slide-num">10 / 13</div>
+  <div class="slide-num">12 / 15</div>
   <div class="inner">
-    <div class="eyebrow">10 · Figma Flows</div>
+    <div class="eyebrow">12 · Figma Flows</div>
     <h2 class="hero">Final pixel-perfect flows and <em>passoff</em> in Figma.</h2>
     <p class="lede">Five parallel workstreams, a growing team, and constant advocacy.</p>
 
@@ -2472,9 +2494,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · VISION (draft3 placeholder) ===================== -->
 <section class="slide white" id="s-vision">
-  <div class="slide-num">11 / 13</div>
+  <div class="slide-num">13 / 15</div>
   <div class="inner">
-    <div class="eyebrow">11 · Vision</div>
+    <div class="eyebrow">13 · Vision</div>
     <h2 class="hero">The Trust Center <em>vision</em>.</h2>
     <p class="lede">[One line: where the Trust Center goes next.]</p>
     <div class="ph-frame">Vision prototype · drop screenshot or video here</div>
@@ -2484,9 +2506,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · IMPROVEMENTS (draft3 placeholder) ===================== -->
 <section class="slide mint" id="s-improve">
-  <div class="slide-num">12 / 13</div>
+  <div class="slide-num">14 / 15</div>
   <div class="inner">
-    <div class="eyebrow">12 · Improvements</div>
+    <div class="eyebrow">14 · Improvements</div>
     <h2 class="hero">What the vision changed in the <em>agent</em>.</h2>
     <p class="lede">[One line: improvements shipped from the vision prototype.]</p>
     <div class="ph-grid">
@@ -2512,9 +2534,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 12 · REFLECTION ===================== -->
 <section class="slide cover" id="s12">
-  <div class="slide-num">13 / 13</div>
+  <div class="slide-num">15 / 15</div>
   <div class="inner">
-    <div class="eyebrow">13 · Reflection</div>
+    <div class="eyebrow">15 · Reflection</div>
     <h2 class="hero">What I'm <em>taking</em> forward.</h2>
     <p class="lede">Learnings and tradeoffs for the next agentic product.</p>
 

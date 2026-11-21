@@ -1836,7 +1836,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <p class="lede">One agent serves outside visitors and the vendor's own sellers. Admins set the bounds.</p>
 
     <div class="interaction-map">
-      <svg viewBox="0 0 1080 494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, a visitor from Acme Corp evaluating DocuSign asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
+      <svg viewBox="0 0 1080 494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
         <defs>
           <marker id="imap-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
@@ -1866,13 +1866,14 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <text x="540" y="240" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">"Answer, or admit the gap.</text>
         <text x="540" y="258" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Never guess."</text>
 
-        <!-- THE VISITOR (right) · Acme Corp, outside the Trust Center -->
-        <rect x="850" y="126" width="210" height="125" rx="12" fill="#F5EDE2" stroke="#E2D3BF" stroke-width="1"/>
+        <!-- PROSPECTIVE BUYERS (visitor, right) · Acme Corp, outside the Trust Center -->
+        <rect x="850" y="126" width="210" height="148" rx="12" fill="#F5EDE2" stroke="#E2D3BF" stroke-width="1"/>
         <rect x="913" y="134" width="84" height="18" rx="9" fill="#E8DBC8"/>
         <text x="955" y="146.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6E5536" letter-spacing="1.2">ACME CORP</text>
-        <text x="955" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7A5A2F" letter-spacing="1.4">THE VISITOR</text>
-        <text x="955" y="198" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Evaluating DocuSign,</text>
-        <text x="955" y="217" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">needs docs &amp; answers fast</text>
+        <text x="955" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7A5A2F" letter-spacing="1.4">PROSPECTIVE BUYERS</text>
+        <text x="955" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Buyer, security rep &amp;</text>
+        <text x="955" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">procurement team</text>
+        <text x="955" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">evaluating DocuSign</text>
 
         <!-- SALES ACCOUNT EXEC (bottom center) · DocuSign -->
         <rect x="400" y="346" width="280" height="102" rx="12" fill="#fff" stroke="rgba(39,0,68,0.13)" stroke-width="1"/>
@@ -1909,7 +1910,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <text x="418" y="315" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Self-serves answers</text>
 
         <!-- 6 · Seller helps the prospect -->
-        <polyline points="680,397 955,397 955,260" fill="none" stroke="#8000DF" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#imap-arrow)"/>
+        <polyline points="680,397 955,397 955,283" fill="none" stroke="#8000DF" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#imap-arrow)"/>
         <circle cx="760" cy="385" r="8" fill="#51008D"/><text x="760" y="388.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">6</text>
         <text x="774" y="389" font-family="Inter, sans-serif" font-size="11" fill="#51008D" font-weight="600">Helps the prospect</text>
       </svg>
@@ -1921,9 +1922,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <span class="map-hotspot-dot" aria-hidden="true"></span>
         <span class="map-note-pop pop-bl" role="tooltip"><strong>Goal:</strong> the Trust Center and Agent take care of 95% of their incoming questions.<br><strong>Fear:</strong> the Trust Center Agent says something wrong, shows an unapproved document to the wrong visitor, or makes a statement they could be held liable for.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:96.7%; top:27.7%;" aria-label="The visitor's goal and fear">
+      <span class="map-hotspot" tabindex="0" style="left:96.7%; top:27.7%;" aria-label="The prospective buyers' goal and fear">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
-        <span class="map-note-pop pop-br" role="tooltip"><strong>Goal:</strong> get the docs and answers they came for, fast.<br><strong>Fear:</strong> a dead end, or chasing emails to finish a security review.</span>
+        <span class="map-note-pop pop-br" role="tooltip"><strong>Goal:</strong> get every document and answer they need on DocuSign's security posture, fast.<br><strong>Fear:</strong> 50 emails back and forth to get a single answer, or letting risky software into their ecosystem.</span>
       </span>
       <span class="map-hotspot" tabindex="0" style="left:55.6%; top:73.1%;" aria-label="Why the internal sales team is a second audience">
         <span class="map-hotspot-dot" aria-hidden="true"></span>

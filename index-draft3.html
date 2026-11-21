@@ -1600,13 +1600,21 @@ details .acc-body li { margin: 5px 0; }
 details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid var(--hairline); cursor: zoom-in; max-width: 100%; }
 .slide.midnight details .acc-body img { border-color: rgba(255,255,255,0.12); }
 
-/* PLACEHOLDER FRAMES (draft3: Vision + Improvements pages) */
-.ph-frame { margin-top: 32px; border: 1.5px dashed rgba(81,0,141,0.35); border-radius: 12px; background: rgba(81,0,141,0.03); min-height: 360px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); }
-.ph-frame.sm { min-height: 180px; margin-top: 0; margin-bottom: 14px; }
-.ph-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
-.ph-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--purple-700); margin-bottom: 6px; }
-.ph-card p { font-size: 0.9rem; color: var(--ink-2); line-height: 1.5; }
-@media (max-width: 980px) { .ph-grid { grid-template-columns: 1fr; } }
+/* IMPROVEMENTS SLIDE (draft3) */
+.imp-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 24px; margin-top: 28px; align-items: stretch; }
+.imp-hero { display: flex; flex-direction: column; gap: 10px; }
+.imp-hero a.imp-shot { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.10); transition: transform 0.2s ease; }
+@media (hover: hover) { .imp-hero a.imp-shot:hover { transform: translateY(-2px); } }
+.imp-hero a.imp-shot img { width: 100%; height: auto; display: block; }
+.imp-cards { display: flex; flex-direction: column; gap: 12px; }
+.imp-card { flex: 1; display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 14px; align-items: center; background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 10px 14px 10px 10px; }
+.imp-thumb { height: 100%; min-height: 104px; max-height: 128px; background: #F5F7F9; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.imp-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; cursor: zoom-in; }
+.imp-card .fr-tag { margin-bottom: 4px; }
+.imp-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.imp-card p { font-size: 0.85rem; color: var(--ink-2); line-height: 1.45; }
+.imp-spec { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 980px) { .imp-grid, .imp-spec { grid-template-columns: 1fr; } }
 
 /* VISION SLIDE (draft3) */
 .vision-shot { display: block; max-width: 960px; margin: 28px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.12); transition: transform 0.2s ease, box-shadow 0.2s ease; }
@@ -2513,24 +2521,44 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
   <div class="inner">
     <div class="eyebrow">13 · Improvements</div>
     <h2 class="hero">What the vision changed in the <em>agent</em>.</h2>
-    <p class="lede">[One line: improvements shipped from the vision prototype.]</p>
-    <div class="ph-grid">
-      <div class="ph-card">
-        <div class="ph-frame sm">Image</div>
-        <h4>Agent reasoning</h4>
-        <p>[What the agent now explains.]</p>
+    <p class="lede">Showing the agent's work, so visitors can check it before they trust it.</p>
+
+    <div class="imp-grid">
+      <div class="imp-hero">
+        <a class="imp-shot" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">
+          <img src="Imagery/reasoning-full-chat.png" alt="Conveyor Trust Center with the AI agent panel showing its reasoning steps and a cited SOC 2 source">
+        </a>
+        <div style="text-align: center;"><a class="vision-cta" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">Open reasoning prototype ↗</a></div>
       </div>
-      <div class="ph-card">
-        <div class="ph-frame sm">Image</div>
-        <h4>Visible steps</h4>
-        <p>[How users follow its work.]</p>
-      </div>
-      <div class="ph-card">
-        <div class="ph-frame sm">Image</div>
-        <h4>Building trust</h4>
-        <p>[What made users trust it more.]</p>
+      <div class="imp-cards">
+        <div class="imp-card">
+          <div class="imp-thumb"><img src="Imagery/reasoning-trace.png" alt="How this answer was put together: plan, searches, SOC 2 page read, and conclusion"></div>
+          <div><div class="fr-tag">01</div><h4>Agent reasoning</h4><p>States a plan, then why the sources agree.</p></div>
+        </div>
+        <div class="imp-card">
+          <div class="imp-thumb"><img src="Imagery/reasoning-live-steps.png" alt="Agent streaming its search steps live in the chat"></div>
+          <div><div class="fr-tag">02</div><h4>Visible steps</h4><p>Every search streams live, misses included.</p></div>
+        </div>
+        <div class="imp-card">
+          <div class="imp-thumb"><img src="Imagery/reasoning-cited-answer.png" alt="Answer with an exact quote from the SOC 2 Type II, page 14, plus all sources to download"></div>
+          <div><div class="fr-tag">03</div><h4>Building trust</h4><p>Exact quote, page cite, every source to download.</p></div>
+        </div>
       </div>
     </div>
+
+    <details style="margin-top: 20px;">
+      <summary>How I specced every state the user sees</summary>
+      <div class="acc-body">
+        <div class="imp-spec">
+          <img src="Imagery/reasoning-states-spec.png" alt="Spec tool: eight agent states, each with its trigger and the line the user sees, replayed against real run timings">
+          <div>
+            <p>Eight states, each tied to a real agent event, replayed at real run lengths (30s median to 96s tail) so a status line always covers the silence.</p>
+            <img src="Imagery/reasoning-retry.png" alt="Agent says nothing matched and tries another search">
+            <p>When a search misses, it says so and tries another.</p>
+          </div>
+        </div>
+      </div>
+    </details>
   </div>
   <button class="continue" data-next="s12">Continue ↓</button>
 </section>
@@ -2634,7 +2662,7 @@ document.querySelectorAll('.continue').forEach(el => {
 
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
-document.querySelectorAll('.spec-thumb, .figma-frame img, .fr-img img, .strip-card img, .lc-image img, .research-artifact img, .slide-artifact img, details img').forEach(img => {
+document.querySelectorAll('.spec-thumb, .figma-frame img, .fr-img img, .imp-thumb img, .strip-card img, .lc-image img, .research-artifact img, .slide-artifact img, details img').forEach(img => {
   img.addEventListener('click', () => {
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;

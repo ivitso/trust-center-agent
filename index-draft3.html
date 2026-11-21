@@ -1626,7 +1626,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 /* ORIENT: FLOW + ROUTING (draft3) */
 .constraint-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
 .constraint-chips .cc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); margin-right: 6px; }
-.constraint-chips .cc { font-size: 0.82rem; color: var(--ink-2); background: rgba(81,0,141,0.05); border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
+.constraint-chips .cc { position: relative; display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-2); background: rgba(81,0,141,0.05); border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 10px 5px 12px; white-space: nowrap; cursor: help; outline: none; transition: background 0.15s ease, border-color 0.15s ease; }
+.constraint-chips .cc:hover, .constraint-chips .cc:focus-visible { background: rgba(81,0,141,0.1); border-color: rgba(81,0,141,0.3); }
+.constraint-chips .cc-i { width: 15px; height: 15px; border-radius: 50%; background: var(--purple-700); color: #fff; font-family: 'Newsreader', serif; font-style: italic; font-size: 0.7rem; line-height: 15px; text-align: center; flex: none; }
+.cc-pop { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; max-width: 80vw; white-space: normal; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 14px 16px; box-shadow: 0 10px 30px rgba(39,0,68,0.16); font-size: 0.84rem; line-height: 1.5; color: var(--ink-2); text-align: left; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 30; pointer-events: none; }
+.cc-pop strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
+.constraint-chips .cc:hover .cc-pop, .constraint-chips .cc:focus .cc-pop { opacity: 1; visibility: visible; transform: translateY(0); }
 .flow-route-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; align-items: stretch; }
 .fr-card { background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
 .fr-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); }
@@ -1913,10 +1918,18 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <h2 class="hero">Every path runs through one <em>permission layer</em>.</h2>
     <div class="constraint-chips">
       <span class="cc-label">Constraints</span>
-      <span class="cc">2 months to beta</span>
-      <span class="cc">Access groups vary per customer</span>
-      <span class="cc">Intuit: 5 product lines</span>
-      <span class="cc">1 week to prototype</span>
+      <span class="cc" tabindex="0">2 months to beta<span class="cc-i" aria-hidden="true">i</span>
+        <span class="cc-pop" role="tooltip"><strong>Two months to a working beta.</strong>Bundle and Ask had to ship in two months, with a squad still onboarding to the product. Questionnaire, the riskiest tool call, got one more month on top.</span>
+      </span>
+      <span class="cc" tabindex="0">Access groups vary per customer<span class="cc-i" aria-hidden="true">i</span>
+        <span class="cc-pop" role="tooltip"><strong>No two permission setups alike.</strong>Every customer gated documents differently, with different access per visitor. The agent could only answer from what that visitor was allowed to see.</span>
+      </span>
+      <span class="cc" tabindex="0">Product Lines<span class="cc-i" aria-hidden="true">i</span>
+        <span class="cc-pop" role="tooltip"><strong>One company, many trust stories.</strong>Larger customers run sub-brands that each need their own scope. Intuit alone had five: TurboTax, Credit Karma, Mailchimp, ProConnect, QuickBooks. So the agent confirms which product a visitor means before it answers, and never mixes documents across lines. It wasn't the headline feature, but it blocked our largest clients, so it made the MVP.</span>
+      </span>
+      <span class="cc" tabindex="0">1 week to prototype<span class="cc-i" aria-hidden="true">i</span>
+        <span class="cc-pop" role="tooltip"><strong>A week from idea to tested flows.</strong>All three flows built in Lovable, put in front of design partners, then into final UI in Figma.</span>
+      </span>
     </div>
 
     <div class="flow-route-grid">

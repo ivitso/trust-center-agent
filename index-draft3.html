@@ -1551,7 +1551,9 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .rc-dots { display: flex; gap: 9px; }
 .rc-dot { width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; background: var(--purple-200); cursor: pointer; transition: background 0.2s, transform 0.2s; }
 .rc-dot.active { background: var(--purple-700); transform: scale(1.15); }
+.rc-page > .reflection-card:only-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
 @media (max-width: 640px) { .rc-page { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .rc-page > .reflection-card:only-child { width: 100%; } }
 /* Reflection slide: big gap under the title, cards centered vertically */
 #s12 .lede { margin-top: auto; }
 #s12 .thanks { margin-top: auto; }
@@ -2639,6 +2641,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
               <p>Deferring the #1 request ~14 weeks made its launch smooth.</p>
             </div>
           </div>
+          <div class="rc-page">
+            <div class="reflection-card">
+              <div class="r-num">07</div>
+              <h4>Pausing to look ahead pays off.</h4>
+              <p>Designing a year out sharpened our strategy and roadmap for today.</p>
+            </div>
+          </div>
         </div>
       </div>
       <div class="rc-controls">
@@ -2647,6 +2656,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <button class="rc-dot" aria-label="Cards 1 and 2"></button>
           <button class="rc-dot" aria-label="Cards 3 and 4"></button>
           <button class="rc-dot" aria-label="Cards 5 and 6"></button>
+          <button class="rc-dot" aria-label="Card 7"></button>
         </div>
         <button class="rc-btn rc-next" aria-label="Next cards">&#8250;</button>
       </div>

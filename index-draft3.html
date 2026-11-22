@@ -182,30 +182,30 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
   gap: 7px;
   padding: 3px 11px 3px 4px;
   border-radius: 999px;
-  background: #FDF0EE;
-  border: 1px solid rgba(180, 35, 24, 0.35);
-  color: #B42318;
+  background: #FBF4F3;
+  border: 1px solid rgba(180, 35, 24, 0.2);
+  color: rgba(180, 35, 24, 0.82);
   font: 600 12px/1.3 'Inter', sans-serif;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(180, 35, 24, 0.10);
+  box-shadow: none;
   transition: background 0.16s ease, border-color 0.16s ease;
 }
 .map-warn:hover .map-warn-pill,
-.map-warn:focus .map-warn-pill { background: #FBE3DF; border-color: rgba(180, 35, 24, 0.6); }
+.map-warn:focus .map-warn-pill { background: #F9E9E6; border-color: rgba(180, 35, 24, 0.4); }
 .map-warn-badge {
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  background: #B42318;
+  background: rgba(180, 35, 24, 0.55);
   color: #fff;
   font: 700 11px/17px 'Inter', sans-serif;
   text-align: center;
-  box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.45);
+  box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.22);
   animation: map-warn-pulse 2s ease-out infinite;
   transition: transform 0.16s ease;
 }
 @keyframes map-warn-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.45); }
+  0%   { box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.22); }
   70%  { box-shadow: 0 0 0 8px rgba(180, 35, 24, 0); }
   100% { box-shadow: 0 0 0 0 rgba(180, 35, 24, 0); }
 }
@@ -2050,7 +2050,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
           </marker>
           <marker id="imap-arrow-pain" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
-            <path d="M0,0 L0,6 L6,3 z" fill="#B42318"/>
+            <path d="M0,0 L0,6 L6,3 z" fill="#B42318" fill-opacity="0.5"/>
           </marker>
         </defs>
 
@@ -2095,7 +2095,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <text x="540" y="438" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">help an Acme prospect mid-deal</text>
 
         <!-- Manual workflow: email back-and-forth between security team and buyers, outside the Trust Center -->
-        <path d="M17,148 H-12 V-32 H955 V124" fill="none" stroke="#B42318" stroke-width="1.5" stroke-dasharray="5 4" marker-start="url(#imap-arrow-pain)" marker-end="url(#imap-arrow-pain)"/>
+        <path d="M17,148 H-12 V-32 H955 V124" fill="none" stroke="#B42318" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="5 4" marker-start="url(#imap-arrow-pain)" marker-end="url(#imap-arrow-pain)"/>
 
         <!-- 1 · Admin sets rules -->
         <circle cx="258" cy="154" r="8" fill="#51008D"/><text x="258" y="157.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">1</text>

@@ -690,6 +690,42 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
   line-height: 1.5;
   color: var(--ink-2);
 }
+.gl-card.has-pop { position: relative; cursor: help; outline: none; }
+.gl-hint {
+  margin-top: auto;
+  padding-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--purple-700);
+}
+.gl-pop {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: 580px;
+  max-width: 70vw;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 16px 40px rgba(39, 0, 68, 0.20);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  z-index: 40;
+  pointer-events: none;
+}
+.gl-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
+.gl-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
+.gl-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
+.gl-card.has-pop:hover, .gl-card.has-pop:focus-visible { border-color: rgba(128, 0, 223, 0.35); }
+.gl-card.has-pop:hover .gl-pop, .gl-card.has-pop:focus .gl-pop { opacity: 1; visibility: visible; transform: none; }
+@media (max-width: 980px) {
+  .gl-pop { top: calc(100% + 8px); left: 0; width: min(580px, 86vw); max-width: none; transform: translateY(-6px); }
+}
 @media (max-width: 980px) { .glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .glossary { grid-template-columns: 1fr; } }
 
@@ -1798,10 +1834,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <h2 class="hero">What is a Trust Center - <em>quick vocabulary</em>.</h2>
     <p class="lede">The handful of terms the rest of this story leans on.</p>
     <dl class="glossary">
-      <div class="gl-card">
+      <div class="gl-card has-pop" tabindex="0">
         <div class="gl-num">01</div>
         <dt class="gl-term">Trust Center</dt>
         <dd class="gl-def">A public page where a company (e.g. DocuSign) shares its security documents and knowledge so buyers can review before signing. Conveyor hosts these Trust Centers.</dd>
+        <span class="gl-hint" aria-hidden="true">Hover to see one ↗</span>
+        <span class="gl-pop" role="tooltip"><img src="Imagery/trust-center-example.webp" alt="Example Trust Center for a demo company, MediaCore: a summary, quick links, counts of documents, FAQs and badges, and a checklist of security practices" loading="lazy"><span class="gl-pop-cap"><strong>Example Trust Center</strong> A demo company's page: documents, FAQs, badges, and a quick security summary in one place.</span></span>
       </div>
       <div class="gl-card">
         <div class="gl-num">02</div>

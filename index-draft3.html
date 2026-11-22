@@ -1617,7 +1617,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 .imp-hero a.imp-shot:hover::after, .imp-hero a.imp-shot:focus-visible::after { opacity: 1; }
 .imp-hero a.imp-shot:hover .imp-shot-cta, .imp-hero a.imp-shot:focus-visible .imp-shot-cta { opacity: 1; transform: translate(-50%, -50%); }
 .studio-link { position: relative; display: inline-block; }
-.studio-pop { position: absolute; bottom: calc(100% + 14px); left: 50%; width: 520px; max-width: 86vw; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 10px; box-shadow: 0 16px 40px rgba(39,0,68,0.20); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 40; pointer-events: none; text-align: left; }
+.studio-pop { position: absolute; top: calc(100% + 10px); left: 50%; width: 360px; max-width: 86vw; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 10px; box-shadow: 0 16px 40px rgba(39,0,68,0.20); opacity: 0; visibility: hidden; transform: translate(-50%, -6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 40; pointer-events: none; text-align: left; }
 .studio-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
 .studio-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
 .studio-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
@@ -2603,10 +2603,10 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
       <div class="imp-cta">
         <span class="studio-link">
-          <a class="vision-cta" href="https://ivitso.github.io/ask-conveyorai-latency/narration-studio/" target="_blank" rel="noopener">Narration studio <span class="wip-tag">Work in progress ↗</span></a>
+          <a class="vision-cta" href="https://ivitso.github.io/ask-conveyorai-latency/narration-studio/" target="_blank" rel="noopener">Reasoning Design Studio <span class="wip-tag">Work in progress ↗</span></a>
           <span class="studio-pop" role="tooltip">
-            <img src="Imagery/narration-studio.webp" alt="Narration studio: replaying the eight agent states against real run lengths, with a timeline of events and the line the user sees" loading="lazy">
-            <span class="studio-pop-cap"><strong>Work in progress</strong> Replays each agent state against real run lengths (30s median to 96s tail) to check a status line always covers the silence.</span>
+            <img src="Imagery/narration-studio.webp" alt="Reasoning Design Studio: replaying the eight agent states against real run lengths, with a timeline of events and the line the user sees" loading="lazy">
+            <span class="studio-pop-cap"><strong>Work in progress</strong> Replays every agent state at real run lengths, so a status line always covers the wait.</span>
           </span>
         </span>
       </div>

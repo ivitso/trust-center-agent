@@ -1947,7 +1947,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <p class="lede">One agent serves outside visitors and the vendor's own sellers. Admins set the bounds.</p>
 
     <div class="interaction-map">
-      <svg viewBox="0 -76 1080 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. In the manual workflow, questions the Trust Center could not answer went back and forth by email between DocuSign's Trust and Security team and the Acme buyers, blocking the deal from closing. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
+      <svg viewBox="0 -76 1080 570" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. In the manual workflow, questions the Trust Center could not answer went back and forth by email between DocuSign's Trust and Security team and the Acme buyers, blocking the deal from closing. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent, taking into consideration the visitor's access group, NDA, product line, and the tool calls needed, answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
         <defs>
           <marker id="imap-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
@@ -1974,11 +1974,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <!-- DOCUSIGN TRUST CENTER AGENT (hub) -->
         <rect x="435" y="118" width="210" height="156" rx="12" fill="#270044"/>
         <text x="540" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E1C0F9" letter-spacing="1.1">DOCUSIGN TRUST CENTER AGENT</text>
-        <text x="540" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fff">Routes every query to the</text>
-        <text x="540" y="199" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="rgba(255,255,255,0.82)">right tool, within bounds</text>
-        <line x1="465" y1="219" x2="615" y2="219" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
-        <text x="540" y="240" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">"Answer, or admit the gap.</text>
-        <text x="540" y="258" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Never guess."</text>
+        <text x="540" y="176" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fff">Routes every query to the</text>
+        <text x="540" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="rgba(255,255,255,0.82)">right tool, within bounds</text>
+        <line x1="465" y1="210" x2="615" y2="210" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+        <text x="540" y="228" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Takes into consideration:</text>
+        <text x="540" y="246" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="rgba(255,255,255,0.82)">Access group · NDA</text>
+        <text x="540" y="262" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="rgba(255,255,255,0.82)">Product line · Tool calls</text>
 
         <!-- PROSPECTIVE BUYERS (visitor, right) · Acme Corp, outside the Trust Center -->
         <rect x="850" y="126" width="210" height="148" rx="12" fill="#F5EDE2" stroke="#E2D3BF" stroke-width="1"/>

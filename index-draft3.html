@@ -1573,7 +1573,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 /* FIGMA CAROUSEL */
 .figma-carousel { margin-top: 28px; position: relative; overflow: hidden; border-radius: 12px; }
 .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
-.carousel-track img { min-width: 100%; max-width: 100%; height: clamp(380px, calc(100vh - 462px), 680px); display: block; object-fit: contain; object-position: center; }
+.carousel-track img { min-width: 100%; max-width: 100%; height: clamp(380px, calc(100vh - 468px), 680px); display: block; object-fit: contain; object-position: center; }
 .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(39, 0, 68, 0.75); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; backdrop-filter: blur(4px); transition: background 0.2s; }
 .carousel-btn:hover { background: var(--purple-700); }
 .carousel-btn.prev { left: 12px; }
@@ -1626,6 +1626,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 /* ORIENT: FLOW + ROUTING (draft3) */
 .constraint-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+.lede-chips { gap: 8px 8px; }
+.lede-chips .lede { margin: 0 6px 0 0; max-width: none; }
 .constraint-chips .cc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); margin-right: 6px; }
 .constraint-chips .cc { position: relative; display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-2); background: rgba(81,0,141,0.05); border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 12px; white-space: nowrap; cursor: help; outline: none; transition: background 0.15s ease, border-color 0.15s ease; }
 .constraint-chips .cc:hover, .constraint-chips .cc:focus-visible { background: rgba(81,0,141,0.1); border-color: rgba(81,0,141,0.3); }
@@ -2508,11 +2510,10 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
   <div class="slide-num">11 / 14</div>
   <div class="inner">
     <div class="eyebrow">11 · Figma Flows</div>
-    <h2 class="hero">Final pixel-perfect flows and <em>passoff</em> in Figma.</h2>
-    <p class="lede">Five parallel workstreams, a growing team, and constant advocacy.</p>
+    <h2 class="hero">Using Figma to communicate edge cases and flows for <em>Passoff</em>.</h2>
 
-    <div class="constraint-chips">
-      <span class="cc-label">Also led</span>
+    <div class="constraint-chips lede-chips">
+      <span class="lede">Across five workstreams, I also led</span>
       <span class="cc" tabindex="0">Deprecating a legacy feature<span class="cc-pop" role="tooltip"><strong>Deprecating a legacy feature</strong>The old Questionnaire Eliminator would confuse users next to the agent. I built the plan to migrate them off it before GA.</span></span>
       <span class="cc" tabindex="0">Sizing edge cases with data<span class="cc-pop" role="tooltip"><strong>Sizing edge cases with data</strong>When edge cases surfaced in user calls and spooked the team, I asked for the metrics: how often it really happens, which accounts hit it, how many times last year. Engineering could size the real risk and safely defer the rare ones.</span></span>
       <span class="cc" tabindex="0">Advocating for a component system<span class="cc-pop" role="tooltip"><strong>Advocating for a component system</strong>We'd inherited only a basic buttons-and-text file, and drift showed as new designers joined. I pushed engineering to build our new chat patterns into Storybook for reuse across the whole app.</span></span>

@@ -1601,15 +1601,16 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 .slide.midnight details .acc-body img { border-color: rgba(255,255,255,0.12); }
 
 /* IMPROVEMENTS SLIDE (draft3) */
-.imp-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 24px; margin-top: 28px; align-items: stretch; }
-.imp-hero { display: flex; flex-direction: column; gap: 10px; }
-.imp-hero a.imp-shot { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.10); transition: transform 0.2s ease; }
+.imp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.4fr); gap: 10px 20px; margin-top: 28px; align-items: stretch; }
+.imp-hero { display: flex; flex-direction: column; }
+.imp-hero a.imp-shot { flex: 1; display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.10); transition: transform 0.2s ease; }
 @media (hover: hover) { .imp-hero a.imp-shot:hover { transform: translateY(-2px); } }
-.imp-hero a.imp-shot img { width: 100%; height: auto; display: block; }
-.imp-cards { display: flex; flex-direction: column; gap: 12px; }
-.imp-card { flex: 1; display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 14px; align-items: center; background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 10px 14px 10px 10px; }
-.imp-thumb { height: 100%; min-height: 104px; max-height: 128px; background: #F5F7F9; border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.imp-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; cursor: zoom-in; }
+.imp-hero a.imp-shot img { width: 100%; height: 100%; object-fit: cover; object-position: right top; display: block; }
+.imp-cta { grid-column: 1; text-align: center; }
+.imp-cards { display: flex; flex-direction: column; gap: 10px; }
+.imp-card { flex: 1; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: center; background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 8px 12px 8px 8px; }
+.imp-thumb { position: relative; align-self: stretch; min-height: 72px; background: #F5F7F9; border-radius: 8px; overflow: hidden; }
+.imp-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; cursor: zoom-in; }
 .imp-card .fr-tag { margin-bottom: 4px; }
 .imp-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
 .imp-card p { font-size: 0.85rem; color: var(--ink-2); line-height: 1.45; }
@@ -2576,7 +2577,6 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <a class="imp-shot" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">
           <img src="Imagery/reasoning-full-chat.png" alt="Conveyor Trust Center with the AI agent panel showing its reasoning steps and a cited SOC 2 source">
         </a>
-        <div style="text-align: center;"><a class="vision-cta" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">Open reasoning prototype ↗</a></div>
       </div>
       <div class="imp-cards">
         <div class="imp-card">
@@ -2592,6 +2592,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div><div class="fr-tag">03</div><h4>Building trust</h4><p>Exact quote, page cite, every source to download.</p></div>
         </div>
       </div>
+      <div class="imp-cta"><a class="vision-cta" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">Open reasoning prototype ↗</a></div>
     </div>
 
     <details style="margin-top: 20px;">

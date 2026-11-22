@@ -712,10 +712,12 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .gl-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
 .gl-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
 .gl-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
+.gl-card.pop-left .gl-pop { left: auto; right: calc(100% + 12px); transform: translateX(6px); }
 .gl-card.has-pop:hover, .gl-card.has-pop:focus-visible { border-color: rgba(128, 0, 223, 0.35); }
 .gl-card.has-pop:hover .gl-pop, .gl-card.has-pop:focus .gl-pop { opacity: 1; visibility: visible; transform: none; }
 @media (max-width: 980px) {
-  .gl-pop { top: calc(100% + 8px); left: 0; width: min(580px, 86vw); max-width: none; transform: translateY(-6px); }
+  .gl-pop, .gl-card.pop-left .gl-pop { top: calc(100% + 8px); left: 0; right: auto; width: min(580px, 86vw); max-width: none; transform: translateY(-6px); }
+  .gl-card.pop-left .gl-pop { left: auto; right: 0; }
 }
 @media (max-width: 980px) { .glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .glossary { grid-template-columns: 1fr; } }
@@ -1841,10 +1843,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <dt class="gl-term">Visitor / Buyer</dt>
         <dd class="gl-def">A prospective customer browsing the Trust Center.</dd>
       </div>
-      <div class="gl-card">
+      <div class="gl-card has-pop pop-left" tabindex="0">
         <div class="gl-num">04</div>
         <dt class="gl-term">Questionnaire</dt>
-        <dd class="gl-def">A spreadsheet of hundreds or thousands of questions buyers or auditors send vendors. It checks security controls, risk management, and compliance: can the vendor protect sensitive data?</dd>
+        <dd class="gl-def">A spreadsheet of hundreds or thousands of questions buyers or auditors send vendors. It checks security controls, risk management, and compliance to confirm the vendor can protect sensitive data.</dd>
+        <span class="gl-pop" role="tooltip"><img src="Imagery/questionnaire-example.webp" alt="Example security questionnaire spreadsheet: supplier information fields, then numbered questions on staff, patching, encryption, authentication, and access control, each with Answer and Justification columns" loading="lazy"><span class="gl-pop-cap"><strong>Example questionnaire</strong> Each row is a question the vendor has to answer and justify, grouped by security topic.</span></span>
       </div>
       <div class="gl-card">
         <div class="gl-num">05</div>

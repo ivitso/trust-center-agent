@@ -1609,7 +1609,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 @media (hover: hover) { .imp-hero a.imp-shot:hover { transform: translateY(-2px); } }
 .imp-hero a.imp-shot img { width: 100%; height: 100%; object-fit: cover; object-position: right top; display: block; }
 .imp-cta { grid-column: 1; display: flex; justify-content: center; align-items: center; gap: 14px; }
-.imp-cta-sep { color: var(--purple-700); opacity: 0.5; }
+.wip-tag { display: inline-block; margin: 0 4px 0 6px; padding: 2px 7px; border-radius: 999px; background: rgba(81,0,141,0.08); border: 1px solid rgba(81,0,141,0.18); font-size: 0.56rem; letter-spacing: 1.2px; vertical-align: 1px; }
+.imp-hero a.imp-shot { position: relative; }
+.imp-hero a.imp-shot::after { content: ''; position: absolute; inset: 0; background: rgba(39,0,68,0.42); opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
+.imp-shot-cta { position: absolute; left: 50%; top: 50%; z-index: 1; transform: translate(-50%, calc(-50% + 6px)); background: var(--white); color: var(--purple-700); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 500; padding: 12px 20px; border-radius: 999px; box-shadow: 0 10px 28px rgba(39,0,68,0.28); white-space: nowrap; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
+.imp-hero a.imp-shot:hover::after, .imp-hero a.imp-shot:focus-visible::after { opacity: 1; }
+.imp-hero a.imp-shot:hover .imp-shot-cta, .imp-hero a.imp-shot:focus-visible .imp-shot-cta { opacity: 1; transform: translate(-50%, -50%); }
 .studio-link { position: relative; display: inline-block; }
 .studio-pop { position: absolute; bottom: calc(100% + 14px); left: 50%; width: 520px; max-width: 86vw; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 10px; box-shadow: 0 16px 40px rgba(39,0,68,0.20); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 40; pointer-events: none; text-align: left; }
 .studio-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
@@ -2576,8 +2581,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
     <div class="imp-grid">
       <div class="imp-hero">
-        <a class="imp-shot" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">
+        <a class="imp-shot" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener" aria-label="Open the reasoning prototype">
           <img src="Imagery/reasoning-full-chat.png" alt="Conveyor Trust Center with the AI agent panel showing its reasoning steps and a cited SOC 2 source">
+          <span class="imp-shot-cta" aria-hidden="true">Open reasoning prototype ↗</span>
         </a>
       </div>
       <div class="imp-cards">
@@ -2595,10 +2601,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         </div>
       </div>
       <div class="imp-cta">
-        <a class="vision-cta" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">Open reasoning prototype ↗</a>
-        <span class="imp-cta-sep" aria-hidden="true">·</span>
         <span class="studio-link">
-          <a class="vision-cta" href="https://ivitso.github.io/ask-conveyorai-latency/narration-studio/" target="_blank" rel="noopener">Narration studio ↗</a>
+          <a class="vision-cta" href="https://ivitso.github.io/ask-conveyorai-latency/narration-studio/" target="_blank" rel="noopener">Narration studio <span class="wip-tag">Work in progress</span> ↗</a>
           <span class="studio-pop" role="tooltip">
             <img src="Imagery/narration-studio.webp" alt="Narration studio: replaying the eight agent states against real run lengths, with a timeline of events and the line the user sees" loading="lazy">
             <span class="studio-pop-cap"><strong>Work in progress</strong> Replays each agent state against real run lengths (30s median to 96s tail) to check a status line always covers the silence.</span>

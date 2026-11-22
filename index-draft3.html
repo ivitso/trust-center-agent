@@ -712,12 +712,12 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .gl-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
 .gl-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
 .gl-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
-.gl-card.pop-left .gl-pop { left: auto; right: calc(100% + 12px); transform: translateX(6px); }
+.gl-card.pop-left .gl-pop { left: auto; right: calc(100% + 12px); width: 400px; transform: translateX(6px); }
 .gl-card.has-pop:hover, .gl-card.has-pop:focus-visible { border-color: rgba(128, 0, 223, 0.35); }
 .gl-card.has-pop:hover .gl-pop, .gl-card.has-pop:focus .gl-pop { opacity: 1; visibility: visible; transform: none; }
 @media (max-width: 980px) {
   .gl-pop, .gl-card.pop-left .gl-pop { top: calc(100% + 8px); left: 0; right: auto; width: min(580px, 86vw); max-width: none; transform: translateY(-6px); }
-  .gl-card.pop-left .gl-pop { left: auto; right: 0; }
+  .gl-card.pop-left .gl-pop { left: auto; right: 0; width: min(400px, 86vw); }
 }
 @media (max-width: 980px) { .glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .glossary { grid-template-columns: 1fr; } }

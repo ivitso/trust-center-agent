@@ -1947,10 +1947,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <p class="lede">One agent serves outside visitors and the vendor's own sellers. Admins set the bounds.</p>
 
     <div class="interaction-map">
-      <svg viewBox="0 0 1080 494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
+      <svg viewBox="0 0 1080 494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. Before the agent, questions the Trust Center could not answer went back and forth by hand between DocuSign's Trust and Security team and the Acme buyers, blocking the deal from closing. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
         <defs>
           <marker id="imap-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
+          </marker>
+          <marker id="imap-arrow-pain" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L6,3 z" fill="#B42318"/>
           </marker>
         </defs>
 
@@ -1993,6 +1996,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <text x="540" y="396" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">SALES ACCOUNT EXEC</text>
         <text x="540" y="420" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Self-serves answers to</text>
         <text x="540" y="438" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">help an Acme prospect mid-deal</text>
+
+        <!-- Before the agent: manual back-and-forth between security team and buyers -->
+        <path d="M125,124 V86 H955 V124" fill="none" stroke="#B42318" stroke-width="1.5" stroke-dasharray="5 4" marker-start="url(#imap-arrow-pain)" marker-end="url(#imap-arrow-pain)"/>
+        <text x="540" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45"><tspan font-weight="600" fill="#B42318">Before the agent:</tspan> questions the Trust Center can't answer go back and forth by hand</text>
+        <circle cx="540" cy="86" r="8" fill="#B42318"/><text x="540" y="89.6" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="700" fill="#fff">!</text>
+        <text x="540" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#B42318">Blocks the deal from closing</text>
 
         <!-- 1 · Admin sets rules -->
         <circle cx="258" cy="154" r="8" fill="#51008D"/><text x="258" y="157.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">1</text>

@@ -1608,7 +1608,14 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 .imp-hero a.imp-shot { flex: 1; display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.10); transition: transform 0.2s ease; }
 @media (hover: hover) { .imp-hero a.imp-shot:hover { transform: translateY(-2px); } }
 .imp-hero a.imp-shot img { width: 100%; height: 100%; object-fit: cover; object-position: right top; display: block; }
-.imp-cta { grid-column: 1; text-align: center; }
+.imp-cta { grid-column: 1; display: flex; justify-content: center; align-items: center; gap: 14px; }
+.imp-cta-sep { color: var(--purple-700); opacity: 0.5; }
+.studio-link { position: relative; display: inline-block; }
+.studio-pop { position: absolute; bottom: calc(100% + 14px); left: 50%; width: 520px; max-width: 86vw; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 10px; box-shadow: 0 16px 40px rgba(39,0,68,0.20); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 40; pointer-events: none; text-align: left; }
+.studio-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
+.studio-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
+.studio-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
+.studio-link:hover .studio-pop, .studio-link:focus-within .studio-pop { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 .imp-cards { display: flex; flex-direction: column; gap: 10px; }
 .imp-card { flex: 1; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: center; background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 8px 12px 8px 8px; }
 .imp-thumb { position: relative; align-self: stretch; min-height: 72px; background: #F5F7F9; border-radius: 8px; overflow: hidden; }
@@ -2587,7 +2594,17 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div><div class="fr-tag">03</div><h4>Building trust</h4><p>Exact quote, page cite, every source to download.</p></div>
         </div>
       </div>
-      <div class="imp-cta"><a class="vision-cta" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">Open reasoning prototype ↗</a></div>
+      <div class="imp-cta">
+        <a class="vision-cta" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener">Open reasoning prototype ↗</a>
+        <span class="imp-cta-sep" aria-hidden="true">·</span>
+        <span class="studio-link">
+          <a class="vision-cta" href="https://ivitso.github.io/ask-conveyorai-latency/narration-studio/" target="_blank" rel="noopener">Narration studio ↗</a>
+          <span class="studio-pop" role="tooltip">
+            <img src="Imagery/narration-studio.webp" alt="Narration studio: replaying the eight agent states against real run lengths, with a timeline of events and the line the user sees" loading="lazy">
+            <span class="studio-pop-cap"><strong>Work in progress</strong> Replays each agent state against real run lengths (30s median to 96s tail) to check a status line always covers the silence.</span>
+          </span>
+        </span>
+      </div>
     </div>
 
   </div>

@@ -625,6 +625,46 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
   padding: 18px 28px 22px;
 }
 
+/* GLOSSARY (Vocabulary slide) */
+#s-glossary .hero { max-width: none; }
+.glossary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 32px 0 0;
+}
+.gl-card {
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.gl-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 1.4px;
+  color: var(--purple-700);
+  margin-bottom: 8px;
+}
+.gl-term {
+  font-family: 'Newsreader', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.gl-def {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+@media (max-width: 980px) { .glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .glossary { grid-template-columns: 1fr; } }
+
 /* RESEARCH ARTIFACTS (Slide 2) */
 .research-artifacts {
   display: grid;
@@ -1719,16 +1759,69 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     </div>
 
   </div>
+  <button class="continue" data-next="s-glossary">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE 2a · VOCABULARY ===================== -->
+<section class="slide sand" id="s-glossary">
+  <div class="slide-num">01 / 15</div>
+  <div class="inner">
+    <div class="eyebrow">01 · Vocabulary</div>
+    <h2 class="hero">What is a Trust Center - <em>quick vocabulary</em>.</h2>
+    <p class="lede">The handful of terms the rest of this story leans on.</p>
+    <dl class="glossary">
+      <div class="gl-card">
+        <div class="gl-num">01</div>
+        <dt class="gl-term">Trust Center</dt>
+        <dd class="gl-def">A public page where a company (e.g. DocuSign) shares its security documents and knowledge so buyers can review before signing. Conveyor hosts these Trust Centers.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">02</div>
+        <dt class="gl-term">Security Review</dt>
+        <dd class="gl-def">A buyer's security team checks a vendor before a deal closes. Slow reviews stall deals.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">03</div>
+        <dt class="gl-term">Touchless Review</dt>
+        <dd class="gl-def">A buyer finishes their questionnaires and review without contacting the vendor's (e.g. DocuSign's) team. Goal: 95%.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">04</div>
+        <dt class="gl-term">Visitor / Buyer</dt>
+        <dd class="gl-def">A prospective customer browsing the Trust Center.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">05</div>
+        <dt class="gl-term">Admin</dt>
+        <dd class="gl-def">The vendor's security team. Owns the documents, permissions, and rules.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">06</div>
+        <dt class="gl-term">Product Line</dt>
+        <dd class="gl-def">One company with many products (e.g. Intuit owns TurboTax, Credit Karma, Mailchimp). Answers change by product.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">07</div>
+        <dt class="gl-term">Tool Call</dt>
+        <dd class="gl-def">One job the agent can do: bundle documents, answer and quote a question, fill out a questionnaire.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">08</div>
+        <dt class="gl-term">Questionnaire</dt>
+        <dd class="gl-def">A spreadsheet of hundreds or thousands of security questions buyers send vendors.</dd>
+      </div>
+    </dl>
+  </div>
   <button class="continue" data-next="s2">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 2 · THE BRIEF ===================== -->
 <section class="slide white" id="s2">
-  <div class="slide-num">01 / 14</div>
+  <div class="slide-num">02 / 15</div>
   <div class="inner">
-    <div class="eyebrow">01 · The Brief</div>
-    <h2 class="hero">What is a Trust Center - and why ship <em>first</em>.</h2>
-    <p class="lede">A Trust Center is a company's security storefront: buyers come to grab the SOC 2s and policies they need before signing. Unanswered questions stall deals, so we bet on an agent to reach 95% touchless reviews.</p>
+    <div class="eyebrow">02 · The Brief</div>
+    <h2 class="hero">Why ship a Trust Center Agent <em>first</em>.</h2>
+    <p class="lede">Unanswered questions stall deals, so we bet on an agent to reach 95% touchless reviews.</p>
 
     <div class="research-artifacts">
       <div class="research-artifact">
@@ -1780,9 +1873,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 3 · THE ARC ===================== -->
 <section class="slide sand" id="s3">
-  <div class="slide-num">02 / 14</div>
+  <div class="slide-num">03 / 15</div>
   <div class="inner">
-    <div class="eyebrow">02 · The Arc</div>
+    <div class="eyebrow">03 · The Arc</div>
     <h2 class="hero">Each release <em>earned</em> the next.</h2>
     <p class="lede">Safest first, with research between each, so every release earned the next.</p>
 
@@ -1847,9 +1940,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4 · ORIENT (DIAGRAM) ===================== -->
 <section class="slide mint" id="s4">
-  <div class="slide-num">03 / 14</div>
+  <div class="slide-num">04 / 15</div>
   <div class="inner">
-    <div class="eyebrow">03 · Orient: People</div>
+    <div class="eyebrow">04 · Orient: People</div>
     <h2 class="hero">Who asks, who answers, who sets the <em>rules</em>.</h2>
     <p class="lede">One agent serves outside visitors and the vendor's own sellers. Admins set the bounds.</p>
 
@@ -1955,9 +2048,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4b · ORIENT: FLOW + ROUTING ===================== -->
 <section class="slide white" id="s4b">
-  <div class="slide-num">04 / 14</div>
+  <div class="slide-num">05 / 15</div>
   <div class="inner">
-    <div class="eyebrow">04 · Orient: Flow &amp; Routing</div>
+    <div class="eyebrow">05 · Orient: Flow &amp; Routing</div>
     <h2 class="hero">Every path runs through one <em>permission layer</em>.</h2>
     <div class="constraint-chips">
       <span class="cc-label">Constraints</span>
@@ -2073,9 +2166,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 5 · LOVABLE PROTOTYPING ===================== -->
 <section class="slide white" id="s5">
-  <div class="slide-num">05 / 14</div>
+  <div class="slide-num">06 / 15</div>
   <div class="inner">
-    <div class="eyebrow">05 · Prototyping in Lovable</div>
+    <div class="eyebrow">06 · Prototyping in Lovable</div>
     <h2 class="hero">How I prototyped 3 major agent flows in <em>a week</em>.</h2>
     <p class="lovable-hero">"Mapping the main success and failure paths gave the team something concrete to align on before finessing the prompts."</p>
 
@@ -2116,9 +2209,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 6 · LIVE PROTOTYPE ===================== -->
 <section class="slide sand" id="s6" style="padding-bottom: 48px;">
-  <div class="slide-num">06 / 14</div>
+  <div class="slide-num">07 / 15</div>
   <div class="inner">
-    <div class="eyebrow">06 · Agent Prototyping</div>
+    <div class="eyebrow">07 · Agent Prototyping</div>
     <h2 class="hero">First Prototype <em>Flows</em>.</h2>
     <p class="lede">Agent interaction flows built with Lovable, to test functionality with our users.</p>
   </div>
@@ -2176,9 +2269,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 7 · CAST ===================== -->
 <section class="slide mint" id="s7">
-  <div class="slide-num">07 / 14</div>
+  <div class="slide-num">08 / 15</div>
   <div class="inner">
-    <div class="eyebrow">07 · The Cast</div>
+    <div class="eyebrow">08 · The Cast</div>
     <h2 class="hero">Tracking customer <em>feelings</em> across releases.</h2>
     <p class="lede">Every participant tagged Bullish, Moderate, or Conservative, and tracked across rounds.</p>
 
@@ -2210,9 +2303,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 8 · DECIDE ===================== -->
 <section class="slide cream" id="s8">
-  <div class="slide-num">08 / 14</div>
+  <div class="slide-num">09 / 15</div>
   <div class="inner">
-    <div class="eyebrow">08 · Decide</div>
+    <div class="eyebrow">09 · Decide</div>
     <h2 class="hero">How Value vs Risk gave us our <em>MVP</em>.</h2>
     <p class="lede">High value, low risk first.</p>
 
@@ -2264,9 +2357,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 9 · SHIP (MERGED: FINDINGS + SPEC + LAUNCH) ===================== -->
 <section class="slide white" id="s9">
-  <div class="slide-num">09 / 14</div>
+  <div class="slide-num">10 / 15</div>
   <div class="inner">
-    <div class="eyebrow">09 · Ship</div>
+    <div class="eyebrow">10 · Ship</div>
     <h2 class="hero">The design <em>considerations</em> underneath our Agent.</h2>
     <p class="lede">Effortless on day one, safe for AI skeptics.</p>
 
@@ -2414,9 +2507,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 10 · IMPACT (MIDNIGHT) ===================== -->
 <section class="slide midnight" id="s10">
-  <div class="slide-num">10 / 14</div>
+  <div class="slide-num">11 / 15</div>
   <div class="inner">
-    <div class="eyebrow">10 · Live / Impact</div>
+    <div class="eyebrow">11 · Live / Impact</div>
     <h2 class="hero">What <em>five months</em> of production usage looked like.</h2>
     <p class="lede">Dec 2025 - May 2026. The customers most afraid in September were among the first to enable it.</p>
 
@@ -2522,9 +2615,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 11 · FIGMA FLOWS & PASSOFF ===================== -->
 <section class="slide sand" id="s11">
-  <div class="slide-num">11 / 14</div>
+  <div class="slide-num">12 / 15</div>
   <div class="inner">
-    <div class="eyebrow">11 · Figma Flows</div>
+    <div class="eyebrow">12 · Figma Flows</div>
     <h2 class="hero">Communicating edge cases and flows for <em>Passoff</em>.</h2>
 
     <div class="constraint-chips lede-chips">
@@ -2557,9 +2650,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · VISION (draft3 placeholder) ===================== -->
 <section class="slide white" id="s-vision">
-  <div class="slide-num">12 / 14</div>
+  <div class="slide-num">13 / 15</div>
   <div class="inner">
-    <div class="eyebrow">12 · Vision</div>
+    <div class="eyebrow">13 · Vision</div>
     <h2 class="hero">The Trust Center <em>vision</em>.</h2>
     <p class="lede">Leading the first design vision: Trust Centers 1 year out, as trust in AI agents grows and workflows improve.</p>
     <a class="vision-shot" href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener">
@@ -2574,9 +2667,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · IMPROVEMENTS (draft3 placeholder) ===================== -->
 <section class="slide mint" id="s-improve">
-  <div class="slide-num">13 / 14</div>
+  <div class="slide-num">14 / 15</div>
   <div class="inner">
-    <div class="eyebrow">13 · Improvements</div>
+    <div class="eyebrow">14 · Improvements</div>
     <h2 class="hero">How Vision influenced the future of the <em>Agent</em>.</h2>
     <p class="lede">Showing the agent's work, so visitors can check it before they trust it.</p>
 
@@ -2618,9 +2711,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 12 · REFLECTION ===================== -->
 <section class="slide cover" id="s12">
-  <div class="slide-num">14 / 14</div>
+  <div class="slide-num">15 / 15</div>
   <div class="inner">
-    <div class="eyebrow">14 · Reflection</div>
+    <div class="eyebrow">15 · Reflection</div>
     <h2 class="hero">What I'm <em>taking</em> forward.</h2>
     <p class="lede">Learnings and tradeoffs for the next agentic product.</p>
 

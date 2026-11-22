@@ -75,9 +75,9 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .interaction-map {
   position: relative;
   width: 100%;
-  max-width: 1040px;
+  max-width: 100%;
   align-self: center;
-  margin-top: 24px;
+  margin-top: 28px;
 }
 .interaction-map svg {
   width: 100%;
@@ -894,9 +894,9 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .constraints-diagram-row {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: 32px;
-  align-items: start;
+  align-items: center;
 }
 .constraints-diagram-row .tc-diagram-wrap {
   margin-top: 0;
@@ -1551,7 +1551,9 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .rc-dots { display: flex; gap: 9px; }
 .rc-dot { width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; background: var(--purple-200); cursor: pointer; transition: background 0.2s, transform 0.2s; }
 .rc-dot.active { background: var(--purple-700); transform: scale(1.15); }
+.rc-page > .reflection-card:only-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 8px); }
 @media (max-width: 640px) { .rc-page { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .rc-page > .reflection-card:only-child { width: 100%; } }
 /* Reflection slide: big gap under the title, cards centered vertically */
 #s12 .lede { margin-top: auto; }
 #s12 .thanks { margin-top: auto; }
@@ -1573,7 +1575,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 /* FIGMA CAROUSEL */
 .figma-carousel { margin-top: 28px; position: relative; overflow: hidden; border-radius: 12px; }
 .carousel-track { display: flex; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); }
-.carousel-track img { min-width: 100%; max-width: 100%; height: 480px; display: block; object-fit: contain; object-position: center; }
+.carousel-track img { min-width: 100%; max-width: 100%; height: clamp(380px, calc(100vh - 418px), 680px); display: block; object-fit: contain; object-position: center; }
 .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(39, 0, 68, 0.75); color: #fff; font-size: 1.5rem; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 2; backdrop-filter: blur(4px); transition: background 0.2s; }
 .carousel-btn:hover { background: var(--purple-700); }
 .carousel-btn.prev { left: 12px; }
@@ -1599,6 +1601,71 @@ details .acc-body ul { padding-left: 18px; margin-top: 8px; }
 details .acc-body li { margin: 5px 0; }
 details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid var(--hairline); cursor: zoom-in; max-width: 100%; }
 .slide.midnight details .acc-body img { border-color: rgba(255,255,255,0.12); }
+
+/* IMPROVEMENTS SLIDE (draft3) */
+.imp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.4fr); gap: 10px 20px; margin-top: 28px; align-items: stretch; }
+.imp-hero { display: flex; flex-direction: column; }
+.imp-hero a.imp-shot { flex: 1; display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.10); transition: transform 0.2s ease; }
+@media (hover: hover) { .imp-hero a.imp-shot:hover { transform: translateY(-2px); } }
+.imp-hero a.imp-shot img { width: 100%; height: 100%; object-fit: cover; object-position: right top; display: block; }
+.imp-cta { grid-column: 1; display: flex; justify-content: center; align-items: center; gap: 14px; }
+.wip-tag { display: inline-block; margin: 0 0 0 12px; padding: 2px 7px; border-radius: 999px; background: rgba(81,0,141,0.08); border: 1px solid rgba(81,0,141,0.18); font-size: 0.56rem; letter-spacing: 1.2px; line-height: 1.4; }
+.studio-link > a.vision-cta { display: inline-flex; align-items: center; }
+.imp-hero a.imp-shot { position: relative; }
+.imp-hero a.imp-shot::after { content: ''; position: absolute; inset: 0; background: rgba(39,0,68,0.42); opacity: 0; transition: opacity 0.2s ease; pointer-events: none; }
+.imp-shot-cta { position: absolute; left: 50%; top: 50%; z-index: 1; transform: translate(-50%, calc(-50% + 6px)); background: var(--white); color: var(--purple-700); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 1.4px; text-transform: uppercase; font-weight: 500; padding: 12px 20px; border-radius: 999px; box-shadow: 0 10px 28px rgba(39,0,68,0.28); white-space: nowrap; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease; pointer-events: none; }
+.imp-hero a.imp-shot:hover::after, .imp-hero a.imp-shot:focus-visible::after { opacity: 1; }
+.imp-hero a.imp-shot:hover .imp-shot-cta, .imp-hero a.imp-shot:focus-visible .imp-shot-cta { opacity: 1; transform: translate(-50%, -50%); }
+.studio-link { position: relative; display: inline-block; }
+.studio-pop { position: absolute; top: calc(100% + 10px); left: 50%; width: 360px; max-width: 86vw; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 10px; box-shadow: 0 16px 40px rgba(39,0,68,0.20); opacity: 0; visibility: hidden; transform: translate(-50%, -6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 40; pointer-events: none; text-align: left; }
+.studio-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
+.studio-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
+.studio-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
+.studio-link:hover .studio-pop, .studio-link:focus-within .studio-pop { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.imp-cards { display: flex; flex-direction: column; gap: 10px; }
+.imp-card { flex: 1; display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px; align-items: center; background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 8px 12px 8px 8px; }
+.imp-thumb { position: relative; align-self: stretch; min-height: 72px; background: #F5F7F9; border-radius: 8px; overflow: hidden; }
+.imp-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; cursor: zoom-in; }
+.imp-card .fr-tag { margin-bottom: 4px; }
+.imp-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.imp-card p { font-size: 0.85rem; color: var(--ink-2); line-height: 1.45; }
+.imp-spec { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 980px) { .imp-grid, .imp-spec { grid-template-columns: 1fr; } }
+
+/* VISION SLIDE (draft3) */
+.vision-shot { display: block; max-width: 960px; margin: 28px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); box-shadow: 0 12px 32px rgba(39,0,68,0.12); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.vision-shot img { width: 100%; height: auto; display: block; }
+@media (hover: hover) { .vision-shot:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(39,0,68,0.18); } }
+.vision-cta { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 1.4px; text-transform: uppercase; text-decoration: none; color: var(--purple-700); font-weight: 500; }
+.vision-cta:hover { opacity: 0.7; }
+
+/* ORIENT: FLOW + ROUTING (draft3) */
+.constraint-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 18px; }
+.lede-chips { gap: 8px 8px; }
+.lede-chips .lede { margin: 0 6px 0 0; max-width: none; }
+.constraint-chips .cc-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); margin-right: 6px; }
+.constraint-chips .cc { position: relative; display: inline-flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-2); background: rgba(81,0,141,0.05); border: 1px solid var(--hairline); border-radius: 999px; padding: 5px 12px; white-space: nowrap; cursor: help; outline: none; transition: background 0.15s ease, border-color 0.15s ease; }
+.constraint-chips .cc:hover, .constraint-chips .cc:focus-visible { background: rgba(81,0,141,0.1); border-color: rgba(81,0,141,0.3); }
+.cc-pop { position: absolute; top: calc(100% + 10px); left: 0; width: 320px; max-width: 80vw; white-space: normal; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 14px 16px; box-shadow: 0 10px 30px rgba(39,0,68,0.16); font-size: 0.84rem; line-height: 1.5; color: var(--ink-2); text-align: left; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 30; pointer-events: none; }
+.cc-pop strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 4px; }
+.constraint-chips .cc:hover .cc-pop, .constraint-chips .cc:focus .cc-pop { opacity: 1; visibility: visible; transform: translateY(0); }
+.fr-carousel { margin-top: 24px; }
+.fr-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; overscroll-behavior-x: contain; scrollbar-width: none; }
+.fr-track::-webkit-scrollbar { display: none; }
+.fr-slide { flex: 0 0 84%; height: 470px; scroll-snap-align: start; transition: opacity 0.3s ease; }
+.fr-slide:last-child { scroll-snap-align: end; }
+.fr-slide.is-peek { opacity: 0.45; cursor: pointer; }
+.fr-slide.is-peek:hover { opacity: 0.7; }
+.fr-slide .fr-img { min-height: 0; }
+.fr-slide .fr-img img { width: auto; max-width: 100%; max-height: 100%; }
+.fr-slide .tc-diagram { flex: 1; min-height: 0; height: 100%; margin: 0; }
+.fr-carousel .rc-controls { margin-top: 16px; }
+.fr-card { background: #fff; border: 1px solid var(--hairline); border-radius: 12px; padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+.fr-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); }
+.fr-img { flex: 1; display: flex; align-items: center; justify-content: center; background: #F5F5F5; border-radius: 8px; padding: 10px; }
+.fr-img img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+.fr-card .tc-diagram { margin: auto 0; }
+@media (max-width: 980px) { .fr-slide { flex-basis: 90%; height: auto; } }
 
 /* RESPONSIVE */
 @media (max-width: 980px) {
@@ -1641,7 +1708,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="cover-gif-wrap">
         <img src="Imagery/trust%20center%20agent%20automates%20security%20questionnaires.gif" alt="Trust Center Agent automating a security questionnaire">
       </div>
-      <p class="lede cover-lede">Leading design on a seven-person squad that defined a new way to gather security and compliance information: How we turned AI-skeptic customers into first adopters.</p>
+      <p class="lede cover-lede">Leading design on the agent that turned AI-skeptic security teams into first adopters.</p>
       <div class="hero-metrics">
         <div><div class="hm-num">173</div><div class="hm-label">customer adoption · 61% · 3.5&times; OKR of 50</div></div>
         <div><div class="hm-num">17,045</div><div class="hm-label">agent interaction turns</div></div>
@@ -1657,11 +1724,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 2 · THE BRIEF ===================== -->
 <section class="slide white" id="s2">
-  <div class="slide-num">01 / 11</div>
+  <div class="slide-num">01 / 14</div>
   <div class="inner">
     <div class="eyebrow">01 · The Brief</div>
     <h2 class="hero">What is a Trust Center - and why ship <em>first</em>.</h2>
-    <p class="lede">A Trust Center is where companies publish their security posture - SOC 2s, policies, NDAs - so prospects can evaluate them mid-deal. Unanswered questions stall deals and pile onto shrinking support teams, so we bet on an agent to reach 95% touchless reviews. Research came first: what visitors needed, what admins wanted to deflect, and which AI behaviors felt safe versus reckless.</p>
+    <p class="lede">A Trust Center is a company's security storefront: buyers come to grab the SOC 2s and policies they need before signing. Unanswered questions stall deals, so we bet on an agent to reach 95% touchless reviews.</p>
 
     <div class="research-artifacts">
       <div class="research-artifact">
@@ -1672,7 +1739,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="ra-img-wrap">
           <img src="Imagery/brief-slack-summary.png" alt="Slack post summarizing card sort findings from five customers">
         </div>
-        <div class="ra-caption">A card sort exercise ideating on features with strike-zone customers - what they thought would be most impactful, and what they were most nervous about.</div>
+        <div class="ra-caption">What strike-zone customers found most impactful - and most nerve-wracking.</div>
       </div>
 
       <div class="research-artifact">
@@ -1683,7 +1750,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="ra-img-wrap">
           <img src="Imagery/brief-card-sort-anonymized.png" alt="Anonymized FigJam card sort boards from three customer sessions">
         </div>
-        <div class="ra-caption">Each board sorted potential agent capabilities into Excited / Neutral / Scared bands. The split between the three told us where the brief actually was.</div>
+        <div class="ra-caption">Every capability sorted into Excited / Neutral / Scared.</div>
       </div>
     </div>
 
@@ -1691,43 +1758,33 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="tension">
         <div class="t-num">01 · Market</div>
         <div class="h3">The market was about to <em>catch up</em>.</div>
-        <p>Competitors were starting to talk about AI, but none had shipped an agentic Trust Center experience yet.</p>
+        <p>No competitor had shipped an agentic Trust Center yet.</p>
         <span class="t-icon" aria-hidden="true">▾</span>
       </div>
       <div class="tension">
         <div class="t-num">02 · Customers</div>
         <div class="h3">Every security team was excited AND <em>afraid</em>.</div>
-        <p>The same admins who wanted an agent also feared the complications of security: Product lines, access groups, secret documents. An agent needed to respond based on the user's permissions.</p>
+        <p>Answers had to respect product lines, access groups, and NDAs.</p>
         <span class="t-icon" aria-hidden="true">▾</span>
       </div>
       <div class="tension">
         <div class="t-num">03 · Risk</div>
         <div class="h3">The riskiest tool call was the most <em>valuable</em>.</div>
-        <p>Drop a 1,000-question xlsx, get back a cited CSV with answers, sources, and next steps. The highest-value tool call - and the most feared.</p>
+        <p>1,000-question xlsx in, cited CSV out.</p>
         <span class="t-icon" aria-hidden="true">▾</span>
       </div>
     </div>
-
-    <details>
-      <summary>Why this brief was harder than "add AI"</summary>
-      <div class="acc-body">
-        <p>A security prospect visits a Trust Center, downloads a SOC 2, checks the compliance badges, and leaves. Except they almost never actually leave with everything they came for. Most return with follow-up questions sent to their customer service, sales, or security team partner. As those teams get smaller in the age of AI, the volume of inbound only grows. An unanswered question can stall a deal, and a slow response can lose one entirely.</p>
-        <p>This bet was pushing toward a future where visitors were unafraid to interact with a Trust Center agent. One that knew the documents, respected the access gates, and escalated what it couldn't safely answer. The goal was 95% touchless reviews by the end of 2026, meaning users can find what they need in the Trust Center 95% of the time, without ever reaching out for extra help to partner teams.</p>
-        <p>This first meant we needed to ship an MVP within two months, with a squad that was still onboarding to the product. We were learning the domain, building the feature, and defining the category all at the same time.</p>
-        <p>The fears we heard from admins were not abstract. They could picture hallucinations surfacing wrong answers. They could picture gated content leaking across product lines. They could picture accidental disclosure of documents meant for a different access group. Every admin we spoke to could name a specific scenario that scared them.</p>
-      </div>
-    </details>
   </div>
   <button class="continue" data-next="s3">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 3 · THE ARC ===================== -->
 <section class="slide sand" id="s3">
-  <div class="slide-num">02 / 11</div>
+  <div class="slide-num">02 / 14</div>
   <div class="inner">
     <div class="eyebrow">02 · The Arc</div>
     <h2 class="hero">Each release <em>earned</em> the next.</h2>
-    <p class="lede">I proposed sequencing the releases safest-first - with research between each - so every ship earned the trust to justify the next, and the riskiest capability got its own project.</p>
+    <p class="lede">Safest first, with research between each, so every release earned the next.</p>
 
     <div class="arc-timeline">
       <div class="arc-timeline-track">
@@ -1736,9 +1793,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="tl-label">Discovery</div>
           <div class="tl-date">Sept 2025</div>
           <div class="tl-tools">No code yet</div>
-          <div class="tl-detail">
-            Context sharing with the tech lead on past decisions, permissions, and customer base. Pulled data from previous projects. Ran competitor research to map where others stood with Trust Centers. Kicked off discovery calls with top customers.
-            <span class="tl-research">5-customer card sort + persona map</span>
+          <div class="tl-detail">Tech-lead context, past data, competitor scan, customer calls.<span class="tl-research">5-customer card sort</span>
           </div>
         </div>
         <div class="tl-node">
@@ -1746,9 +1801,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="tl-label">Prototyping</div>
           <div class="tl-date">Sept - Oct 2025</div>
           <div class="tl-tools">Lovable prototypes</div>
-          <div class="tl-detail">
-            I prototyped all three agent flows in Lovable in three days. Tested with 9 user sessions across design partners.
-            <span class="tl-research">9 sessions across 6 companies</span>
+          <div class="tl-detail">All three flows prototyped in Lovable.<span class="tl-research">9 sessions · 6 companies</span>
           </div>
         </div>
         <div class="tl-node release">
@@ -1756,9 +1809,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="tl-label">Beta (Labs)</div>
           <div class="tl-date">Nov 2025</div>
           <div class="tl-tools">Bundle + Ask</div>
-          <div class="tl-detail">
-            First two tool calls shipped to select customers for testing. Marketing launch followed on Nov 12 with graphic assets, walkthrough video, blog, and social.
-            <span class="tl-research">3 Labs interviews (Workday, dbt, Threatlocker)</span>
+          <div class="tl-detail">Bundle + Ask to select customers. Marketing launch Nov 12.<span class="tl-research">3 Labs interviews</span>
           </div>
         </div>
         <div class="tl-node release">
@@ -1766,9 +1817,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="tl-label">GA (MVP)</div>
           <div class="tl-date">Dec 2025</div>
           <div class="tl-tools">Bundle + Ask (hardened)</div>
-          <div class="tl-detail">
-            White-glove rollout to production. Sales enablement and Looker reporting went live alongside the agent.
-            <span class="tl-research">Sales enablement + Looker dashboard live</span>
+          <div class="tl-detail">White-glove rollout to production.<span class="tl-research">Enablement + Looker live</span>
           </div>
         </div>
         <div class="tl-node release">
@@ -1776,9 +1825,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="tl-label">Questionnaire &amp; Analytics</div>
           <div class="tl-date">Jan 2026</div>
           <div class="tl-tools">+ Questionnaire · emailed Looker reports</div>
-          <div class="tl-detail">
-            Shipped the highest-risk tool call, Answer a Questionnaire, in January once the first two flows had earned trust. In parallel we kicked off analytics discovery, starting lightweight - emailing customers their Looker reports instead of building dashboards in-app - a first step that got users their data faster while we scoped the in-app version.
-            <span class="tl-research">Emailed Looker reports before in-app analytics</span>
+          <div class="tl-detail">The riskiest tool call, once trust was earned.<span class="tl-research">Emailed Looker reports first</span>
           </div>
         </div>
       </div>
@@ -1790,8 +1837,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
       <div class="sa-info">
         <div class="sa-tag">Context sharing · Sept 2025</div>
-        <div class="sa-title">Building shared context before research started</div>
-        <div class="sa-caption">I pulled data from previous projects and worked with the tech lead to reason through past decisions, the permission model, and the customer base. Competitor research mapped where others stood with Trust Centers. By the time discovery calls kicked off in mid-September, the team had a shared baseline to work from.</div>
+        <div class="sa-title">Shared context before research</div>
+        <div class="sa-caption">A baseline with the tech lead before discovery calls began.</div>
       </div>
     </div>
   </div>
@@ -1800,116 +1847,142 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4 · ORIENT (DIAGRAM) ===================== -->
 <section class="slide mint" id="s4">
-  <div class="slide-num">03 / 11</div>
+  <div class="slide-num">03 / 14</div>
   <div class="inner">
-    <div class="eyebrow">03 · Orient</div>
-    <h2 class="hero">How three tool calls all run through one <em>permission layer</em>.</h2>
-    <p class="lede">Before touching the chat surface, I mapped the interactions - who asks (visitors and our own sales team), who answers, who sets the rules - then the routing underneath. Every query had to reach the right tool call, and every response pass through the same permission layer.</p>
+    <div class="eyebrow">03 · Orient: People</div>
+    <h2 class="hero">Who asks, who answers, who sets the <em>rules</em>.</h2>
+    <p class="lede">One agent serves outside visitors and the vendor's own sellers. Admins set the bounds.</p>
 
     <div class="interaction-map">
-      <svg viewBox="0 0 1080 414" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using example companies: at Conveyor, the admin sets permissions and rules and the internal sales team self-serves answers; a visitor from Acme Corp evaluating the vendor asks the AI agent, which routes every query within permission bounds and answers or admits a knowledge gap; the Conveyor sales team uses the same agent to help the Acme prospect mid-deal, and unanswered questions are logged as gaps in analytics instead of routing a person.">
+      <svg viewBox="0 0 1080 494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
         <defs>
           <marker id="imap-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
           </marker>
         </defs>
 
-        <!-- THE ADMIN (left) · Conveyor -->
-        <rect x="20" y="80" width="210" height="125" rx="12" fill="#fff" stroke="rgba(39,0,68,0.13)" stroke-width="1"/>
-        <rect x="85" y="88" width="80" height="18" rx="9" fill="#F4EDFA"/>
-        <text x="125" y="100.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#51008D" letter-spacing="1.2">CONVEYOR</text>
-        <text x="125" y="126" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">THE ADMIN</text>
-        <text x="125" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Owns permissions, product</text>
-        <text x="125" y="171" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">lines &amp; NDA rules</text>
+        <!-- DocuSign's Trust Center boundary (admin, agent, seller inside; visitor outside) -->
+        <rect x="6" y="14" width="690" height="472" rx="18" fill="rgba(81,0,141,0.05)"/>
+        <text x="28" y="40" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">DOCUSIGN TRUST CENTER · POWERED BY CONVEYOR</text>
 
-        <!-- THE AI AGENT (hub) -->
-        <rect x="435" y="72" width="210" height="156" rx="12" fill="#270044"/>
-        <text x="540" y="106" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#E1C0F9" letter-spacing="1.4">THE AI AGENT</text>
-        <text x="540" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fff">Routes every query to the</text>
-        <text x="540" y="153" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="rgba(255,255,255,0.82)">right tool, within bounds</text>
-        <line x1="465" y1="173" x2="615" y2="173" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
-        <text x="540" y="194" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">"Answer, or admit the gap.</text>
-        <text x="540" y="212" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Never guess."</text>
+        <!-- TRUST & SECURITY TEAM (admin, left) · DocuSign -->
+        <rect x="20" y="126" width="210" height="148" rx="12" fill="#fff" stroke="rgba(39,0,68,0.13)" stroke-width="1"/>
+        <rect x="85" y="134" width="80" height="18" rx="9" fill="#F4EDFA"/>
+        <text x="125" y="146.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#51008D" letter-spacing="1.2">DOCUSIGN</text>
+        <text x="125" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">TRUST &amp; SECURITY TEAM</text>
+        <text x="125" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Owns permissions, product</text>
+        <text x="125" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">lines, NDA rules, documents,</text>
+        <text x="125" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">questionnaires &amp; security</text>
+        <text x="125" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">approvals</text>
 
-        <!-- THE VISITOR (right) · Acme Corp -->
-        <rect x="850" y="80" width="210" height="125" rx="12" fill="#fff" stroke="rgba(39,0,68,0.13)" stroke-width="1"/>
-        <rect x="913" y="88" width="84" height="18" rx="9" fill="#EEF1F6"/>
-        <text x="955" y="100.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#3A4A45" letter-spacing="1.2">ACME CORP</text>
-        <text x="955" y="126" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">THE VISITOR</text>
-        <text x="955" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Evaluating a vendor,</text>
-        <text x="955" y="171" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">needs docs &amp; answers fast</text>
+        <!-- DOCUSIGN TRUST CENTER AGENT (hub) -->
+        <rect x="435" y="118" width="210" height="156" rx="12" fill="#270044"/>
+        <text x="540" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E1C0F9" letter-spacing="1.1">DOCUSIGN TRUST CENTER AGENT</text>
+        <text x="540" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fff">Routes every query to the</text>
+        <text x="540" y="199" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="rgba(255,255,255,0.82)">right tool, within bounds</text>
+        <line x1="465" y1="219" x2="615" y2="219" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+        <text x="540" y="240" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">"Answer, or admit the gap.</text>
+        <text x="540" y="258" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Never guess."</text>
 
-        <!-- THE INTERNAL SELLER (bottom center) · Conveyor -->
-        <rect x="400" y="300" width="280" height="102" rx="12" fill="#fff" stroke="rgba(39,0,68,0.13)" stroke-width="1"/>
-        <rect x="500" y="312" width="80" height="18" rx="9" fill="#F4EDFA"/>
-        <text x="540" y="324.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#51008D" letter-spacing="1.2">CONVEYOR</text>
-        <text x="540" y="350" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">THE INTERNAL SELLER</text>
-        <text x="540" y="374" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Sales team, self-serving to</text>
-        <text x="540" y="392" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">help an Acme prospect mid-deal</text>
+        <!-- PROSPECTIVE BUYERS (visitor, right) · Acme Corp, outside the Trust Center -->
+        <rect x="850" y="126" width="210" height="148" rx="12" fill="#F5EDE2" stroke="#E2D3BF" stroke-width="1"/>
+        <rect x="913" y="134" width="84" height="18" rx="9" fill="#E8DBC8"/>
+        <text x="955" y="146.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#6E5536" letter-spacing="1.2">ACME CORP</text>
+        <text x="955" y="172" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#7A5A2F" letter-spacing="1.4">PROSPECTIVE BUYERS</text>
+        <text x="955" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Buyer, security rep &amp;</text>
+        <text x="955" y="214" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">procurement team</text>
+        <text x="955" y="232" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">evaluating DocuSign</text>
 
-        <!-- Admin <-> Agent (left) -->
-        <text x="333" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Sets permissions &amp; rules</text>
-        <line x1="232" y1="122" x2="431" y2="122" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
-        <line x1="431" y1="182" x2="232" y2="182" stroke="#8000DF" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#imap-arrow)"/>
-        <text x="333" y="202" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#51008D" font-weight="600">Logs gap in analytics</text>
+        <!-- SALES ACCOUNT EXEC (bottom center) · DocuSign -->
+        <rect x="400" y="346" width="280" height="102" rx="12" fill="#fff" stroke="rgba(39,0,68,0.13)" stroke-width="1"/>
+        <rect x="500" y="358" width="80" height="18" rx="9" fill="#F4EDFA"/>
+        <text x="540" y="370.5" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="#51008D" letter-spacing="1.2">DOCUSIGN</text>
+        <text x="540" y="396" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">SALES ACCOUNT EXEC</text>
+        <text x="540" y="420" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Self-serves answers to</text>
+        <text x="540" y="438" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">help an Acme prospect mid-deal</text>
 
-        <!-- Visitor <-> Agent (right) -->
-        <text x="748" y="112" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Asks a question</text>
-        <line x1="848" y1="122" x2="647" y2="122" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
-        <line x1="647" y1="182" x2="846" y2="182" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
-        <text class="imap-lbl-1" x="748" y="202" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Answers or admits knowledge gap</text>
-        <text class="imap-lbl-2" x="748" y="196" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45"><tspan x="748" dy="0">Answers or admits</tspan><tspan x="748" dy="14">knowledge gap</tspan></text>
+        <!-- 1 · Admin sets rules -->
+        <circle cx="258" cy="154" r="8" fill="#51008D"/><text x="258" y="157.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">1</text>
+        <text x="272" y="158" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Sets permissions &amp; rules</text>
+        <line x1="232" y1="168" x2="431" y2="168" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
 
-        <!-- Internal seller <-> Agent (vertical) -->
-        <line x1="528" y1="298" x2="528" y2="232" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
-        <line x1="552" y1="232" x2="552" y2="298" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
-        <text x="588" y="269" text-anchor="start" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Self-serves answers</text>
+        <!-- 2 · Visitor asks -->
+        <circle cx="727" cy="154" r="8" fill="#51008D"/><text x="727" y="157.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">2</text>
+        <text x="741" y="158" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Asks a question</text>
+        <line x1="848" y1="168" x2="647" y2="168" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
 
-        <!-- Internal seller helps the prospect (L-shaped, dashed) -->
-        <polyline points="680,351 955,351 955,214" fill="none" stroke="#8000DF" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#imap-arrow)"/>
-        <text x="817" y="343" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#51008D" font-weight="600">Helps the prospect</text>
+        <!-- 3 · Agent answers or admits the gap -->
+        <line x1="647" y1="228" x2="846" y2="228" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
+        <circle cx="732" cy="250" r="8" fill="#51008D"/><text x="732" y="253.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">3</text>
+        <text font-family="Inter, sans-serif" font-size="11" fill="#3A4A45"><tspan x="746" y="247">Answers, or</tspan><tspan x="746" y="261">admits the gap</tspan></text>
+
+        <!-- 4 · Gap logged for the admin -->
+        <line x1="431" y1="228" x2="232" y2="228" stroke="#8000DF" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#imap-arrow)"/>
+        <circle cx="261" cy="244" r="8" fill="#51008D"/><text x="261" y="247.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">4</text>
+        <text x="275" y="248" font-family="Inter, sans-serif" font-size="11" fill="#51008D" font-weight="600">Logs gap in analytics</text>
+
+        <!-- 5 · Seller self-serves -->
+        <line x1="528" y1="344" x2="528" y2="278" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
+        <line x1="552" y1="278" x2="552" y2="344" stroke="#51008D" stroke-width="1.5" marker-end="url(#imap-arrow)"/>
+        <circle cx="404" cy="311" r="8" fill="#51008D"/><text x="404" y="314.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">5</text>
+        <text x="418" y="315" font-family="Inter, sans-serif" font-size="11" fill="#3A4A45">Self-serves answers</text>
+
+        <!-- 6 · Seller helps the prospect -->
+        <polyline points="680,397 955,397 955,283" fill="none" stroke="#8000DF" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#imap-arrow)"/>
+        <circle cx="760" cy="385" r="8" fill="#51008D"/><text x="760" y="388.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">6</text>
+        <text x="774" y="389" font-family="Inter, sans-serif" font-size="11" fill="#51008D" font-weight="600">Helps the prospect</text>
       </svg>
-      <span class="map-hotspot" tabindex="0" style="left:33.3%; top:44%;" aria-label="Why unanswered questions are logged, not escalated">
+      <span class="map-hotspot" tabindex="0" style="left:33.3%; top:46.2%;" aria-label="Why unanswered questions are logged, not escalated">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
-        <span class="map-note-pop" role="tooltip"><strong>The hard part wasn't answering, it was not answering.</strong> Emailing the admin was the obvious fallback, but a self-serve visitor in their inbox meant they'd fallen below the white-glove line. So an unanswered question doesn't route a person: it's logged as a knowledge gap. The visitor gets an honest &ldquo;not documented yet,&rdquo; the corpus gets stronger, and the admin sees it in analytics instead of their inbox.</span>
+        <span class="map-note-pop" role="tooltip"><strong>The Agent knows when not to answer.</strong> Not answering is the hard part, but unanswered questions are compiled into knowledge gaps in the security team's analytics, so they can improve the knowledge and document base for visitors if they choose.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:19.8%; top:22%;" aria-label="The admin's goal and fear">
+      <span class="map-hotspot" tabindex="0" style="left:19.8%; top:27.7%;" aria-label="The admin's goal and fear">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
-        <span class="map-note-pop pop-bl" role="tooltip"><strong>Goal:</strong> trust the agent to represent the company accurately.<br><strong>Fear:</strong> it says something wrong, or shows a document to the wrong visitor.</span>
+        <span class="map-note-pop pop-bl" role="tooltip"><strong>Goal:</strong> the Trust Center and Agent take care of 95% of their incoming questions.<br><strong>Fear:</strong> the Trust Center Agent says something wrong, shows an unapproved document to the wrong visitor, or makes a statement they could be held liable for.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:96.7%; top:22%;" aria-label="The visitor's goal and fear">
+      <span class="map-hotspot" tabindex="0" style="left:96.7%; top:27.7%;" aria-label="The prospective buyers' goal and fear">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
-        <span class="map-note-pop pop-br" role="tooltip"><strong>Goal:</strong> get the docs and answers they came for, fast.<br><strong>Fear:</strong> a dead end, or chasing emails to finish a security review.</span>
+        <span class="map-note-pop pop-br" role="tooltip"><strong>Goal:</strong> get every document and answer they need on DocuSign's security posture, fast.<br><strong>Fear:</strong> 50 emails back and forth to get a single answer, or letting risky software into their ecosystem.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:55.6%; top:76%;" aria-label="Why the internal sales team is a second audience">
+      <span class="map-hotspot" tabindex="0" style="left:55.6%; top:73.1%;" aria-label="Why the internal sales team is a second audience">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
-        <span class="map-note-pop" role="tooltip"><strong>Two ways to the same answer.</strong> A visitor can self-serve directly - or get white-glove help from the vendor's own sales team, who use the very same agent to pull answers and documents for a prospect mid-deal. One agent and one permission layer served both the outside visitor and the inside seller - which is why a healthy share of usage was internal, alongside the 69% that was visitor-driven.</span>
+        <span class="map-note-pop" role="tooltip"><strong>Check the agent first.</strong> Account Execs help prospects by taking their questions to the security team. Overwhelmed security teams now ask them to check the Trust Center Agent first, where AEs get high internal permissions. Visitors still drove 69% of usage.</span>
+      </span>
+    </div>
+  </div>
+  <button class="continue" data-next="s4b">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE 4b · ORIENT: FLOW + ROUTING ===================== -->
+<section class="slide white" id="s4b">
+  <div class="slide-num">04 / 14</div>
+  <div class="inner">
+    <div class="eyebrow">04 · Orient: Flow &amp; Routing</div>
+    <h2 class="hero">Every path runs through one <em>permission layer</em>.</h2>
+    <div class="constraint-chips">
+      <span class="cc-label">Constraints</span>
+      <span class="cc" tabindex="0">2 months to beta
+        <span class="cc-pop" role="tooltip"><strong>Two months to a working beta.</strong>Bundle and Ask had to ship in two months, with a squad still onboarding to the product. Questionnaire, the riskiest tool call, got one more month on top.</span>
+      </span>
+      <span class="cc" tabindex="0">Access groups vary per customer
+        <span class="cc-pop" role="tooltip"><strong>No two permission setups alike.</strong>Every customer gated documents differently, with different access per visitor. The agent could only answer from what that visitor was allowed to see.</span>
+      </span>
+      <span class="cc" tabindex="0">Product Lines
+        <span class="cc-pop" role="tooltip"><strong>One company, many trust stories.</strong>Larger customers run sub-brands that each need their own scope. Intuit alone had five: TurboTax, Credit Karma, Mailchimp, ProConnect, QuickBooks. So the agent confirms which product a visitor means before it answers, and never mixes documents across lines. It wasn't the headline feature, but it blocked our largest clients, so it made the MVP.</span>
+      </span>
+      <span class="cc" tabindex="0">1 week to prototype
+        <span class="cc-pop" role="tooltip"><strong>A week from idea to tested flows.</strong>All three flows built in Lovable, put in front of design partners, then into final UI in Figma.</span>
       </span>
     </div>
 
-    <div class="slide-artifact image-top">
-      <div class="sa-img" style="background:#F5F5F5;">
-        <img src="Imagery/TC%20Agent%20User%20Flow%201.png" alt="User flow diagram showing the Trust Center Agent prompt and tools schematic">
+    <div class="fr-carousel">
+      <div class="fr-track">
+      <div class="fr-card fr-slide">
+        <div class="fr-tag">User flow · Sept 2025</div>
+        <div class="fr-img"><img src="Imagery/TC%20Agent%20User%20Flow%201.png" alt="User flow diagram showing the Trust Center Agent prompt and tools schematic"></div>
       </div>
-      <div class="sa-info">
-        <div class="sa-tag">User flow · Sept 2025</div>
-        <div class="sa-title">The routing logic we mapped before touching the chat surface</div>
-        <div class="sa-caption">Every path a visitor could take: NDA empty states, product-line confirmation, per-tool feedback loops, fallbacks for vague prompts, and the escalation that routes unanswerable questions to Slack. This became engineering's source of truth.</div>
-      </div>
-    </div>
-
-    <div class="constraints-diagram-row">
-      <div class="constraints">
-        <h5>Constraints we designed around</h5>
-        <ul>
-          <li>Two months to a working Bundle and Ask beta. One additional month for the Questionnaire tool call.</li>
-          <li>Access group complexity: every customer configured document permissions differently, with different levels of gating per visitor.</li>
-          <li>Product lines: larger companies had sub-brands that each needed their own scope - Intuit alone had five (TurboTax, Credit Karma, Mailchimp, ProConnect, QuickBooks), each needing its own permissions and routing.</li>
-          <li>One week to build all three flows in Lovable, get design partner feedback, then move into final UI in Figma.</li>
-        </ul>
-      </div>
-
-      <div class="tc-diagram-wrap">
+      <div class="fr-card fr-slide">
+        <div class="fr-tag">Tool-call routing</div>
         <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" class="tc-diagram" role="img" aria-label="Trust Center Agent tool call routing diagram">
           <defs>
             <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
@@ -1984,6 +2057,15 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <text x="840" y="506" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#001510" font-weight="600">CSV with flagged rows</text>
         </svg>
       </div>
+      </div>
+      <div class="rc-controls">
+        <button class="rc-btn rc-prev" aria-label="Previous diagram">&#8249;</button>
+        <div class="rc-dots">
+          <button class="rc-dot" aria-label="User flow"></button>
+          <button class="rc-dot" aria-label="Tool-call routing"></button>
+        </div>
+        <button class="rc-btn rc-next" aria-label="Next diagram">&#8250;</button>
+      </div>
     </div>
   </div>
   <button class="continue" data-next="s5">Continue ↓</button>
@@ -1991,12 +2073,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 5 · LOVABLE PROTOTYPING ===================== -->
 <section class="slide white" id="s5">
-  <div class="slide-num">04 / 11</div>
+  <div class="slide-num">05 / 14</div>
   <div class="inner">
-    <div class="eyebrow">04 · Prototyping in Lovable</div>
+    <div class="eyebrow">05 · Prototyping in Lovable</div>
     <h2 class="hero">How I prototyped 3 major agent flows in <em>a week</em>.</h2>
     <p class="lovable-hero">"Mapping the main success and failure paths gave the team something concrete to align on before finessing the prompts."</p>
-    <p class="lede">I partnered with my PM on the visuals, then brought the full squad in on interactions. A second round of customer feedback surfaced edge cases and sharpened our scope for final design.</p>
 
     <div class="lovable-grid">
       <div class="lovable-card">
@@ -2006,7 +2087,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <source src="Imagery/Gifs/bundle-docs.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="lc-caption">What it tested: prompt chip versus free-text input, bundled-zip download affordance.</div>
+        <div class="lc-caption">Tested: prompt chips vs free text, zip download.</div>
       </div>
 
       <div class="lovable-card">
@@ -2016,7 +2097,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <source src="Imagery/Gifs/ask-questions.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="lc-caption">What it tested: cited-chip response, snippet preview, click-through to source doc.</div>
+        <div class="lc-caption">Tested: cited chips, snippet preview, source click-through.</div>
       </div>
 
       <div class="lovable-card">
@@ -2026,28 +2107,20 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <source src="Imagery/Gifs/Questionnaire.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="lc-caption">What it tested: drag-and-drop questionnaire upload, per-question confidence, escalation flags, downloadable summary.</div>
+        <div class="lc-caption">Tested: upload, per-question confidence, escalation flags.</div>
       </div>
     </div>
-
-    <details>
-      <summary>What was hard about prototyping agentic flows in 2025</summary>
-      <div class="acc-body">
-        <p>Lovable was newer at Conveyor. Most product surfaces were designed in Figma and built straight to staging. For the agent, neither was an option. Figma couldn't simulate the conversational rhythm. Staging wasn't ready. Lovable let me build clickable prototypes with scripted AI responses, which let us test interaction model and tone before committing to a full Figma spec.</p>
-        <p>The hard part was that conversational flows are not linear. Each tool call had at least three failure modes (no access, no answer, partial answer) and a feedback loop. Capturing those in a prototype meant building eight to ten distinct end-states per flow, not three.</p>
-      </div>
-    </details>
   </div>
   <button class="continue" data-next="s6">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 6 · LIVE PROTOTYPE ===================== -->
 <section class="slide sand" id="s6" style="padding-bottom: 48px;">
-  <div class="slide-num">05 / 11</div>
+  <div class="slide-num">06 / 14</div>
   <div class="inner">
-    <div class="eyebrow">05 · Agent Prototyping</div>
-    <h2 class="hero">Live <em>prototype</em>.</h2>
-    <p class="lede">Click around to view the agent prototype in action. I recreated production in Lovable and built the agent on top for the most believable test environment.</p>
+    <div class="eyebrow">06 · Agent Prototyping</div>
+    <h2 class="hero">First Prototype <em>Flows</em>.</h2>
+    <p class="lede">Agent interaction flows built with Lovable, to test functionality with our users.</p>
   </div>
   <a href="https://tcagentflow.lovable.app/" target="_blank" rel="noopener" style="display: block; max-width: var(--maxw); margin: 40px auto 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--hairline); cursor: pointer;">
     <img class="proto-shot" src="Imagery/Prototype Screenshot.png" alt="The Conveyor AI agent completing a security questionnaire (83/100 answered) inside the MediaCore trust portal" style="width: 100%; height: auto; display: block;">
@@ -2065,24 +2138,24 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <div class="reflection-card">
               <div class="r-num">Access &amp; NDAs</div>
               <h4>Reviewers wanted certainty about who could see what.</h4>
-              <p>NDAs run through DocuSign, and role-based access governs every document. <strong>→</strong> We required sign-in and a signed NDA to use the agent - no anonymous visitors, for security and correct permissions.</p>
+              <p><strong>→</strong> Sign-in and a signed NDA required. No anonymous visitors.</p>
             </div>
             <div class="reflection-card">
               <div class="r-num">Download behavior</div>
               <h4>Reviewers hated clicking through docs one at a time.</h4>
-              <p>Docs are previewed and downloaded with watermarks, but they'd grab everything and sort it later. <strong>→</strong> So the agent bundles the relevant set into a one-click "Download All" zip.</p>
+              <p><strong>→</strong> One-click "Download All" zip.</p>
             </div>
           </div>
           <div class="rc-page">
             <div class="reflection-card">
               <div class="r-num">Questionnaires</div>
               <h4>Even a 50%-complete questionnaire is a win.</h4>
-              <p>If the answers are sourced, it gets them started on the work. <strong>→</strong> We optimized for a cited, partial draft they can finish - not a brittle end-to-end auto-fill.</p>
+              <p><strong>→</strong> Cited partial drafts over brittle auto-fill.</p>
             </div>
             <div class="reflection-card">
               <div class="r-num">Disclaimer language</div>
               <h4>A tiny note became a blocker to adoption.</h4>
-              <p>For major customers the AI disclaimer wasn't a footnote - their legal teams wanted to write and approve it. <strong>→</strong> We made the disclaimer text configurable per trust center.</p>
+              <p><strong>→</strong> Disclaimer text configurable per Trust Center.</p>
             </div>
           </div>
         </div>
@@ -2103,11 +2176,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 7 · CAST ===================== -->
 <section class="slide mint" id="s7">
-  <div class="slide-num">06 / 11</div>
+  <div class="slide-num">07 / 14</div>
   <div class="inner">
-    <div class="eyebrow">06 · The Cast</div>
+    <div class="eyebrow">07 · The Cast</div>
     <h2 class="hero">Tracking customer <em>feelings</em> across releases.</h2>
-    <p class="lede">Every external participant was categorized into Bullish, Moderate, or Conservative. We followed these voices and tracked the fears and excitements with each round of iterations.</p>
+    <p class="lede">Every participant tagged Bullish, Moderate, or Conservative, and tracked across rounds.</p>
 
     <div class="cast-strip">
       <div class="strip-card"><img src="Imagery/Card%20Sorting-%20Figma%20JL.png" alt="Figma card sort artifact"><div class="strip-cap">Figma · J.L.</div></div>
@@ -2131,24 +2204,17 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="cast-card internal"><div class="head"><div class="avatar">LG</div><div class="name-co"><div class="name">L.G.</div><div class="co">Conveyor · internal</div></div></div><span class="persona-pill internal">Internal</span><div class="quote">"This is exciting for me to demo to customers as a wow factor."</div></div>
       <div class="cast-card internal"><div class="head"><div class="avatar">AW</div><div class="name-co"><div class="name">A.W.</div><div class="co">Conveyor · prompt review</div></div></div><span class="persona-pill internal">Internal</span><div class="quote">"This makes sense in a flow standpoint, but I am concerned about the speed of the agent."</div></div>
     </div>
-
-    <details>
-      <summary>How we ran the sessions</summary>
-      <div class="acc-body">
-        <p>Each external participant was a current Conveyor customer who opted into being a design partner. Sessions usually ran for sixty minutes, with screen-shared prototype walkthroughs plus open discussion. We were able to synthesize their feedback and understand what their top three preferences were from each prototype and what concerns they might have had otherwise.</p>
-      </div>
-    </details>
   </div>
   <button class="continue" data-next="s8">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 8 · DECIDE ===================== -->
 <section class="slide cream" id="s8">
-  <div class="slide-num">07 / 11</div>
+  <div class="slide-num">08 / 14</div>
   <div class="inner">
-    <div class="eyebrow">07 · Decide</div>
+    <div class="eyebrow">08 · Decide</div>
     <h2 class="hero">How Value vs Risk gave us our <em>MVP</em>.</h2>
-    <p class="lede">We mapped all major features and feature requirements, building in high value with low risk first.</p>
+    <p class="lede">High value, low risk first.</p>
 
     <div class="matrix-wrap">
       <div class="matrix">
@@ -2175,10 +2241,10 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
     </div>
 
-    <p class="matrix-frame-line">Five features made the first iteration: <strong>Bundle Documents, Ask a Question, NDA Flow, Product Lines, and AI Feedback Loops.</strong> Both NDA Flow and Product Lines were blockers to adoption for our largest clients - although not the main focus, they were necessary to safely have users trying out the tool. Questionnaire had the most excitement but also the most fear - we scoped it as a <strong>stretch goal for post-MVP.</strong></p>
+    <p class="matrix-frame-line">MVP: <strong>Bundle, Ask, NDA Flow, Product Lines, Feedback Loops.</strong> Questionnaire, most wanted and most feared, became a <strong>post-MVP stretch</strong>.</p>
 
     <details>
-      <summary>The 9-session × 5-flow sentiment heatmap (supporting evidence)</summary>
+      <summary>Sentiment heatmap: 9 sessions × 5 flows</summary>
       <div class="acc-body">
         <div class="heatmap">
           <div class="head-row"><div></div><div>QM</div><div>GH</div><div>HS1</div><div>HS2</div><div>WD</div><div>KL</div><div>Joe</div><div>Leah</div><div>Albert</div><div>% key</div></div>
@@ -2188,7 +2254,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="row"><div class="row-label">Rec by Popularity</div><div class="heat-cell N">N</div><div class="heat-cell M">M</div><div class="heat-cell M">M</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="heat-cell M">M</div><div class="row-pct">44%</div></div>
           <div class="row"><div class="row-label">Answer a Questionnaire</div><div class="heat-cell S">S</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="heat-cell M">M</div><div class="heat-cell E">E</div><div class="heat-cell M">M</div><div class="heat-cell N">N</div><div class="heat-cell N">N</div><div class="row-pct">33%</div></div>
         </div>
-        <p style="margin-top:14px;">Excited (E), Neutral (N), Mixed (M), Scared (S) per flow per session, re-watched in Gong by two reviewers. Answer a Questionnaire drew the lone Scared rating and two Mixed; re-watching those Gong sessions surfaced the specific concerns and edge cases behind them. Together with the lukewarm scores on Popularity-based recommendations, these were the risk signals that pushed both flows out of the MVP.</p>
+        <p style="margin-top:14px;">Excited / Neutral / Mixed / Scared per session, re-watched in Gong. Questionnaire drew the only Scared.</p>
         <img src="Imagery/kickoff-data.png" alt="Synthesis data artifact from project kickoff">
       </div>
     </details>
@@ -2198,11 +2264,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 9 · SHIP (MERGED: FINDINGS + SPEC + LAUNCH) ===================== -->
 <section class="slide white" id="s9">
-  <div class="slide-num">08 / 11</div>
+  <div class="slide-num">09 / 14</div>
   <div class="inner">
-    <div class="eyebrow">08 · Ship</div>
+    <div class="eyebrow">09 · Ship</div>
     <h2 class="hero">The design <em>considerations</em> underneath our Agent.</h2>
-    <p class="lede">With clients ranging from excited to scared, we needed the agent to feel effortless on day one, with deliberate accommodations for AI-skeptics and an experience far beyond the automated bots people dread.</p>
+    <p class="lede">Effortless on day one, safe for AI skeptics.</p>
 
     <!-- 3 spec columns: what shipped per tool call -->
     <div class="spec-cols">
@@ -2210,29 +2276,26 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="sc-tag">Tool call · Bundle</div>
         <h4>Bundle Documents</h4>
         <img class="spec-thumb" src="Imagery/Rec%20Docs.png" alt="Bundle Documents - SOC 2 recommended docs with Download All">
-        <p>Every customer we spoke to had the same first instinct: find the documents they need and download them. The frustration was always in the search, not the download.</p>
-        <p>Admins already know the standard bundle that covers most requests, so the agent surfaces a Featured Documents section automatically as a one-click zip. One click in place of ten.</p>
+        <p>The pain was the search, not the download. <strong>→</strong> Admin-featured docs as a one-click zip.</p>
       </div>
       <div class="spec-col">
         <div class="sc-tag">Tool call · Ask</div>
         <h4>Ask a Question</h4>
         <img class="spec-thumb" src="Imagery/Question%20AMA.png" alt="Ask a Question - cited response with source documents">
-        <p>AI-skeptics did not want to trust a generated response, and both admins and visitors worried about hallucinations and who would be held responsible for one.</p>
-        <p>We decided security professionals needed exact quotes and the source documents they came from. On click, users can open the document and see highlighted content where the response originated.</p>
+        <p>Skeptics feared hallucinations. <strong>→</strong> Exact quotes, highlighted in the source doc.</p>
       </div>
       <div class="spec-col">
         <div class="sc-tag">Tool call · Answer</div>
         <h4>Answer a Questionnaire</h4>
         <img class="spec-thumb" src="Imagery/Questionnaire%20Extract.png" alt="Answer a Questionnaire - upload and extraction in progress">
-        <p>The biggest time sink for Trust Center visitors is manually filling out security questionnaires. If a user could upload one and get it returned complete, that alone would be transformative.</p>
-        <p>But admins needed proof it worked before they would trial it. That led us to build analytics and insights so admins could see exactly what the agent was providing to their customers.</p>
+        <p>Visitors' biggest time sink. <strong>→</strong> Admins needed proof of accuracy, so analytics shipped too.</p>
       </div>
     </div>
 
     <!-- Designing for AI uncertainty (trust-system frame, tabbed) -->
     <div style="margin-top:34px;">
       <div style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; letter-spacing:1.4px; text-transform:uppercase; color:var(--purple-700); margin-bottom:8px;">Designing for AI uncertainty</div>
-      <p style="margin:0 0 6px; font-size:0.95rem; color:var(--ink-2);">The real question was never "build a chatbot" - it was how a security reviewer trusts an AI answer when a wrong one means a failed audit. A few deliberate mechanisms did that, plus the decisions and launch work around them. Tab through each.</p>
+      <p style="margin:0 0 6px; font-size:0.95rem; color:var(--ink-2);">How does a reviewer trust an AI answer when a wrong one means a failed audit?</p>
 
       <!-- Icon tabs + panel -->
       <div class="icon-tabs-wrap" style="margin-top:18px;">
@@ -2269,8 +2332,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="icon-panel active" id="panel-confidence">
             <div class="panel-cols">
               <div>
-                <p><b>Confidence, scored - not guessed.</b> Every answer gets a rating - <b>Green</b> (exact match to an approved answer), <b>Blue</b> (high confidence, strong sources), or <b>Yellow</b> (uncertain). Admins set the release policy on each tier, so the agent auto-sends what it's sure of and holds the rest for a human.</p>
-                <p><b>The ultimate override is a kill switch</b> - admins can turn the agent off in one click, per Trust Center or per questionnaire. Betting on that opt-out is what drove opt-in: customers who said "not ready" had it toggled on by December.</p>
+                <p><b>Scored, not guessed.</b> Green, Blue, Yellow. Admins choose which tiers auto-send.</p>
+                <p><b>Kill switch:</b> one click off, per Trust Center or questionnaire. The opt-out drove opt-in.</p>
               </div>
               <div>
                 <div style="width:340px; max-width:100%; border:1px solid var(--hairline); border-radius:10px; overflow:hidden; background:#fff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -2305,8 +2368,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="icon-panel" id="panel-threshold">
             <div class="panel-cols">
               <div>
-                <p><b>The admin sets the bar.</b> Drag to choose how confident the agent must be before it answers on its own. Below the line it holds for a human first - and it only ever answers with a citation.</p>
-                <p>One dial lets a nervous admin ship cautiously and a confident one move fast, with no code change.</p>
+                <p><b>The admin sets the bar.</b> Below it, a human reviews first. Always cited.</p>
               </div>
               <div>
                 <div style="width:400px; max-width:100%;">
@@ -2321,13 +2383,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           </div>
           <!-- Quality / LangSmith (merged with continuous evals) -->
           <div class="icon-panel" id="panel-langsmith">
-            <p>Continuous evals graded every answer against a gold-standard set - a <b>~0.1% hallucination rate</b> on questionnaires - and the team spot-checked 10% of conversations in LangSmith, scoring each on five dimensions: <b>clarity, completeness, correctness, relevance, and safety</b>.</p>
-            <p>Flagged responses fed straight back into the system prompt and retrieval tuning between releases - surfacing hallucinations and permission edge cases early, and driving latency from <b>~30s at beta to 5.7s</b> by swapping LLM-based document selection for deterministic search plus a model upgrade.</p>
+            <p><b>~0.1% hallucination rate</b> on questionnaires. <b>10%</b> of conversations scored in LangSmith for clarity, completeness, correctness, relevance, safety.</p>
+            <p>Findings fed prompt and retrieval tuning. Latency <b>~30s → 5.7s</b>.</p>
             <img src="Imagery/Langsmith%20full.png" alt="LangSmith quality spot check interface" style="display:block; width:100%; margin-top:16px; border:1px solid var(--hairline); border-radius:10px;">
           </div>
           <!-- Design decisions -->
           <div class="icon-panel" id="panel-decisions">
-            <p><b>Design the tool call, not the screen.</b> The chat surface looked the same for all three flows. The real design work was the path underneath: input, retrieval, generation, citation, escalation, output.</p>
+            <p><b>Design the tool call, not the screen.</b> Same chat UI; the work was the path underneath.</p>
             <p><b>Citations are the permission to act.</b> Without a visible source, even a correct answer was unusable to a security reviewer.</p>
             <p><b>Escalation is the primary UI.</b> The agent shipped because it knew when not to answer.</p>
           </div>
@@ -2335,8 +2397,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="icon-panel" id="panel-launch">
             <div class="panel-cols">
               <div>
-                <p><b>I owned launch readiness end-to-end</b> - marketing (product-page and social assets, launch video, blog), sales enablement (deck, objection-handling guide, FAQ), and updated agent docs, all shipped alongside the product.</p>
-                <p><b>Then I stayed close to adoption:</b> white-glove setup for every early customer, weekly reviews of usage and response quality, and manual Looker reporting until in-app analytics shipped. 3+ early adopters live in December.</p>
+                <p><b>I owned launch readiness:</b> marketing, sales enablement, agent docs.</p>
+                <p><b>Then adoption:</b> white-glove setup, weekly quality reviews, manual Looker reports.</p>
               </div>
               <div>
                 <img src="Imagery/Marketing.png" alt="Trust Center Agent marketing graphic: 'No more Trust Center scavenger hunts'" style="max-width:280px;">
@@ -2346,31 +2408,17 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         </div>
       </div>
     </div>
-
-
-
-    <details>
-      <summary>The launch milestones</summary>
-      <div class="acc-body">
-        <ul>
-          <li>November 7: Launch inside Conveyor's own Trust Center (Labs)</li>
-          <li>November 12: Marketing launch (blog, social, video)</li>
-          <li>December 8: First customer access (MVP at GA)</li>
-          <li>January 12: Questionnaire flow GA</li>
-        </ul>
-      </div>
-    </details>
   </div>
   <button class="continue" data-next="s10">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 10 · IMPACT (MIDNIGHT) ===================== -->
 <section class="slide midnight" id="s10">
-  <div class="slide-num">09 / 11</div>
+  <div class="slide-num">10 / 14</div>
   <div class="inner">
-    <div class="eyebrow">09 · Live / Impact</div>
+    <div class="eyebrow">10 · Live / Impact</div>
     <h2 class="hero">What <em>five months</em> of production usage looked like.</h2>
-    <p class="lede">From December's launch through May 2026, the agent reached 17,045 interaction turns across 173 customers. The customers most afraid of it in September were among the first to enable it.</p>
+    <p class="lede">Dec 2025 - May 2026. The customers most afraid in September were among the first to enable it.</p>
 
     <div class="impact-stats">
       <div class="stat"><div class="big-num">173</div><div class="label">customers with agent enabled (61%)</div></div>
@@ -2431,25 +2479,23 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="ui-card">
         <h4>What usage behavior told us</h4>
         <ul>
-          <li>Customers have a clear goal: <em>completing a security review</em>. The agent is trusted as a source of truth during that process.</li>
-          <li>Interactions are focused on <em>specific artifacts</em>, not exploration. Engagement depth suggests real usage, not casual browsing.</li>
-          <li>I flagged that a legacy feature - the <em>"Questionnaire Eliminator,"</em> a slow single-question modal - would "eat" the new agent and confuse users. At launch, some admins tried the old feature for the first time; I advocated for users and built the <em>deprecation plan</em> to migrate them onto the agent before GA.</li>
+          <li>Goal-driven: <em>completing a security review</em>.</li>
+          <li>Focused on <em>specific artifacts</em>, not browsing.</li>
         </ul>
       </div>
       <div class="ui-card">
         <h4>What we learned</h4>
         <ul>
-          <li>There is no clear signal today that a review is <em>"complete"</em> or that the user has gathered all the details they need.</li>
-          <li>General queries via LangSmith show visitors using the agent to find <em>SOC 2 Type II reports</em>, data security and handling info, and cyber insurance details. Conversations show users moving through <em>related questions</em>.</li>
-          <li>User adoption is <em>highly varied</em>: some customers like Carta, Lucid, and Zendesk have had rapid visitor adoption, while others remain minimal or only have internal users accessing the agent.</li>
+          <li>No clear signal a review is <em>"complete"</em>.</li>
+          <li>Adoption <em>highly varied</em>: Carta, Lucid, Zendesk fast; others internal-only.</li>
         </ul>
       </div>
       <div class="ui-card">
         <h4>How this guides future direction</h4>
         <ul>
-          <li>Expanding agent knowledge beyond Documents and Knowledge Base was top priority: adding <em>subprocessors, announcements</em>, and other page sources, along with possible external sources like main pages or status pages.</li>
-          <li>Specific verbiage for <em>AI disclaimers</em> was much more important than expected for individual customers, even though we used industry-standard language. This was an <em>urgent but small</em> ask to unblock major customers.</li>
-          <li>Allowing customers to receive <em>analytics reports</em> and view messages asked of the agent excited admins, giving us a clear "go" to continue improving analytics from a Looker report to our internal <em>Conveyor dashboards</em>.</li>
+          <li>Expand knowledge: <em>subprocessors, announcements</em>, status pages.</li>
+          <li><em>Configurable AI disclaimers</em> to unblock major customers.</li>
+          <li>Analytics: Looker report → <em>in-app dashboards</em>.</li>
         </ul>
       </div>
     </div>
@@ -2461,7 +2507,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div>
             <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-200); margin-bottom: 8px;">Agent behavior</p>
             <p style="font-weight: 600; font-size: 1rem; color: #fff; margin-bottom: 8px;">What agent behavior are users most interested in?</p>
-            <p>We partnered with Engineering and Data Analytics to surface the right insights for early adopters. The scrappy version was to first build in Looker, then email weekly and monthly reports to top customers. That feedback loop taught us which metrics mattered and which were noise.</p>
+            <p>Built in Looker first and emailed to top customers. It taught us which metrics mattered.</p>
           </div>
           <div>
             <img src="Imagery/tc-agent-metrics-sketch.png" alt="Early sketch of Trust Center Agent metrics" style="width: 100%; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);">
@@ -2476,25 +2522,16 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 11 · FIGMA FLOWS & PASSOFF ===================== -->
 <section class="slide sand" id="s11">
-  <div class="slide-num">10 / 11</div>
+  <div class="slide-num">11 / 14</div>
   <div class="inner">
-    <div class="eyebrow">10 · Figma Flows</div>
-    <h2 class="hero">Final pixel-perfect flows and <em>passoff</em> in Figma.</h2>
-    <p class="lede">Shipping five parallel workstreams took constant advocacy - for users against a confusing legacy feature, for engineers to invest in reusable components, and for data-sized scoping when edge cases spooked the team. Clearly mapped Figma flows kept everyone aligned as new members ramped up.</p>
+    <div class="eyebrow">11 · Figma Flows</div>
+    <h2 class="hero">Communicating edge cases and flows for <em>Passoff</em>.</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; margin-top: 24px;">
-      <div style="background: rgba(39, 0, 68, 0.025); border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
-        <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--purple-700); margin-bottom: 8px;">Onboarding a growing team</h4>
-        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">Several designers and engineers joined mid-project. I onboarded the new designers and mapped the flows into clear workstreams, so five parallel tracks shipped without gaps.</p>
-      </div>
-      <div style="background: rgba(39, 0, 68, 0.025); border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
-        <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--purple-700); margin-bottom: 8px;">Aligning on edge cases with data</h4>
-        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">As we spoke with users, edge cases surfaced that sent the team into a panic. I'd pause and ask for the metrics - how often does this really happen, which accounts hit it, how many times in the past year - so engineering could size the actual risk and safely defer the rare ones instead of building for every hypothetical.</p>
-      </div>
-      <div style="background: rgba(39, 0, 68, 0.025); border: 1px solid var(--hairline); border-radius: 12px; padding: 22px 24px;">
-        <h4 style="font-size: 0.85rem; font-weight: 600; color: var(--purple-700); margin-bottom: 8px;">Advocating for a component system</h4>
-        <p style="font-size: 0.88rem; color: var(--ink-2); line-height: 1.55;">Conveyor had inherited only a baseline buttons-and-text file, and as new designers joined and AI spread through the product, the drift showed. I advocated for engineering to build components into Storybook for reuse - starting with the new chat patterns I saw could be reused across the whole app.</p>
-      </div>
+    <div class="constraint-chips lede-chips">
+      <span class="lede">Across five workstreams, I also led</span>
+      <span class="cc" tabindex="0">Deprecating a legacy feature<span class="cc-pop" role="tooltip"><strong>Deprecating a legacy feature</strong>The old Questionnaire Eliminator would confuse users next to the agent. I built the plan to migrate them off it before GA.</span></span>
+      <span class="cc" tabindex="0">Sizing edge cases with data<span class="cc-pop" role="tooltip"><strong>Sizing edge cases with data</strong>When edge cases surfaced in user calls and spooked the team, I asked for the metrics: how often it really happens, which accounts hit it, how many times last year. Engineering could size the real risk and safely defer the rare ones.</span></span>
+      <span class="cc" tabindex="0">Advocating for a component system<span class="cc-pop" role="tooltip"><strong>Advocating for a component system</strong>We'd inherited only a basic buttons-and-text file, and drift showed as new designers joined. I pushed engineering to build our new chat patterns into Storybook for reuse across the whole app.</span></span>
     </div>
 
     <div class="figma-carousel" id="figma-carousel">
@@ -2515,16 +2552,77 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <p style="text-align: center; padding-bottom: 18px;"><a href="https://www.figma.com/design/YoSr9xKXKAK5MqD1AoaJ0z/Trust-Center-Agent?node-id=0-1&t=ELbQJECm2jU0MM2W-1" target="_blank" rel="noopener" class="carousel-cta">View Figma File</a></p>
     </div>
   </div>
+  <button class="continue" data-next="s-vision">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE · VISION (draft3 placeholder) ===================== -->
+<section class="slide white" id="s-vision">
+  <div class="slide-num">12 / 14</div>
+  <div class="inner">
+    <div class="eyebrow">12 · Vision</div>
+    <h2 class="hero">The Trust Center <em>vision</em>.</h2>
+    <p class="lede">Leading the first design vision: Trust Centers 1 year out, as trust in AI agents grows and workflows improve.</p>
+    <a class="vision-shot" href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener">
+      <img src="Imagery/trust-center-vision.png" alt="Trust Center vision prototype: Arcline Trust Center overview with the Coco agent's review to-do list alongside">
+    </a>
+    <div style="text-align: center; margin-top: 14px;">
+      <a href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener" class="vision-cta">Open vision prototype ↗</a>
+    </div>
+  </div>
+  <button class="continue" data-next="s-improve">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE · IMPROVEMENTS (draft3 placeholder) ===================== -->
+<section class="slide mint" id="s-improve">
+  <div class="slide-num">13 / 14</div>
+  <div class="inner">
+    <div class="eyebrow">13 · Improvements</div>
+    <h2 class="hero">How Vision influenced the future of the <em>Agent</em>.</h2>
+    <p class="lede">Showing the agent's work, so visitors can check it before they trust it.</p>
+
+    <div class="imp-grid">
+      <div class="imp-hero">
+        <a class="imp-shot" href="https://ivitso.github.io/TrustCenter-AgentReasoning-Prototype/#/trust-center/preview" target="_blank" rel="noopener" aria-label="Open the reasoning prototype">
+          <img src="Imagery/reasoning-full-chat.png" alt="Conveyor Trust Center with the AI agent panel showing its reasoning steps and a cited SOC 2 source">
+          <span class="imp-shot-cta" aria-hidden="true">Open reasoning prototype ↗</span>
+        </a>
+      </div>
+      <div class="imp-cards">
+        <div class="imp-card">
+          <div class="imp-thumb"><img src="Imagery/reasoning-trace.png" alt="How this answer was put together: plan, searches, SOC 2 page read, and conclusion"></div>
+          <div><div class="fr-tag">01</div><h4>Agent reasoning</h4><p>States a plan, then why the sources agree.</p></div>
+        </div>
+        <div class="imp-card">
+          <div class="imp-thumb"><img src="Imagery/reasoning-live-steps.png" alt="Agent streaming its search steps live in the chat"></div>
+          <div><div class="fr-tag">02</div><h4>Visible steps</h4><p>Every search streams live, misses included.</p></div>
+        </div>
+        <div class="imp-card">
+          <div class="imp-thumb"><img src="Imagery/reasoning-cited-answer.png" alt="Answer with an exact quote from the SOC 2 Type II, page 14, plus all sources to download"></div>
+          <div><div class="fr-tag">03</div><h4>Building trust</h4><p>Exact quote, page cite, every source to download.</p></div>
+        </div>
+      </div>
+      <div class="imp-cta">
+        <span class="studio-link">
+          <a class="vision-cta" href="https://ivitso.github.io/ask-conveyorai-latency/narration-studio/" target="_blank" rel="noopener">Reasoning Design Studio <span class="wip-tag">Work in progress ↗</span></a>
+          <span class="studio-pop" role="tooltip">
+            <img src="Imagery/narration-studio.webp" alt="Reasoning Design Studio: replaying the eight agent states against real run lengths, with a timeline of events and the line the user sees" loading="lazy">
+            <span class="studio-pop-cap"><strong>Work in progress</strong> Replays every agent state at real run lengths, so a status line always covers the wait.</span>
+          </span>
+        </span>
+      </div>
+    </div>
+
+  </div>
   <button class="continue" data-next="s12">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 12 · REFLECTION ===================== -->
 <section class="slide cover" id="s12">
-  <div class="slide-num">11 / 11</div>
+  <div class="slide-num">14 / 14</div>
   <div class="inner">
-    <div class="eyebrow">11 · Reflection</div>
+    <div class="eyebrow">14 · Reflection</div>
     <h2 class="hero">What I'm <em>taking</em> forward.</h2>
-    <p class="lede">Learning and tradeoffs to take to the next agentic product.</p>
+    <p class="lede">Learnings and tradeoffs for the next agentic product.</p>
 
     <div class="reflection-carousel">
       <div class="rc-viewport">
@@ -2533,48 +2631,48 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <div class="reflection-card">
               <div class="r-num">01</div>
               <h4>Data turns skeptics into champions.</h4>
-              <p>Scrappy Looker reports and emailed weekly summaries gave admins visibility into what their visitors were actually asking. Once they could see the agent working, adoption stopped being a sell and started being a pull.</p>
+              <p>Once admins could see what visitors asked, adoption became a pull.</p>
             </div>
             <div class="reflection-card">
               <div class="r-num">02</div>
               <h4>Agentic design is more than the seed prompts.</h4>
-              <p>Even though the chat surface is a wrapper around the agent prompting, it's important to help build trust for the user. The language of the agent, tone of voice, and how it responded in error states were carefully considered UX points and iterated on. With no established design system and new team members joining mid-project, every component had to be built for reuse and every flow mapped for handoff.</p>
+              <p>Tone, language, and error states built trust as much as the model.</p>
             </div>
           </div>
           <div class="rc-page">
             <div class="reflection-card">
               <div class="r-num">03</div>
-              <h4>Continuous feedback is better than one kick-off round.</h4>
-              <p>We were able to do initial discussions, Lovable prototype feedback, and then Beta release to our own Trust Center, allowing users to get a feel of what the interactions were before releasing to GA. We also gave white glove support for major customers to ensure their onboarding was successful.</p>
+              <h4>Permissions work is invisible work.</h4>
+              <p>Nobody notices access gating until it's missing.</p>
             </div>
             <div class="reflection-card">
               <div class="r-num">04</div>
-              <h4>Permissions work is invisible work.</h4>
-              <p>Access groups, NDA gating, doc-level permissions, session tokens, and translations are all part of the first impression of the agent. However, until they are missing, the customer never realizes they're there.</p>
+              <h4>The opt-out is design.</h4>
+              <p>Default on, one-click off: 61% adoption, very few turned it off.</p>
             </div>
           </div>
           <div class="rc-page">
             <div class="reflection-card">
               <div class="r-num">05</div>
-              <h4>The opt-out is design.</h4>
-              <p>Letting AI-skeptical admins toggle the agent on or off at any time - and test as their own user groups - is what got them to turn it on. I defaulted every customer to agent ON with a one-click off; it drew some opt-out-vs-opt-in complaints and support tickets, but adoption hit 61% and very few actually turned it off. The opt-out affordance was the thing that built trust.</p>
+              <h4>More proof isn't more trust.</h4>
+              <p>Full quoted sources felt heavy. Clickable citations got read and trusted.</p>
             </div>
             <div class="reflection-card">
               <div class="r-num">06</div>
-              <h4>Name the confusion before it compounds.</h4>
-              <p>The overlap between the old Questionnaire Eliminator and the new agent caused friction with both customers and internal teams. Identifying that confusion early and creating a deprecation plan prevented it from undermining the launch.</p>
+              <h4>Earn trust before the biggest ask.</h4>
+              <p>Deferring the #1 request, Questionnaire support, ~14 weeks made its launch smooth.</p>
             </div>
           </div>
           <div class="rc-page">
             <div class="reflection-card">
               <div class="r-num">07</div>
-              <h4>More proof isn't more trust.</h4>
-              <p>V1 showed the full quoted source alongside every answer. After users pushed back, I cut it for clickable citations. The cost was less immediate proof the AI wasn't hallucinating - you had to click to verify - but people actually read and trusted the answers. More information had reduced trust, not increased it.</p>
+              <h4>Pausing to look ahead pays off.</h4>
+              <p>Designing a year out sharpened our strategy and roadmap for today.</p>
             </div>
             <div class="reflection-card">
               <div class="r-num">08</div>
-              <h4>Earn trust before the biggest ask.</h4>
-              <p>The questionnaire was the #1 request but also the highest-risk tool call, so I deferred it ~14 weeks to January. Our most enthusiastic customers had to wait for the thing they wanted most - but by the time it shipped, the first two tool calls had earned enough trust that questionnaire adoption was smooth.</p>
+              <h4>Size the edge case before designing for it.</h4>
+              <p>Asking "how often does this really happen?" let us defer rare cases safely.</p>
             </div>
           </div>
         </div>
@@ -2630,7 +2728,7 @@ document.querySelectorAll('.continue').forEach(el => {
 
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
-document.querySelectorAll('.spec-thumb, .figma-frame img, .strip-card img, .lc-image img, .research-artifact img, .slide-artifact img, details img').forEach(img => {
+document.querySelectorAll('.spec-thumb, .figma-frame img, .fr-img img, .imp-thumb img, .strip-card img, .lc-image img, .research-artifact img, .slide-artifact img, details img').forEach(img => {
   img.addEventListener('click', () => {
     lightboxImg.src = img.src;
     lightboxImg.alt = img.alt;
@@ -2781,6 +2879,41 @@ document.querySelectorAll('.conf-slider').forEach(function(sl){
 });
 
 // Reflection carousel: two cards per page
+// Orient flow/routing carousel: next diagram peeks in from the side
+document.querySelectorAll('.fr-carousel').forEach(function(car){
+  var track = car.querySelector('.fr-track');
+  var slides = Array.prototype.slice.call(track.querySelectorAll('.fr-slide'));
+  var dots = car.querySelectorAll('.rc-dot');
+  var prev = car.querySelector('.rc-prev'), next = car.querySelector('.rc-next');
+  function current() {
+    var max = track.scrollWidth - track.clientWidth;
+    if (track.scrollLeft >= max - 4) return slides.length - 1;
+    var step = slides[1] ? slides[1].offsetLeft - slides[0].offsetLeft : 1;
+    return Math.round(track.scrollLeft / step);
+  }
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    var left = i === slides.length - 1 ? track.scrollWidth : slides[i].offsetLeft - slides[0].offsetLeft;
+    track.scrollTo({ left: left, behavior: 'smooth' });
+  }
+  function update() {
+    var c = current();
+    slides.forEach(function(s, i){ s.classList.toggle('is-peek', i !== c); });
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === c); });
+    prev.disabled = c === 0; next.disabled = c === slides.length - 1;
+  }
+  prev.addEventListener('click', function(){ go(current() - 1); });
+  next.addEventListener('click', function(){ go(current() + 1); });
+  dots.forEach(function(d, i){ d.addEventListener('click', function(){ go(i); }); });
+  // Clicking the peeking diagram brings it into view (instead of opening the lightbox)
+  track.addEventListener('click', function(e){
+    var s = e.target.closest('.fr-slide');
+    if (s && s.classList.contains('is-peek')) { e.preventDefault(); e.stopPropagation(); go(slides.indexOf(s)); }
+  }, true);
+  track.addEventListener('scroll', function(){ requestAnimationFrame(update); });
+  update();
+});
+
 document.querySelectorAll('.reflection-carousel').forEach(function(car){
   var track = car.querySelector('.rc-track');
   var pages = car.querySelectorAll('.rc-page');

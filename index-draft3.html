@@ -714,6 +714,11 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .gl-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
 .gl-card.pop-left .gl-pop { left: auto; right: calc(100% + 12px); width: 400px; transform: translateX(6px); }
 .gl-card.pop-sm .gl-pop { width: 440px; max-width: 86vw; top: auto; bottom: 0; }
+.pl-tree { display: flex; flex-direction: column; align-items: center; background: #F4F5F8; border: 1px solid var(--hairline); border-radius: 8px; padding: 18px 0 6px; }
+.gl-pop .pl-tree img { border: 0; border-radius: 0; }
+.gl-pop .pl-parent { width: 104px; height: auto; }
+.pl-lines { display: block; width: 100%; height: 34px; margin-top: 4px; }
+.gl-pop .pl-kids { width: 100%; height: auto; }
 .gl-card.has-pop:hover, .gl-card.has-pop:focus-visible { border-color: rgba(128, 0, 223, 0.35); }
 .gl-card.has-pop:hover .gl-pop, .gl-card.has-pop:focus .gl-pop { opacity: 1; visibility: visible; transform: none; }
 @media (max-width: 980px) {
@@ -1857,10 +1862,20 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <dd class="gl-def">The full process: a buyer's security team checks a vendor before a deal closes, questionnaire included. Slow reviews stall deals.</dd>
         <span class="gl-pop" role="tooltip"><img src="Imagery/security-assessment-types.png" alt="Diagram of the types of security assessments: risk assessment, vulnerability scanning, penetration testing, web application assessment, code review, architecture and design review, wireless assessment, and physical penetration testing" loading="lazy"><span class="gl-pop-cap"><strong>What a review can cover</strong> Buyers pull evidence from many kinds of assessments, from risk and pen tests to code and architecture reviews.</span></span>
       </div>
-      <div class="gl-card">
+      <div class="gl-card has-pop pop-sm" tabindex="0">
         <div class="gl-num">06</div>
         <dt class="gl-term">Product Line</dt>
-        <dd class="gl-def">One company with many products (e.g. Intuit owns TurboTax, Credit Karma, Mailchimp). Answers change by product.</dd>
+        <dd class="gl-def">One company with many products (e.g. Intuit owns TurboTax, Credit Karma, QuickBooks, Mailchimp). Answers change by product.</dd>
+        <span class="gl-pop" role="tooltip">
+          <span class="pl-tree">
+            <img class="pl-parent" src="Imagery/intuit-logo.png" alt="Intuit" loading="lazy">
+            <svg class="pl-lines" viewBox="0 0 1208 70" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M604,0 V32 M192,32 H1012 M192,32 V70 M457,32 V70 M734,32 V70 M1012,32 V70" fill="none" stroke="#8A7BA3" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <img class="pl-kids" src="Imagery/intuit-products.png" alt="Intuit's products: TurboTax, Credit Karma, QuickBooks, and Mailchimp" loading="lazy">
+          </span>
+          <span class="gl-pop-cap"><strong>One vendor, many product lines</strong> Each product can have its own documents, access rules, and answers, so the agent has to know which one a buyer is evaluating.</span>
+        </span>
       </div>
       <div class="gl-card">
         <div class="gl-num">07</div>

@@ -367,7 +367,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .conf-ticks span.active { color:var(--purple-700); font-weight:600; }
 .conf-caption { margin:12px 0 0; font-size:0.82rem; color:var(--ink-2); }
 .conf-caption b { color:var(--ink); }
-.conf-example { --tier:#2F6FEB; margin-top:12px; max-width:520px; padding:10px 14px 11px; background:#FAF8FC; border:1px solid var(--hairline); border-left:3px solid var(--tier); border-radius:8px; transition:border-color 0.2s ease; }
+.conf-example { --tier:#2F6FEB; margin-top:12px; max-width:520px; padding:10px 14px 11px; background:#FAF8FC; border:1px solid var(--hairline); border-radius:8px; }
 .ce-tag { font-family:'JetBrains Mono',monospace; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--tier); font-weight:600; margin-bottom:5px; }
 .ce-q { font-size:0.86rem; color:var(--ink); font-weight:500; margin-bottom:3px; }
 .ce-a { font-size:0.8rem; line-height:1.5; color:var(--ink-2); }
@@ -3088,10 +3088,10 @@ document.querySelectorAll('.conf-slider').forEach(function(sl){
   var ex = wrap.closest('.panel-cols') ? wrap.closest('.panel-cols').querySelector('.conf-example') : null;
   var tierColors = ['#C08A00','#7A6FA0','#2F6FEB','#2E9E5B'];
   var examples = [
-    ['"Will you accept our 48-hour breach notice terms?"', 'Only the standard 72-hour DPA is documented. The agent would be guessing, so a human answers.'],
-    ['"Is data encrypted in transit between your regions?"', 'The policy covers TLS in transit but never mentions cross-region traffic. The agent infers from partial sources.'],
-    ['"Are customer backups encrypted?"', 'No approved answer, but the Data Security Policy says all customer data, including backups, is encrypted at rest. One strong source.'],
-    ['"Do you have a SOC 2 Type II report?"', 'An admin-approved answer to this exact question already exists, so it is sent as written.']
+    ['"Will you agree to our custom contract terms?"', 'Nothing in the documents covers this. The agent would be guessing, so a person answers instead.'],
+    ['"Can my data be stored only in Europe?"', 'The docs mention a European data center, but not whether data stays there. The agent pieces together a partial answer.'],
+    ['"Do you back up customer data?"', 'There is no pre-written answer, but the security policy clearly says data is backed up daily. One clear source.'],
+    ['"Do you have a privacy policy?"', 'The team already wrote and approved an answer to this exact question, so it is sent word for word.']
   ];
   function update(){
     var v = +sl.value;

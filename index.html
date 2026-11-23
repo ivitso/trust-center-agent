@@ -1694,8 +1694,9 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 @media (max-width: 640px) { .rc-page { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .rc-page > .reflection-card:only-child { width: 100%; } }
 /* Reflection slide: big gap under the title, cards centered vertically */
-#s12 .lede { margin-top: auto; }
-#s12 .thanks { margin-top: auto; }
+#s12 .hero { text-align: left; margin-top: 20px; margin-bottom: 0; max-width: none; }
+#s12 .thanks { margin-top: auto; padding-top: 24px; }
+.learn-grid .gl-term { margin-top: 0; font-size: 1.22rem; }
 .thanks {
   font-family: 'Newsreader', Georgia, serif;
   font-style: italic;
@@ -2864,68 +2865,46 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     <h2 class="hero">What I'm <em>taking</em> forward.</h2>
     <p class="lede">Learnings and tradeoffs for the next agentic product.</p>
 
-    <div class="reflection-carousel">
-      <div class="rc-viewport">
-        <div class="rc-track">
-          <div class="rc-page">
-            <div class="reflection-card">
-              <div class="r-num">01</div>
-              <h4>Data turns skeptics into champions.</h4>
-              <p>Once admins could see what visitors asked, adoption became a pull.</p>
-            </div>
-            <div class="reflection-card">
-              <div class="r-num">02</div>
-              <h4>Agentic design is more than the seed prompts.</h4>
-              <p>Tone, language, and error states built trust as much as the model.</p>
-            </div>
-          </div>
-          <div class="rc-page">
-            <div class="reflection-card">
-              <div class="r-num">03</div>
-              <h4>Permissions work is invisible work.</h4>
-              <p>Nobody notices access gating until it's missing.</p>
-            </div>
-            <div class="reflection-card">
-              <div class="r-num">04</div>
-              <h4>The opt-out is design.</h4>
-              <p>Default on, one-click off: 61% adoption, very few turned it off.</p>
-            </div>
-          </div>
-          <div class="rc-page">
-            <div class="reflection-card">
-              <div class="r-num">05</div>
-              <h4>More proof isn't more trust.</h4>
-              <p>Full quoted sources felt heavy. Clickable citations got read and trusted.</p>
-            </div>
-            <div class="reflection-card">
-              <div class="r-num">06</div>
-              <h4>Earn trust before the biggest ask.</h4>
-              <p>Deferring the #1 request, Questionnaire support, ~14 weeks made its launch smooth.</p>
-            </div>
-          </div>
-          <div class="rc-page">
-            <div class="reflection-card">
-              <div class="r-num">07</div>
-              <h4>Pausing to look ahead pays off.</h4>
-              <p>Designing a year out sharpened our strategy and roadmap for today.</p>
-            </div>
-            <div class="reflection-card">
-              <div class="r-num">08</div>
-              <h4>Size the edge case before designing for it.</h4>
-              <p>Asking "how often does this really happen?" let us defer rare cases safely.</p>
-            </div>
-          </div>
-        </div>
+    <div class="glossary learn-grid">
+      <div class="gl-card">
+        <div class="gl-num">01</div>
+        <h4 class="gl-term">Data turns skeptics into champions.</h4>
+        <p class="gl-def">Once admins could see what visitors asked, adoption became a pull.</p>
       </div>
-      <div class="rc-controls">
-        <button class="rc-btn rc-prev" aria-label="Previous cards">&#8249;</button>
-        <div class="rc-dots">
-          <button class="rc-dot" aria-label="Cards 1 and 2"></button>
-          <button class="rc-dot" aria-label="Cards 3 and 4"></button>
-          <button class="rc-dot" aria-label="Cards 5 and 6"></button>
-          <button class="rc-dot" aria-label="Cards 7 and 8"></button>
-        </div>
-        <button class="rc-btn rc-next" aria-label="Next cards">&#8250;</button>
+      <div class="gl-card">
+        <div class="gl-num">02</div>
+        <h4 class="gl-term">Agentic design is more than the seed prompts.</h4>
+        <p class="gl-def">Tone, language, and error states built trust as much as the model.</p>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">03</div>
+        <h4 class="gl-term">Permissions work is invisible work.</h4>
+        <p class="gl-def">Nobody notices access gating until it's missing.</p>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">04</div>
+        <h4 class="gl-term">The opt-out is design.</h4>
+        <p class="gl-def">Default on, one-click off: 61% adoption, very few turned it off.</p>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">05</div>
+        <h4 class="gl-term">More proof isn't more trust.</h4>
+        <p class="gl-def">Full quoted sources felt heavy. Clickable citations got read and trusted.</p>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">06</div>
+        <h4 class="gl-term">Earn trust before the biggest ask.</h4>
+        <p class="gl-def">Deferring the #1 request, Questionnaire support, ~14 weeks made its launch smooth.</p>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">07</div>
+        <h4 class="gl-term">Pausing to look ahead pays off.</h4>
+        <p class="gl-def">Designing a year out sharpened our strategy and roadmap for today.</p>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">08</div>
+        <h4 class="gl-term">Size the edge case before designing for it.</h4>
+        <p class="gl-def">Asking "how often does this really happen?" let us defer rare cases safely.</p>
       </div>
     </div>
     <p class="thanks">Thanks for reading :)</p>

@@ -174,6 +174,50 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .map-hotspot:focus .map-note-pop.pop-br {
   transform: translateY(0);
 }
+/* Red "!" hotspot on the manual-workflow loop (People slide) */
+.map-warn { width: auto; height: auto; }
+.map-warn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 11px 3px 4px;
+  border-radius: 999px;
+  background: #FBF4F3;
+  border: 1px solid rgba(180, 35, 24, 0.2);
+  color: rgba(180, 35, 24, 0.82);
+  font: 600 12px/1.3 'Inter', sans-serif;
+  white-space: nowrap;
+  box-shadow: none;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+.map-warn:hover .map-warn-pill,
+.map-warn:focus .map-warn-pill { background: #F9E9E6; border-color: rgba(180, 35, 24, 0.4); }
+.map-warn-badge {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(180, 35, 24, 0.55);
+  color: #fff;
+  font: 700 11px/17px 'Inter', sans-serif;
+  text-align: center;
+  box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.22);
+  animation: map-warn-pulse 2s ease-out infinite;
+  transition: transform 0.16s ease;
+}
+@keyframes map-warn-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(180, 35, 24, 0.22); }
+  70%  { box-shadow: 0 0 0 8px rgba(180, 35, 24, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(180, 35, 24, 0); }
+}
+.map-warn:hover .map-warn-badge,
+.map-warn:focus .map-warn-badge { transform: scale(1.2); animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .map-warn-badge { animation: none; } }
+.map-note-pop.pop-down {
+  bottom: auto;
+  top: calc(100% + 10px);
+  width: 380px;
+}
+.map-note-pop.pop-down strong, .map-note-pop.pop-warn strong { color: #B42318; }
 .hero {
   font-size: clamp(1.85rem, 4vw, 3.4rem);
   line-height: 1.05;
@@ -323,6 +367,10 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .conf-ticks span.active { color:var(--purple-700); font-weight:600; }
 .conf-caption { margin:12px 0 0; font-size:0.82rem; color:var(--ink-2); }
 .conf-caption b { color:var(--ink); }
+.conf-example { --tier:#2F6FEB; margin-top:12px; max-width:520px; padding:10px 14px 11px; background:#FAF8FC; border:1px solid var(--hairline); border-radius:8px; }
+.ce-tag { font-family:'JetBrains Mono',monospace; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--tier); font-weight:600; margin-bottom:5px; }
+.ce-q { font-size:0.86rem; color:var(--ink); font-weight:500; margin-bottom:3px; }
+.ce-a { font-size:0.8rem; line-height:1.5; color:var(--ink-2); }
 .hero-metrics {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -624,6 +672,86 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
   order: 2;
   padding: 18px 28px 22px;
 }
+
+/* GLOSSARY (Vocabulary slide) */
+#s-glossary .hero { max-width: none; }
+.glossary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin: 32px 0 0;
+}
+.gl-card {
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.gl-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 1.4px;
+  color: var(--purple-700);
+  margin-bottom: 8px;
+}
+.gl-term {
+  font-family: 'Newsreader', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.gl-def {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.gl-card.has-pop { position: relative; cursor: help; outline: none; }
+.gl-pop {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 12px);
+  width: 580px;
+  max-width: 70vw;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 16px 40px rgba(39, 0, 68, 0.20);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  z-index: 40;
+  pointer-events: none;
+}
+.gl-pop img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--hairline); }
+.gl-pop-cap { display: block; padding: 10px 4px 2px; font-size: 0.8rem; line-height: 1.45; color: var(--ink-2); }
+.gl-pop-cap strong { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1.4px; text-transform: uppercase; color: var(--purple-700); font-weight: 500; margin-bottom: 3px; }
+.gl-card.pop-left .gl-pop { left: auto; right: calc(100% + 12px); width: 400px; transform: translateX(6px); }
+.gl-card.pop-sm .gl-pop { width: 440px; max-width: 86vw; top: auto; bottom: 0; }
+.gl-card.pop-wide .gl-pop { width: 540px; }
+.pl-tree { display: flex; flex-direction: column; align-items: center; background: #F4F5F8; border: 1px solid var(--hairline); border-radius: 8px; padding: 18px 0 6px; }
+.gl-pop .pl-tree img { border: 0; border-radius: 0; }
+.gl-pop .pl-parent { width: 104px; height: auto; }
+.pl-lines { display: block; width: 100%; height: 34px; margin-top: 4px; }
+.gl-pop .pl-kids { width: 100%; height: auto; }
+.gl-card.has-pop:hover, .gl-card.has-pop:focus-visible { border-color: rgba(128, 0, 223, 0.35); }
+.gl-card.has-pop:hover .gl-pop, .gl-card.has-pop:focus .gl-pop { opacity: 1; visibility: visible; transform: none; }
+@media (max-width: 980px) {
+  .gl-pop, .gl-card.pop-left .gl-pop { top: calc(100% + 8px); left: 0; right: auto; width: min(580px, 86vw); max-width: none; transform: translateY(-6px); }
+  .gl-card.pop-left .gl-pop { width: min(400px, 86vw); }
+  .gl-card.pop-wide .gl-pop { width: min(540px, 86vw); }
+  .gl-card.pop-sm .gl-pop { top: calc(100% + 8px); bottom: auto; }
+  .glossary > .gl-card:nth-child(odd) .gl-pop { left: 0; right: auto; }
+  .glossary > .gl-card:nth-child(even) .gl-pop { left: auto; right: 0; }
+}
+@media (max-width: 980px) { .glossary { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .glossary { grid-template-columns: 1fr; } .glossary > .gl-card:nth-child(n) .gl-pop { left: 0; right: auto; } }
 
 /* RESEARCH ARTIFACTS (Slide 2) */
 .research-artifacts {
@@ -1701,7 +1829,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
   <div class="inner">
     <div class="cover-header">
       <span class="header-text">CONVEYOR <span class="x">×</span> TRUST CENTER AGENT <span class="dot-sep">·</span> 2026</span>
-      <span class="header-meta">Ivana Tso · Sr. Product Designer <span class="dot-sep">·</span> 7-person squad (5 Eng · 1 PM · 1 Design) <span class="dot-sep">·</span> 2 months to beta</span>
+      <span class="header-meta">Ivana Tso · Sr. Product Designer <span class="dot-sep">·</span> 7-person squad (5 Eng · 1 PM · 1 Design)</span>
     </div>
     <h2 class="hero">Creating the first <em>agentic</em> Trust Center.</h2>
     <div class="cover-stack">
@@ -1719,16 +1847,83 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
     </div>
 
   </div>
+  <button class="continue" data-next="s-glossary">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE 2a · VOCABULARY ===================== -->
+<section class="slide sand" id="s-glossary">
+  <div class="slide-num">01 / 15</div>
+  <div class="inner">
+    <div class="eyebrow">01 · Vocabulary</div>
+    <h2 class="hero">What is a Trust Center - <em>quick vocabulary</em>.</h2>
+    <p class="lede">The handful of terms the rest of this story leans on.</p>
+    <dl class="glossary">
+      <div class="gl-card has-pop" tabindex="0">
+        <div class="gl-num">01</div>
+        <dt class="gl-term">Trust Center</dt>
+        <dd class="gl-def">A public page where a company (e.g. DocuSign) shares its security documents and knowledge so buyers can review before signing. Conveyor hosts these Trust Centers.</dd>
+        <span class="gl-pop" role="tooltip"><img src="Imagery/trust-center-example.webp" alt="Example Trust Center for a demo company, MediaCore: a summary, quick links, counts of documents, FAQs and badges, and a checklist of security practices" loading="lazy"><span class="gl-pop-cap"><strong>Example Trust Center</strong> A demo company's page: documents, FAQs, badges, and a quick security summary in one place.</span></span>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">02</div>
+        <dt class="gl-term">Admin</dt>
+        <dd class="gl-def">The vendor's security team (e.g. DocuSign's Trust &amp; Security Lead). Owns the documents, permissions, and rules.</dd>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">03</div>
+        <dt class="gl-term">Visitor / Buyer</dt>
+        <dd class="gl-def">A prospective customer browsing the Trust Center.</dd>
+      </div>
+      <div class="gl-card has-pop pop-left" tabindex="0">
+        <div class="gl-num">04</div>
+        <dt class="gl-term">Questionnaire</dt>
+        <dd class="gl-def">A spreadsheet of hundreds or thousands of questions buyers or auditors send vendors. It checks security controls, risk management, and compliance to confirm the vendor can protect sensitive data.</dd>
+        <span class="gl-pop" role="tooltip"><img src="Imagery/questionnaire-example.webp" alt="Example security questionnaire spreadsheet: supplier information fields, then numbered questions on staff, patching, encryption, authentication, and access control, each with Answer and Justification columns" loading="lazy"><span class="gl-pop-cap"><strong>Example questionnaire</strong> Each row is a question the vendor has to answer and justify, grouped by security topic.</span></span>
+      </div>
+      <div class="gl-card has-pop pop-sm" tabindex="0">
+        <div class="gl-num">05</div>
+        <dt class="gl-term">Security Review</dt>
+        <dd class="gl-def">The full process: a buyer's security team checks a vendor before a deal closes, questionnaire included. Slow reviews stall deals.</dd>
+        <span class="gl-pop" role="tooltip"><img src="Imagery/security-assessment-types.png" alt="Diagram of the types of security assessments: risk assessment, vulnerability scanning, penetration testing, web application assessment, code review, architecture and design review, wireless assessment, and physical penetration testing" loading="lazy"><span class="gl-pop-cap"><strong>What a review can cover</strong> Buyers pull evidence from many kinds of assessments, from risk and pen tests to code and architecture reviews.</span></span>
+      </div>
+      <div class="gl-card has-pop pop-sm" tabindex="0">
+        <div class="gl-num">06</div>
+        <dt class="gl-term">Product Line</dt>
+        <dd class="gl-def">One company with many products (e.g. Intuit owns TurboTax, Credit Karma, QuickBooks, Mailchimp). Answers change by product.</dd>
+        <span class="gl-pop" role="tooltip">
+          <span class="pl-tree">
+            <img class="pl-parent" src="Imagery/intuit-logo.png" alt="Intuit" loading="lazy">
+            <svg class="pl-lines" viewBox="0 0 1208 70" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M604,0 V32 M192,32 H1012 M192,32 V70 M457,32 V70 M734,32 V70 M1012,32 V70" fill="none" stroke="#8A7BA3" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+            </svg>
+            <img class="pl-kids" src="Imagery/intuit-products.png" alt="Intuit's products: TurboTax, Credit Karma, QuickBooks, and Mailchimp" loading="lazy">
+          </span>
+          <span class="gl-pop-cap"><strong>One vendor, many product lines</strong> Each product can have its own documents, access rules, and answers, so the agent has to know which one a buyer is evaluating.</span>
+        </span>
+      </div>
+      <div class="gl-card has-pop pop-left pop-sm pop-wide" tabindex="0">
+        <div class="gl-num">07</div>
+        <dt class="gl-term">Tool Call</dt>
+        <dd class="gl-def">One job the agent can do: bundle documents, answer and quote a question, fill out a questionnaire.</dd>
+        <span class="gl-pop" role="tooltip"><img src="Imagery/tool-calls-highlight.png" alt="Agent routing diagram with the three tool calls highlighted: Tool 01 Bundle Documents, Tool 02 Ask a Question, and Tool 03 Answer a Questionnaire. A visitor query passes entry gates, routes to one tool, then through the permission layer to an output: a gated ZIP bundle, a cited answer, or a CSV with flagged rows" loading="lazy"><span class="gl-pop-cap"><strong>The three tool calls</strong> Every visitor query routes to one of these, then through the permission layer before anything is returned.</span></span>
+      </div>
+      <div class="gl-card">
+        <div class="gl-num">08</div>
+        <dt class="gl-term">Touchless Review</dt>
+        <dd class="gl-def">A buyer finishes their questionnaires and review without contacting the vendor's (e.g. DocuSign's) team. Goal: 95%.</dd>
+      </div>
+    </dl>
+  </div>
   <button class="continue" data-next="s2">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 2 · THE BRIEF ===================== -->
 <section class="slide white" id="s2">
-  <div class="slide-num">01 / 14</div>
+  <div class="slide-num">02 / 15</div>
   <div class="inner">
-    <div class="eyebrow">01 · The Brief</div>
-    <h2 class="hero">What is a Trust Center - and why ship <em>first</em>.</h2>
-    <p class="lede">A Trust Center is a company's security storefront: buyers come to grab the SOC 2s and policies they need before signing. Unanswered questions stall deals, so we bet on an agent to reach 95% touchless reviews.</p>
+    <div class="eyebrow">02 · The Brief</div>
+    <h2 class="hero">Why ship a Trust Center Agent <em>first</em>.</h2>
+    <p class="lede">Unanswered questions stall deals, so we bet on an agent to reach 95% touchless reviews.</p>
 
     <div class="research-artifacts">
       <div class="research-artifact">
@@ -1780,9 +1975,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 3 · THE ARC ===================== -->
 <section class="slide sand" id="s3">
-  <div class="slide-num">02 / 14</div>
+  <div class="slide-num">03 / 15</div>
   <div class="inner">
-    <div class="eyebrow">02 · The Arc</div>
+    <div class="eyebrow">03 · The Arc</div>
     <h2 class="hero">Each release <em>earned</em> the next.</h2>
     <p class="lede">Safest first, with research between each, so every release earned the next.</p>
 
@@ -1847,17 +2042,19 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4 · ORIENT (DIAGRAM) ===================== -->
 <section class="slide mint" id="s4">
-  <div class="slide-num">03 / 14</div>
+  <div class="slide-num">04 / 15</div>
   <div class="inner">
-    <div class="eyebrow">03 · Orient: People</div>
-    <h2 class="hero">Who asks, who answers, who sets the <em>rules</em>.</h2>
-    <p class="lede">One agent serves outside visitors and the vendor's own sellers. Admins set the bounds.</p>
+    <div class="eyebrow">04 · Orient: People</div>
+    <h2 class="hero">How the agent serves each side of the <em>security deal</em>.</h2>
 
     <div class="interaction-map">
-      <svg viewBox="0 0 1080 494" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
+      <svg viewBox="-24 -46 1104 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interaction map using an example: DocuSign runs a Trust Center powered by Conveyor. In the manual workflow, questions the Trust Center could not answer went back and forth by email between DocuSign's Trust and Security team and the Acme buyers, blocking the deal from closing. Internally, whatever DocuSign's account execs could not self-serve also went back and forth with the Trust and Security team, blocking the deal too. 1, DocuSign's Trust and Security team, which owns permissions, product lines, NDA rules, documents, questionnaires, and security approvals, sets the rules for the AI agent. 2, Acme Corp's prospective buying team, a buyer, security rep, and procurement team evaluating DocuSign, asks a question. 3, the agent routes every query, taking into consideration the visitor's access group, NDA, product line, and the tool calls needed, answers within permission bounds, or admits a knowledge gap. 4, the gap is logged in the admin's analytics instead of routing a person. 5, a DocuSign sales account exec self-serves answers from the same agent, and 6, uses them to help the Acme prospect mid-deal.">
         <defs>
           <marker id="imap-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
             <path d="M0,0 L0,6 L6,3 z" fill="#51008D"/>
+          </marker>
+          <marker id="imap-arrow-pain" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto-start-reverse" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L6,3 z" fill="#B42318" fill-opacity="0.5"/>
           </marker>
         </defs>
 
@@ -1877,12 +2074,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
         <!-- DOCUSIGN TRUST CENTER AGENT (hub) -->
         <rect x="435" y="118" width="210" height="156" rx="12" fill="#270044"/>
-        <text x="540" y="152" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E1C0F9" letter-spacing="1.1">DOCUSIGN TRUST CENTER AGENT</text>
-        <text x="540" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fff">Routes every query to the</text>
-        <text x="540" y="199" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="rgba(255,255,255,0.82)">right tool, within bounds</text>
-        <line x1="465" y1="219" x2="615" y2="219" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
-        <text x="540" y="240" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">"Answer, or admit the gap.</text>
-        <text x="540" y="258" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Never guess."</text>
+        <text x="540" y="154" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#E1C0F9" letter-spacing="1.1">DOCUSIGN TRUST CENTER AGENT</text>
+        <text x="540" y="182" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#fff">Routes every query</text>
+        <line x1="465" y1="200" x2="615" y2="200" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+        <text x="540" y="222" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="12.5" fill="#E1C0F9">Takes into consideration:</text>
+        <text x="540" y="242" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="rgba(255,255,255,0.82)">Access group · NDA</text>
+        <text x="540" y="259" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="rgba(255,255,255,0.82)">Product line · Tool calls</text>
 
         <!-- PROSPECTIVE BUYERS (visitor, right) · Acme Corp, outside the Trust Center -->
         <rect x="850" y="126" width="210" height="148" rx="12" fill="#F5EDE2" stroke="#E2D3BF" stroke-width="1"/>
@@ -1900,6 +2097,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <text x="540" y="396" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#51008D" letter-spacing="1.4">SALES ACCOUNT EXEC</text>
         <text x="540" y="420" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#001510">Self-serves answers to</text>
         <text x="540" y="438" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#3A4A45">help an Acme prospect mid-deal</text>
+
+        <!-- Manual workflow: email back-and-forth between security team and buyers, outside the Trust Center -->
+        <path d="M17,200 H-12 V-32 H955 V124" fill="none" stroke="#B42318" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="5 4" marker-start="url(#imap-arrow-pain)" marker-end="url(#imap-arrow-pain)"/>
+        <!-- Manual workflow, internal: account execs take what they can't self-serve to the security team -->
+        <path d="M125,277 V397 H397" fill="none" stroke="#B42318" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="5 4" marker-start="url(#imap-arrow-pain)" marker-end="url(#imap-arrow-pain)"/>
 
         <!-- 1 · Admin sets rules -->
         <circle cx="258" cy="154" r="8" fill="#51008D"/><text x="258" y="157.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">1</text>
@@ -1932,19 +2134,27 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <circle cx="760" cy="385" r="8" fill="#51008D"/><text x="760" y="388.4" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" font-weight="700" fill="#fff">6</text>
         <text x="774" y="389" font-family="Inter, sans-serif" font-size="11" fill="#51008D" font-weight="600">Helps the prospect</text>
       </svg>
-      <span class="map-hotspot" tabindex="0" style="left:33.3%; top:46.2%;" aria-label="Why unanswered questions are logged, not escalated">
+      <span class="map-hotspot map-warn" tabindex="0" style="left:51.09%; top:2.6%;" aria-label="Blocked deal. Manual workflow: what happened before the agent">
+        <span class="map-warn-pill"><span class="map-warn-badge" aria-hidden="true">!</span>Blocked Deal</span>
+        <span class="map-note-pop pop-down" role="tooltip"><strong>Manual Workflow:</strong> Questions the Trust Center can't answer go back and forth by email between the security team and the buyers.</span>
+      </span>
+      <span class="map-hotspot map-warn" tabindex="0" style="left:25.9%; top:82.04%;" aria-label="Blocked deal. Manual workflow: account execs ask the security team">
+        <span class="map-warn-pill"><span class="map-warn-badge" aria-hidden="true">!</span>Blocked Deal</span>
+        <span class="map-note-pop pop-warn" role="tooltip"><strong>Manual Workflow:</strong> Whatever account execs can't self-serve, they take to their Trust &amp; Security team, and the deal waits on that back-and-forth too.</span>
+      </span>
+      <span class="map-hotspot" tabindex="0" style="left:34.75%; top:50.8%;" aria-label="Why unanswered questions are logged, not escalated">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
         <span class="map-note-pop" role="tooltip"><strong>The Agent knows when not to answer.</strong> Not answering is the hard part, but unanswered questions are compiled into knowledge gaps in the security team's analytics, so they can improve the knowledge and document base for visitors if they choose.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:19.8%; top:27.7%;" aria-label="The admin's goal and fear">
+      <span class="map-hotspot" tabindex="0" style="left:21.54%; top:33.9%;" aria-label="The admin's goal and fear">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
         <span class="map-note-pop pop-bl" role="tooltip"><strong>Goal:</strong> the Trust Center and Agent take care of 95% of their incoming questions.<br><strong>Fear:</strong> the Trust Center Agent says something wrong, shows an unapproved document to the wrong visitor, or makes a statement they could be held liable for.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:96.7%; top:27.7%;" aria-label="The prospective buyers' goal and fear">
+      <span class="map-hotspot" tabindex="0" style="left:96.78%; top:33.9%;" aria-label="The prospective buyers' goal and fear">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
         <span class="map-note-pop pop-br" role="tooltip"><strong>Goal:</strong> get every document and answer they need on DocuSign's security posture, fast.<br><strong>Fear:</strong> 50 emails back and forth to get a single answer, or letting risky software into their ecosystem.</span>
       </span>
-      <span class="map-hotspot" tabindex="0" style="left:55.6%; top:73.1%;" aria-label="Why the internal sales team is a second audience">
+      <span class="map-hotspot" tabindex="0" style="left:56.57%; top:75.4%;" aria-label="Why the internal sales team is a second audience">
         <span class="map-hotspot-dot" aria-hidden="true"></span>
         <span class="map-note-pop" role="tooltip"><strong>Check the agent first.</strong> Account Execs help prospects by taking their questions to the security team. Overwhelmed security teams now ask them to check the Trust Center Agent first, where AEs get high internal permissions. Visitors still drove 69% of usage.</span>
       </span>
@@ -1955,10 +2165,10 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4b · ORIENT: FLOW + ROUTING ===================== -->
 <section class="slide white" id="s4b">
-  <div class="slide-num">04 / 14</div>
+  <div class="slide-num">05 / 15</div>
   <div class="inner">
-    <div class="eyebrow">04 · Orient: Flow &amp; Routing</div>
-    <h2 class="hero">Every path runs through one <em>permission layer</em>.</h2>
+    <div class="eyebrow">05 · Orient: Flow &amp; Routing</div>
+    <h2 class="hero">How the Trust Center Agent runs a user's <em>questions</em>.</h2>
     <div class="constraint-chips">
       <span class="cc-label">Constraints</span>
       <span class="cc" tabindex="0">2 months to beta
@@ -2073,9 +2283,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 5 · LOVABLE PROTOTYPING ===================== -->
 <section class="slide white" id="s5">
-  <div class="slide-num">05 / 14</div>
+  <div class="slide-num">06 / 15</div>
   <div class="inner">
-    <div class="eyebrow">05 · Prototyping in Lovable</div>
+    <div class="eyebrow">06 · Prototyping in Lovable</div>
     <h2 class="hero">How I prototyped 3 major agent flows in <em>a week</em>.</h2>
     <p class="lovable-hero">"Mapping the main success and failure paths gave the team something concrete to align on before finessing the prompts."</p>
 
@@ -2116,9 +2326,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 6 · LIVE PROTOTYPE ===================== -->
 <section class="slide sand" id="s6" style="padding-bottom: 48px;">
-  <div class="slide-num">06 / 14</div>
+  <div class="slide-num">07 / 15</div>
   <div class="inner">
-    <div class="eyebrow">06 · Agent Prototyping</div>
+    <div class="eyebrow">07 · Agent Prototyping</div>
     <h2 class="hero">First Prototype <em>Flows</em>.</h2>
     <p class="lede">Agent interaction flows built with Lovable, to test functionality with our users.</p>
   </div>
@@ -2176,9 +2386,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 7 · CAST ===================== -->
 <section class="slide mint" id="s7">
-  <div class="slide-num">07 / 14</div>
+  <div class="slide-num">08 / 15</div>
   <div class="inner">
-    <div class="eyebrow">07 · The Cast</div>
+    <div class="eyebrow">08 · The Cast</div>
     <h2 class="hero">Tracking customer <em>feelings</em> across releases.</h2>
     <p class="lede">Every participant tagged Bullish, Moderate, or Conservative, and tracked across rounds.</p>
 
@@ -2210,9 +2420,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 8 · DECIDE ===================== -->
 <section class="slide cream" id="s8">
-  <div class="slide-num">08 / 14</div>
+  <div class="slide-num">09 / 15</div>
   <div class="inner">
-    <div class="eyebrow">08 · Decide</div>
+    <div class="eyebrow">09 · Decide</div>
     <h2 class="hero">How Value vs Risk gave us our <em>MVP</em>.</h2>
     <p class="lede">High value, low risk first.</p>
 
@@ -2264,9 +2474,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 9 · SHIP (MERGED: FINDINGS + SPEC + LAUNCH) ===================== -->
 <section class="slide white" id="s9">
-  <div class="slide-num">09 / 14</div>
+  <div class="slide-num">10 / 15</div>
   <div class="inner">
-    <div class="eyebrow">09 · Ship</div>
+    <div class="eyebrow">10 · Ship</div>
     <h2 class="hero">The design <em>considerations</em> underneath our Agent.</h2>
     <p class="lede">Effortless on day one, safe for AI skeptics.</p>
 
@@ -2276,19 +2486,19 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="sc-tag">Tool call · Bundle</div>
         <h4>Bundle Documents</h4>
         <img class="spec-thumb" src="Imagery/Rec%20Docs.png" alt="Bundle Documents - SOC 2 recommended docs with Download All">
-        <p>The pain was the search, not the download. <strong>→</strong> Admin-featured docs as a one-click zip.</p>
+        <p>Visitors ran many separate searches. <strong>→</strong> The agent grabs every doc as a one-click zip.</p>
       </div>
       <div class="spec-col">
         <div class="sc-tag">Tool call · Ask</div>
         <h4>Ask a Question</h4>
         <img class="spec-thumb" src="Imagery/Question%20AMA.png" alt="Ask a Question - cited response with source documents">
-        <p>Skeptics feared hallucinations. <strong>→</strong> Exact quotes, highlighted in the source doc.</p>
+        <p>Admins &amp; visitors feared hallucinations. <strong>→</strong> Exact quotes, highlighted in source docs, brought trust.</p>
       </div>
       <div class="spec-col">
         <div class="sc-tag">Tool call · Answer</div>
         <h4>Answer a Questionnaire</h4>
         <img class="spec-thumb" src="Imagery/Questionnaire%20Extract.png" alt="Answer a Questionnaire - upload and extraction in progress">
-        <p>Visitors' biggest time sink. <strong>→</strong> Admins needed proof of accuracy, so analytics shipped too.</p>
+        <p>Visitors' main goal &amp; biggest time sink. <strong>→</strong> Visitors &amp; admins want accuracy; analytics show the gaps.</p>
       </div>
     </div>
 
@@ -2332,8 +2542,8 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="icon-panel active" id="panel-confidence">
             <div class="panel-cols">
               <div>
-                <p><b>Scored, not guessed.</b> Green, Blue, Yellow. Admins choose which tiers auto-send.</p>
-                <p><b>Kill switch:</b> one click off, per Trust Center or questionnaire. The opt-out drove opt-in.</p>
+                <p><b>Scoring model:</b> Setting the default to exact matches.</p>
+                <p><b>Kill switch:</b> Starting all users with an opt-out rollout.</p>
               </div>
               <div>
                 <div style="width:340px; max-width:100%; border:1px solid var(--hairline); border-radius:10px; overflow:hidden; background:#fff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
@@ -2369,6 +2579,11 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
             <div class="panel-cols">
               <div>
                 <p><b>The admin sets the bar.</b> Below it, a human reviews first. Always cited.</p>
+                <div class="conf-example" aria-live="polite">
+                  <div class="ce-tag"></div>
+                  <div class="ce-q"></div>
+                  <div class="ce-a"></div>
+                </div>
               </div>
               <div>
                 <div style="width:400px; max-width:100%;">
@@ -2383,7 +2598,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           </div>
           <!-- Quality / LangSmith (merged with continuous evals) -->
           <div class="icon-panel" id="panel-langsmith">
-            <p><b>~0.1% hallucination rate</b> on questionnaires. <b>10%</b> of conversations scored in LangSmith for clarity, completeness, correctness, relevance, safety.</p>
+            <p><b>~0.1% hallucination rate</b> on questionnaires. <b>10%</b> of conversations scored in LangSmith for dimensions: clarity, completeness, correctness, relevance, and safety.</p>
             <p>Findings fed prompt and retrieval tuning. Latency <b>~30s → 5.7s</b>.</p>
             <img src="Imagery/Langsmith%20full.png" alt="LangSmith quality spot check interface" style="display:block; width:100%; margin-top:16px; border:1px solid var(--hairline); border-radius:10px;">
           </div>
@@ -2414,9 +2629,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 10 · IMPACT (MIDNIGHT) ===================== -->
 <section class="slide midnight" id="s10">
-  <div class="slide-num">10 / 14</div>
+  <div class="slide-num">11 / 15</div>
   <div class="inner">
-    <div class="eyebrow">10 · Live / Impact</div>
+    <div class="eyebrow">11 · Live / Impact</div>
     <h2 class="hero">What <em>five months</em> of production usage looked like.</h2>
     <p class="lede">Dec 2025 - May 2026. The customers most afraid in September were among the first to enable it.</p>
 
@@ -2522,13 +2737,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 11 · FIGMA FLOWS & PASSOFF ===================== -->
 <section class="slide sand" id="s11">
-  <div class="slide-num">11 / 14</div>
+  <div class="slide-num">12 / 15</div>
   <div class="inner">
-    <div class="eyebrow">11 · Figma Flows</div>
+    <div class="eyebrow">12 · Figma Flows</div>
     <h2 class="hero">Communicating edge cases and flows for <em>Passoff</em>.</h2>
 
     <div class="constraint-chips lede-chips">
-      <span class="lede">Across five workstreams, I also led</span>
+      <span class="lede">Beyond the flows, I also led</span>
       <span class="cc" tabindex="0">Deprecating a legacy feature<span class="cc-pop" role="tooltip"><strong>Deprecating a legacy feature</strong>The old Questionnaire Eliminator would confuse users next to the agent. I built the plan to migrate them off it before GA.</span></span>
       <span class="cc" tabindex="0">Sizing edge cases with data<span class="cc-pop" role="tooltip"><strong>Sizing edge cases with data</strong>When edge cases surfaced in user calls and spooked the team, I asked for the metrics: how often it really happens, which accounts hit it, how many times last year. Engineering could size the real risk and safely defer the rare ones.</span></span>
       <span class="cc" tabindex="0">Advocating for a component system<span class="cc-pop" role="tooltip"><strong>Advocating for a component system</strong>We'd inherited only a basic buttons-and-text file, and drift showed as new designers joined. I pushed engineering to build our new chat patterns into Storybook for reuse across the whole app.</span></span>
@@ -2557,9 +2772,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · VISION (draft3 placeholder) ===================== -->
 <section class="slide white" id="s-vision">
-  <div class="slide-num">12 / 14</div>
+  <div class="slide-num">13 / 15</div>
   <div class="inner">
-    <div class="eyebrow">12 · Vision</div>
+    <div class="eyebrow">13 · Vision</div>
     <h2 class="hero">The Trust Center <em>vision</em>.</h2>
     <p class="lede">Leading the first design vision: Trust Centers 1 year out, as trust in AI agents grows and workflows improve.</p>
     <a class="vision-shot" href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener">
@@ -2574,9 +2789,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · IMPROVEMENTS (draft3 placeholder) ===================== -->
 <section class="slide mint" id="s-improve">
-  <div class="slide-num">13 / 14</div>
+  <div class="slide-num">14 / 15</div>
   <div class="inner">
-    <div class="eyebrow">13 · Improvements</div>
+    <div class="eyebrow">14 · Improvements</div>
     <h2 class="hero">How Vision influenced the future of the <em>Agent</em>.</h2>
     <p class="lede">Showing the agent's work, so visitors can check it before they trust it.</p>
 
@@ -2618,9 +2833,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 12 · REFLECTION ===================== -->
 <section class="slide cover" id="s12">
-  <div class="slide-num">14 / 14</div>
+  <div class="slide-num">15 / 15</div>
   <div class="inner">
-    <div class="eyebrow">14 · Reflection</div>
+    <div class="eyebrow">15 · Reflection</div>
     <h2 class="hero">What I'm <em>taking</em> forward.</h2>
     <p class="lede">Learnings and tradeoffs for the next agentic product.</p>
 
@@ -2866,13 +3081,28 @@ document.querySelectorAll('.conf-slider').forEach(function(sl){
   var notes = [
     'answers almost everything - fastest, least cautious.',
     'answers at medium confidence and up; lower-confidence questions are held for review.',
-    'answers at high confidence and up; anything less is held for a human first.',
+    'derived from documents &amp; the knowledge base, not word for word.',
     'only sends exact matches to approved answers - most cautious.'
+  ];
+  // Example question per tier, shown in the left column
+  var ex = wrap.closest('.panel-cols') ? wrap.closest('.panel-cols').querySelector('.conf-example') : null;
+  var tierColors = ['#C08A00','#7A6FA0','#2F6FEB','#2E9E5B'];
+  var examples = [
+    ['"Will you agree to our custom contract terms?"', 'Nothing in the documents covers this. The agent would be guessing, so a person answers instead.'],
+    ['"Can my data be stored only in Europe?"', 'The docs mention a European data center, but not whether data stays there. The agent pieces together a partial answer.'],
+    ['"Do you back up customer data?"', 'There is no pre-written answer, but the security policy clearly says data is backed up daily. One clear source.'],
+    ['"Do you have a privacy policy?"', 'The team already wrote and approved an answer to this exact question, so it is sent word for word.']
   ];
   function update(){
     var v = +sl.value;
     ticks.forEach(function(t,i){ t.classList.toggle('active', i===v); });
     cap.innerHTML = '<b>'+labels[v]+'</b> - '+notes[v];
+    if (ex) {
+      ex.style.setProperty('--tier', tierColors[v]);
+      ex.querySelector('.ce-tag').textContent = 'Example · ' + labels[v];
+      ex.querySelector('.ce-q').textContent = examples[v][0];
+      ex.querySelector('.ce-a').textContent = examples[v][1];
+    }
   }
   sl.addEventListener('input', update);
   update();

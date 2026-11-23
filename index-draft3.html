@@ -2527,7 +2527,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <button class="icon-tab" data-panel="panel-decisions" aria-selected="false">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
             <div class="id-label">Design decisions</div>
-            <div class="id-line">Three findings that shaped it</div>
+            <div class="id-line">Principles that earned trust</div>
           </button>
           <button class="icon-tab" data-panel="panel-launch" aria-selected="false">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12A10 10 0 1112 2"/><path d="M22 2L12 12"/><path d="M16 2h6v6"/></svg></div>
@@ -2603,9 +2603,10 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           </div>
           <!-- Design decisions -->
           <div class="icon-panel" id="panel-decisions">
-            <p><b>Design the tool call, not the screen.</b> Same chat UI; the work was the path underneath.</p>
-            <p><b>Citations are the permission to act.</b> Without a visible source, even a correct answer was unusable to a security reviewer.</p>
-            <p><b>Escalation is the primary UI.</b> The agent shipped because it knew when not to answer.</p>
+            <p><b>Be clear with reasoning for user trust.</b> Show the sources and steps behind each answer, so reviewers can check the work.</p>
+            <p><b>Admit the gap, never guess.</b> When the docs don't cover it, the agent says so, and the gap shows up in admin analytics.</p>
+            <p><b>Confirm context before answering.</b> The agent checks which product line a buyer means, since answers change by product.</p>
+            <p><b>Make feedback one click.</b> Thumbs up or down on every answer fed prompt and retrieval tuning in LangSmith.</p>
           </div>
           <!-- Launch & enablement -->
           <div class="icon-panel" id="panel-launch">

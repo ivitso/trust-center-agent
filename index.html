@@ -1313,6 +1313,17 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 /* SPEC + SURFACE (combined) */
 .spec-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
 .spec-col { background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 20px 22px 16px; }
+/* Ship slide: product screenshot + compact tool-call cards with hover thumbnails */
+.ship-shot { margin: 22px 0 0; border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(39,0,68,0.08); }
+.ship-shot img { display: block; width: 100%; height: clamp(240px, calc(100vh - 490px), 440px); object-fit: cover; object-position: left top; cursor: zoom-in; }
+#s9 .spec-cols { margin-top: 16px; }
+#s9 .spec-col { position: relative; padding: 16px 20px 14px; cursor: help; outline: none; }
+#s9 .spec-col h4 { margin: 2px 0 6px; font-size: 1.15rem; }
+#s9 .spec-col p { margin: 0; }
+#s9 .spec-col:hover, #s9 .spec-col:focus-visible { border-color: rgba(128, 0, 223, 0.35); }
+.sc-pop { position: absolute; bottom: calc(100% + 10px); left: 50%; width: 340px; max-width: 86vw; background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 8px; box-shadow: 0 16px 40px rgba(39,0,68,0.20); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s; z-index: 40; pointer-events: none; }
+.sc-pop img { display: block; width: 100%; height: auto; border-radius: 6px; }
+#s9 .spec-col:hover .sc-pop, #s9 .spec-col:focus .sc-pop { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
 .spec-col .sc-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.4px; color: var(--purple-700); }
 .spec-col h4 { font-family: 'Newsreader', serif; font-weight: 500; font-size: 1.3rem; font-style: italic; margin: 4px 0 12px; }
 .spec-col .spec-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--hairline); border-radius: 6px; margin-bottom: 12px; background: var(--sand-100); cursor: zoom-in; }
@@ -1852,7 +1863,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 2a · VOCABULARY ===================== -->
 <section class="slide sand" id="s-glossary">
-  <div class="slide-num">01 / 15</div>
+  <div class="slide-num">01 / 16</div>
   <div class="inner">
     <div class="eyebrow">01 · Vocabulary</div>
     <h2 class="hero">What is a Trust Center - <em>quick vocabulary</em>.</h2>
@@ -1919,7 +1930,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 2 · THE BRIEF ===================== -->
 <section class="slide white" id="s2">
-  <div class="slide-num">02 / 15</div>
+  <div class="slide-num">02 / 16</div>
   <div class="inner">
     <div class="eyebrow">02 · The Brief</div>
     <h2 class="hero">Why ship a Trust Center Agent <em>first</em>.</h2>
@@ -1975,7 +1986,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 3 · THE ARC ===================== -->
 <section class="slide sand" id="s3">
-  <div class="slide-num">03 / 15</div>
+  <div class="slide-num">03 / 16</div>
   <div class="inner">
     <div class="eyebrow">03 · The Arc</div>
     <h2 class="hero">Each release <em>earned</em> the next.</h2>
@@ -2042,7 +2053,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4 · ORIENT (DIAGRAM) ===================== -->
 <section class="slide mint" id="s4">
-  <div class="slide-num">04 / 15</div>
+  <div class="slide-num">04 / 16</div>
   <div class="inner">
     <div class="eyebrow">04 · Orient: People</div>
     <h2 class="hero">How the agent serves each side of the <em>security deal</em>.</h2>
@@ -2165,7 +2176,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 4b · ORIENT: FLOW + ROUTING ===================== -->
 <section class="slide white" id="s4b">
-  <div class="slide-num">05 / 15</div>
+  <div class="slide-num">05 / 16</div>
   <div class="inner">
     <div class="eyebrow">05 · Orient: Flow &amp; Routing</div>
     <h2 class="hero">How the Trust Center Agent runs a user's <em>questions</em>.</h2>
@@ -2283,7 +2294,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 5 · LOVABLE PROTOTYPING ===================== -->
 <section class="slide white" id="s5">
-  <div class="slide-num">06 / 15</div>
+  <div class="slide-num">06 / 16</div>
   <div class="inner">
     <div class="eyebrow">06 · Prototyping in Lovable</div>
     <h2 class="hero">How I prototyped 3 major agent flows in <em>a week</em>.</h2>
@@ -2326,7 +2337,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 6 · LIVE PROTOTYPE ===================== -->
 <section class="slide sand" id="s6" style="padding-bottom: 48px;">
-  <div class="slide-num">07 / 15</div>
+  <div class="slide-num">07 / 16</div>
   <div class="inner">
     <div class="eyebrow">07 · Agent Prototyping</div>
     <h2 class="hero">First Prototype <em>Flows</em>.</h2>
@@ -2386,7 +2397,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 7 · CAST ===================== -->
 <section class="slide mint" id="s7">
-  <div class="slide-num">08 / 15</div>
+  <div class="slide-num">08 / 16</div>
   <div class="inner">
     <div class="eyebrow">08 · The Cast</div>
     <h2 class="hero">Tracking customer <em>feelings</em> across releases.</h2>
@@ -2420,7 +2431,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 8 · DECIDE ===================== -->
 <section class="slide cream" id="s8">
-  <div class="slide-num">09 / 15</div>
+  <div class="slide-num">09 / 16</div>
   <div class="inner">
     <div class="eyebrow">09 · Decide</div>
     <h2 class="hero">How Value vs Risk gave us our <em>MVP</em>.</h2>
@@ -2441,7 +2452,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
         <div class="point risk-med" style="top: 14%; left: 54%;"><div class="dot"></div><div class="name">NDA Flow</div><div class="stat">Required · Complex gating</div></div>
         <div class="point risk-med" style="top: 30%; left: 68%;"><div class="dot"></div><div class="name">Product Lines</div><div class="stat">5+ sub-brands per customer</div></div>
         <!-- High Value, High Risk -->
-        <div class="point risk-high" style="top: 8%; left: 88%;"><div class="dot"></div><div class="name">Questionnaire</div><div class="stat">Highest value · 1 scared vote</div></div>
+        <div class="point risk-high" style="top: 8%; left: 88%;"><div class="dot"></div><div class="name">Questionnaire</div><div class="stat" style="white-space:nowrap;">Highest value<br>Highest error potential</div></div>
         <div class="point risk-high" style="top: 40%; left: 84%;"><div class="dot"></div><div class="name">Admin Testing &amp; User Segments</div><div class="stat">Stretch · Jan release</div></div>
         <!-- Mid Value -->
         <div class="point" style="top: 60%; left: 38%;"><div class="dot"></div><div class="name">Admin Recommended Docs</div><div class="stat">56% excited · Configure</div></div>
@@ -2451,7 +2462,6 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
     </div>
 
-    <p class="matrix-frame-line">MVP: <strong>Bundle, Ask, NDA Flow, Product Lines, Feedback Loops.</strong> Questionnaire, most wanted and most feared, became a <strong>post-MVP stretch</strong>.</p>
 
     <details>
       <summary>Sentiment heatmap: 9 sessions × 5 flows</summary>
@@ -2474,38 +2484,52 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 9 · SHIP (MERGED: FINDINGS + SPEC + LAUNCH) ===================== -->
 <section class="slide white" id="s9">
-  <div class="slide-num">10 / 15</div>
+  <div class="slide-num">10 / 16</div>
   <div class="inner">
     <div class="eyebrow">10 · Ship</div>
     <h2 class="hero">The design <em>considerations</em> underneath our Agent.</h2>
     <p class="lede">Effortless on day one, safe for AI skeptics.</p>
 
+    <figure class="ship-shot">
+      <img src="Imagery/agent-in-trust-center.webp" alt="The Trust Center Agent open inside a demo company's Trust Center: the chat panel greets the visitor, shows a Thinking state, and offers Find Documents, Fill Questionnaire, and What can I ask? shortcuts">
+    </figure>
+
     <!-- 3 spec columns: what shipped per tool call -->
     <div class="spec-cols">
-      <div class="spec-col">
+      <div class="spec-col has-thumb" tabindex="0">
         <div class="sc-tag">Tool call · Bundle</div>
         <h4>Bundle Documents</h4>
-        <img class="spec-thumb" src="Imagery/Rec%20Docs.png" alt="Bundle Documents - SOC 2 recommended docs with Download All">
         <p>Visitors ran many separate searches. <strong>→</strong> The agent grabs every doc as a one-click zip.</p>
+        <span class="sc-pop" role="tooltip"><img src="Imagery/Rec%20Docs.png" alt="Bundle Documents - SOC 2 recommended docs with Download All" loading="lazy"></span>
       </div>
-      <div class="spec-col">
+      <div class="spec-col has-thumb" tabindex="0">
         <div class="sc-tag">Tool call · Ask</div>
         <h4>Ask a Question</h4>
-        <img class="spec-thumb" src="Imagery/Question%20AMA.png" alt="Ask a Question - cited response with source documents">
         <p>Admins &amp; visitors feared hallucinations. <strong>→</strong> Exact quotes, highlighted in source docs, brought trust.</p>
+        <span class="sc-pop" role="tooltip"><img src="Imagery/Question%20AMA.png" alt="Ask a Question - cited response with source documents" loading="lazy"></span>
       </div>
-      <div class="spec-col">
+      <div class="spec-col has-thumb" tabindex="0">
         <div class="sc-tag">Tool call · Answer</div>
         <h4>Answer a Questionnaire</h4>
-        <img class="spec-thumb" src="Imagery/Questionnaire%20Extract.png" alt="Answer a Questionnaire - upload and extraction in progress">
         <p>Visitors' main goal &amp; biggest time sink. <strong>→</strong> Visitors &amp; admins want accuracy; analytics show the gaps.</p>
+        <span class="sc-pop" role="tooltip"><img src="Imagery/Questionnaire%20Extract.png" alt="Answer a Questionnaire - upload and extraction in progress" loading="lazy"></span>
       </div>
     </div>
 
+  </div>
+  <button class="continue" data-next="s9b">Continue ↓</button>
+</section>
+
+<!-- ===================== SLIDE 10b · DESIGNING FOR AI UNCERTAINTY ===================== -->
+<section class="slide cream" id="s9b">
+  <div class="slide-num">11 / 16</div>
+  <div class="inner">
+    <div class="eyebrow">11 · Designing for AI Uncertainty</div>
+    <h2 class="hero">How a reviewer can <em>trust</em> an AI answer.</h2>
+    <p class="lede">When a wrong answer means a failed audit, trust has to be designed in.</p>
+
     <!-- Designing for AI uncertainty (trust-system frame, tabbed) -->
-    <div style="margin-top:34px;">
-      <div style="font-family:'JetBrains Mono',monospace; font-size:0.66rem; letter-spacing:1.4px; text-transform:uppercase; color:var(--purple-700); margin-bottom:8px;">Designing for AI uncertainty</div>
-      <p style="margin:0 0 6px; font-size:0.95rem; color:var(--ink-2);">How does a reviewer trust an AI answer when a wrong one means a failed audit?</p>
+    <div>
 
       <!-- Icon tabs + panel -->
       <div class="icon-tabs-wrap" style="margin-top:18px;">
@@ -2528,7 +2552,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <button class="icon-tab" data-panel="panel-decisions" aria-selected="false">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
             <div class="id-label">Design decisions</div>
-            <div class="id-line">Three findings that shaped it</div>
+            <div class="id-line">Principles that earned trust</div>
           </button>
           <button class="icon-tab" data-panel="panel-launch" aria-selected="false">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12A10 10 0 1112 2"/><path d="M22 2L12 12"/><path d="M16 2h6v6"/></svg></div>
@@ -2600,13 +2624,13 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="icon-panel" id="panel-langsmith">
             <p><b>~0.1% hallucination rate</b> on questionnaires. <b>10%</b> of conversations scored in LangSmith for dimensions: clarity, completeness, correctness, relevance, and safety.</p>
             <p>Findings fed prompt and retrieval tuning. Latency <b>~30s → 5.7s</b>.</p>
-            <img src="Imagery/Langsmith%20full.png" alt="LangSmith quality spot check interface" style="display:block; width:100%; margin-top:16px; border:1px solid var(--hairline); border-radius:10px;">
+            <img src="Imagery/Langsmith%20full.png" alt="LangSmith quality spot check interface" style="display:block; width:100%; height:clamp(160px, calc(100vh - 680px), 460px); object-fit:cover; object-position:left top; margin-top:16px; border:1px solid var(--hairline); border-radius:10px; cursor:zoom-in;">
           </div>
           <!-- Design decisions -->
           <div class="icon-panel" id="panel-decisions">
-            <p><b>Design the tool call, not the screen.</b> Same chat UI; the work was the path underneath.</p>
-            <p><b>Citations are the permission to act.</b> Without a visible source, even a correct answer was unusable to a security reviewer.</p>
-            <p><b>Escalation is the primary UI.</b> The agent shipped because it knew when not to answer.</p>
+            <p><b>Be clear with reasoning for user trust.</b> Show the sources and steps behind each answer, so reviewers can check the work.</p>
+            <p><b>Admit the gap, never guess.</b> When the docs don't cover it, the agent says so instead of making something up.</p>
+            <p><b>Allow admins to build trust with analytics.</b> Surfacing where their agent had a knowledge gap led them toward a touchless future.</p>
           </div>
           <!-- Launch & enablement -->
           <div class="icon-panel" id="panel-launch">
@@ -2624,14 +2648,15 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       </div>
     </div>
   </div>
+  </div>
   <button class="continue" data-next="s10">Continue ↓</button>
 </section>
 
 <!-- ===================== SLIDE 10 · IMPACT (MIDNIGHT) ===================== -->
 <section class="slide midnight" id="s10">
-  <div class="slide-num">11 / 15</div>
+  <div class="slide-num">12 / 16</div>
   <div class="inner">
-    <div class="eyebrow">11 · Live / Impact</div>
+    <div class="eyebrow">12 · Live / Impact</div>
     <h2 class="hero">What <em>five months</em> of production usage looked like.</h2>
     <p class="lede">Dec 2025 - May 2026. The customers most afraid in September were among the first to enable it.</p>
 
@@ -2737,9 +2762,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 11 · FIGMA FLOWS & PASSOFF ===================== -->
 <section class="slide sand" id="s11">
-  <div class="slide-num">12 / 15</div>
+  <div class="slide-num">13 / 16</div>
   <div class="inner">
-    <div class="eyebrow">12 · Figma Flows</div>
+    <div class="eyebrow">13 · Figma Flows</div>
     <h2 class="hero">Communicating edge cases and flows for <em>Passoff</em>.</h2>
 
     <div class="constraint-chips lede-chips">
@@ -2772,9 +2797,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · VISION (draft3 placeholder) ===================== -->
 <section class="slide white" id="s-vision">
-  <div class="slide-num">13 / 15</div>
+  <div class="slide-num">14 / 16</div>
   <div class="inner">
-    <div class="eyebrow">13 · Vision</div>
+    <div class="eyebrow">14 · Vision</div>
     <h2 class="hero">The Trust Center <em>vision</em>.</h2>
     <p class="lede">Leading the first design vision: Trust Centers 1 year out, as trust in AI agents grows and workflows improve.</p>
     <a class="vision-shot" href="https://ivitso.github.io/Trust-Center-Vision/" target="_blank" rel="noopener">
@@ -2789,9 +2814,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE · IMPROVEMENTS (draft3 placeholder) ===================== -->
 <section class="slide mint" id="s-improve">
-  <div class="slide-num">14 / 15</div>
+  <div class="slide-num">15 / 16</div>
   <div class="inner">
-    <div class="eyebrow">14 · Improvements</div>
+    <div class="eyebrow">15 · Improvements</div>
     <h2 class="hero">How Vision influenced the future of the <em>Agent</em>.</h2>
     <p class="lede">Showing the agent's work, so visitors can check it before they trust it.</p>
 
@@ -2833,9 +2858,9 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
 
 <!-- ===================== SLIDE 12 · REFLECTION ===================== -->
 <section class="slide cover" id="s12">
-  <div class="slide-num">15 / 15</div>
+  <div class="slide-num">16 / 16</div>
   <div class="inner">
-    <div class="eyebrow">15 · Reflection</div>
+    <div class="eyebrow">16 · Reflection</div>
     <h2 class="hero">What I'm <em>taking</em> forward.</h2>
     <p class="lede">Learnings and tradeoffs for the next agentic product.</p>
 

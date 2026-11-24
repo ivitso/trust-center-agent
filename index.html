@@ -1315,7 +1315,7 @@ h1, h2, .serif { font-family: 'Newsreader', Georgia, serif; font-weight: 500; }
 .spec-col { background: var(--white); border: 1px solid var(--hairline); border-radius: 12px; padding: 20px 22px 16px; }
 /* Ship slide: product screenshot + compact tool-call cards with hover thumbnails */
 .ship-shot { margin: 22px 0 0; border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(39,0,68,0.08); }
-.ship-shot img { display: block; width: 100%; height: clamp(240px, calc(100vh - 490px), 440px); object-fit: cover; object-position: left top; cursor: zoom-in; }
+.ship-shot img { display: block; width: 100%; height: clamp(240px, calc(100vh - 512px), 440px); object-fit: cover; object-position: left top; cursor: zoom-in; }
 #s9 .spec-cols { margin-top: 16px; }
 #s9 .spec-col { position: relative; padding: 16px 20px 14px; cursor: help; outline: none; }
 #s9 .spec-col h4 { margin: 2px 0 6px; font-size: 1.15rem; }
@@ -2500,19 +2500,19 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
       <div class="spec-col has-thumb" tabindex="0">
         <div class="sc-tag">Tool call · Bundle</div>
         <h4>Bundle Documents</h4>
-        <p>Visitors ran many separate searches. <strong>→</strong> The agent grabs every doc as a one-click zip.</p>
+        <p>Visitors ran many separate searches. <strong>→</strong> The agent grabs all docs as a one-click zip in a module component.</p>
         <span class="sc-pop" role="tooltip"><img src="Imagery/Rec%20Docs.png" alt="Bundle Documents - SOC 2 recommended docs with Download All" loading="lazy"></span>
       </div>
       <div class="spec-col has-thumb" tabindex="0">
         <div class="sc-tag">Tool call · Ask</div>
         <h4>Ask a Question</h4>
-        <p>Admins &amp; visitors feared hallucinations. <strong>→</strong> Exact quotes, highlighted in source docs, brought trust.</p>
+        <p>Admins &amp; visitors feared hallucinations. <strong>→</strong> Designing exact quotes and highlighting source docs brought trust.</p>
         <span class="sc-pop" role="tooltip"><img src="Imagery/Question%20AMA.png" alt="Ask a Question - cited response with source documents" loading="lazy"></span>
       </div>
       <div class="spec-col has-thumb" tabindex="0">
         <div class="sc-tag">Tool call · Answer</div>
         <h4>Answer a Questionnaire</h4>
-        <p>Visitors' main goal &amp; biggest time sink. <strong>→</strong> Visitors &amp; admins want accuracy; analytics show the gaps.</p>
+        <p>A visitor's goal &amp; time sink. <strong>→</strong> All want accuracy: a flow users can return to, and analytics showing admins the gaps.</p>
         <span class="sc-pop" role="tooltip"><img src="Imagery/Questionnaire%20Extract.png" alt="Answer a Questionnaire - upload and extraction in progress" loading="lazy"></span>
       </div>
     </div>
@@ -2538,12 +2538,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <button class="icon-tab" data-panel="panel-confidence" aria-selected="true">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
             <div class="id-label">Uncertainty</div>
-            <div class="id-line">Scored, and switchable off</div>
+            <div class="id-line">Scored and opt-out</div>
           </button>
           <button class="icon-tab" data-panel="panel-threshold" aria-selected="false">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></div>
-            <div class="id-label">Graceful failure</div>
-            <div class="id-line">The admin sets the bar</div>
+            <div class="id-label">Agent answers</div>
+            <div class="id-line">The admin sets the bar for holding data</div>
           </button>
           <button class="icon-tab" data-panel="panel-langsmith" aria-selected="false">
             <div class="id-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--purple-700)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
@@ -2567,12 +2567,12 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
           <div class="icon-panel active" id="panel-confidence">
             <div class="panel-cols">
               <div>
-                <p><b>Scoring model:</b> Setting the default to exact matches.</p>
-                <p><b>Kill switch:</b> Starting all users with an opt-out rollout.</p>
+                <p><b>Default settings:</b> Exact match answers.</p>
+                <p><b>Opt out:</b> Starting all users with a two-week preview period, then launching to all Trust Centers.</p>
               </div>
               <div>
                 <div style="width:340px; max-width:100%; border:1px solid var(--hairline); border-radius:10px; overflow:hidden; background:#fff; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-                  <div style="background:#F7F5FA; border-bottom:1px solid var(--hairline); padding:9px 12px; font-size:0.66rem; font-weight:600; color:#2b2330;">ConveyorAI &middot; Answer release policy</div>
+                  <div style="background:#F7F5FA; border-bottom:1px solid var(--hairline); padding:9px 12px; font-size:0.66rem; font-weight:600; color:#2b2330;">ConveyorAI &middot; Default answer settings</div>
                   <div style="padding:9px 12px; display:grid; gap:9px;">
                     <div style="display:flex; align-items:center; gap:9px;">
                       <span style="width:10px; height:10px; border-radius:50%; background:#2E9E5B; flex:none;"></span>
@@ -2582,7 +2582,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
                     <div style="display:flex; align-items:center; gap:9px;">
                       <span style="width:10px; height:10px; border-radius:50%; background:#2F6FEB; flex:none;"></span>
                       <span style="flex:1; font-size:0.72rem; color:#2b2330;"><b>Blue</b> &middot; High confidence, strong sources</span>
-                      <span style="font-size:0.62rem; color:#3A4A45; border:1px solid var(--hairline); border-radius:6px; padding:3px 8px; white-space:nowrap;">Auto-send &#9662;</span>
+                      <span style="font-size:0.62rem; color:#8A5A00; background:#FBF3DD; border:1px solid #EBD9A5; border-radius:6px; padding:3px 8px; white-space:nowrap;">Hold for review &#9662;</span>
                     </div>
                     <div style="display:flex; align-items:center; gap:9px;">
                       <span style="width:10px; height:10px; border-radius:50%; background:#E0A100; flex:none;"></span>
@@ -2592,8 +2592,7 @@ details .acc-body img { margin-top: 12px; border-radius: 8px; border: 1px solid 
                   </div>
                   <div style="border-top:1px solid var(--hairline); padding:10px 12px; display:flex; align-items:center; gap:9px;">
                     <span style="width:26px; height:15px; border-radius:999px; background:#51008D; position:relative; flex:none;"><span style="position:absolute; top:2px; right:2px; width:11px; height:11px; border-radius:50%; background:#fff;"></span></span>
-                    <span style="flex:1; font-size:0.72rem; color:#2b2330;">Only release answers that include citations</span>
-                    <span style="font-size:0.62rem; font-weight:600; color:#51008D;">On</span>
+                    <span style="flex:1; font-size:0.72rem; color:#2b2330;">Trust Center Agent</span>
                   </div>
                 </div>
               </div>
